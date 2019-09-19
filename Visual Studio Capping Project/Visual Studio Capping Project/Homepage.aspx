@@ -5,18 +5,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        #form1 {
+            height: 304px;
+        }
+    </style>
 </head>
 <body style="height: 427px">
     <form id="form1" runat="server">
         Email<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
 &nbsp;<p>
-            <asp:Button ID="Button1" runat="server" Height="44px" OnClick="Button1_Click" Text="Button" Width="116px" />
+            <asp:DropDownList ID="DropDownList1" runat="server">
+                <asp:ListItem>Marist</asp:ListItem>
+                <asp:ListItem>SUNY</asp:ListItem>
+            </asp:DropDownList>
         </p>
-        <asp:DropDownList ID="DropDownList1" runat="server">
-            <asp:ListItem>Marist</asp:ListItem>
-            <asp:ListItem>SUNY</asp:ListItem>
-        </asp:DropDownList>
+        <asp:Button ID="Button1" runat="server" Height="44px" OnClick="Button1_Click" Text="Button" Width="116px" />
     </form>
 </body>
 </html>

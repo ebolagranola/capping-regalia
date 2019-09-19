@@ -6,10 +6,17 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="height: 427px">
     <form id="form1" runat="server">
-        <div>
-            Test 2</div>
+        Email<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
+&nbsp;<p>
+            <asp:Button ID="Button1" runat="server" Height="44px" OnClick="Button1_Click" Text="Button" Width="116px" />
+        </p>
+        <asp:DropDownList ID="DropDownList1" runat="server">
+            <asp:ListItem>Marist</asp:ListItem>
+            <asp:ListItem>SUNY</asp:ListItem>
+        </asp:DropDownList>
     </form>
 </body>
 </html>

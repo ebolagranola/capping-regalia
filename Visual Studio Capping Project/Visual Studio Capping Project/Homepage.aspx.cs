@@ -22,11 +22,25 @@ namespace Visual_Studio_Capping_Project
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Regalia" + "(Email, School) VALUES (@email, @school)", con);
-            cmd.Parameters.AddWithValue("@email", TextBox1.Text);
-            cmd.Parameters.AddWithValue("@school", DropDownList1.SelectedItem.Value);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Regalia" + "(Email, Name, PhoneNumber, Department, CapSize, HeadSize, University, Degree, State ) VALUES (@email, @name, @phonenumber, @department, @capsize, @headsize, @school, @degree, @state)", con);
+            cmd.Parameters.AddWithValue("@email", emailTextBox.Text);
+            cmd.Parameters.AddWithValue("@name", nameTextBox.Text);
+
+            cmd.Parameters.AddWithValue("@phonenumber", phoneNumberTextBox.Text);
+            cmd.Parameters.AddWithValue("@department", departmentTextBox.Text);
+            cmd.Parameters.AddWithValue("@capsize", capSizeTextBox.Text);
+            cmd.Parameters.AddWithValue("@headsize", headSizeTextBox.Text);
+
+            cmd.Parameters.AddWithValue("@school", collegeDropDownList.SelectedItem.Value);
+            cmd.Parameters.AddWithValue("@degree", degreeDropDownList.SelectedItem.Value);
+            cmd.Parameters.AddWithValue("@state", stateDropDownList.SelectedItem.Value);
             cmd.ExecuteNonQuery();
             con.Close();
+
+        }
+
+        protected void emailTextBox0_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -26,7 +26,7 @@
         Department:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="departmentTextBox" runat="server" style="height: 22px"></asp:TextBox>
         <br />
-        Cap Size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="capSizeTextBox" runat="server"></asp:TextBox>
+        Cap Size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="capSizeTextBox" runat="server" Width="121px"></asp:TextBox>
         <br />
         Head Size(Inches):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="headSizeTextBox" runat="server"></asp:TextBox>
@@ -52,9 +52,9 @@
         <br />
         <br />
 &nbsp;<p>
-            &nbsp;<p>
+        <asp:Button ID="Button1" runat="server" Height="44px" OnClick="Button1_Click" Text="Submit" Width="116px" />
+        <p>
             &nbsp;</p>
-        <asp:Button ID="Button1" runat="server" Height="44px" OnClick="Button1_Click" Text="Button" Width="116px" />
     </form>
 </body>
 </html>

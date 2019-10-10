@@ -67,8 +67,9 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />
         <br />
-&nbsp;<asp:DropDownList ID="DropDownList1" runat="server">
+&nbsp;<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="XmlDataSource2">
         </asp:DropDownList>
+        <asp:XmlDataSource ID="XmlDataSource2" runat="server" DataFile="~/XMLFile2.xml"></asp:XmlDataSource>
         <p>
         <asp:Button ID="Button1" runat="server" Height="44px" OnClick="Button1_Click" Text="Submit" Width="116px" />
         <p>

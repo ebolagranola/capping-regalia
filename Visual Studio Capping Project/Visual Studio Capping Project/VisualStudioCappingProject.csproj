@@ -73,6 +73,7 @@
     <Content Include="Homepage.aspx" />
     <Content Include="Web.config" />
     <Content Include="XMLFile1.xml" />
+    <Content Include="XMLFile2.xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Homepage.aspx.cs">

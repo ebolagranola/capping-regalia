@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visual Studio Capping Project", "Visual Studio Capping Project\Visual Studio Capping Project.csproj", "{57277CFE-F6F5-4FFC-8659-8CEA7A5A85B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualStudioCappingProject", "Visual Studio Capping Project\VisualStudioCappingProject.csproj", "{57277CFE-F6F5-4FFC-8659-8CEA7A5A85B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

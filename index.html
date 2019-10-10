@@ -17,7 +17,7 @@
   } -->
 </style>
 
-<div class="container" style="padding-top: 25p;">
+<div class="container" style="padding-top: 25px;">
   <div class="row">
     <div class="mx-auto col-lg-10 col-sm-*">
       <div class="card-columns">
@@ -39,23 +39,23 @@
                 <div class="card-group">
                   <div class="container-fluid col-4">
                     <div class="card">
-                      <div class="card-header text-white bg-primary">
-                        <h4>
+                      <div class="card-header text-white bg-primary" style="height: 50px;">
+                        <h5>
                           Cap Size
-                        </h4>
+                        </h5>
                       </div>
                       <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table table-striped table-sm table-bordered">
                           <thead>
                             <tr>
-                              <th scope="col">Size</th>
-                              <th scope="col">Inches</th>
+                              <th scope="col" style="width: 40%;">Size</th>
+                              <th scope="col" style="width: 60%;">Inches</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td>5-7/8</td>
-                              <td>18-1/2 to 18-5/8</td>
+                              <td>5 &frac78;</td>
+                              <td>18 &frac12; to 18 &frac58;</td>
                             </tr>
                             <tr>
                               <td>6</td>
@@ -132,7 +132,128 @@
                   </div>
                   <div class="container-fluid col-8">
                     <div class="card">
+                      <div class="container">
                         <p class="card-body">How do you want to ask the question?feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee<p>
+                        <div class="form-group">
+                          <label for="first_name" class="font-weight-bold">
+                            <span>First Name of Primary Student Author</span>
+                            <span class="text-danger"> *</span>
+                          </label>
+                          <input class="form-control" id="first_name" aria-describedby="firstName">
+                          <div class="invalid-feedback">Sorry, you missed this one.</div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="email" class="font-weight-bold">
+                            <span>Email Address of Primary Student Author</span>
+                            <span class="text-danger"> *</span>
+                          </label>
+                          <input class="form-control" id="email" aria-describedby="studentEmail">
+                          <div class="invalid-feedback">Sorry, you missed this one.</div>
+                        </div>
+
+                        <!-- This set of 5 div tags are for the 5 additional Authors -->
+                        <div id="author0" class="form-group" style="display: none">
+                          <label for="first_author_name" class="font-weight-bold">
+                            <span>Full Name of First </span>
+                            <span class="font-italic">Additional </span>
+                            <span>Authors</span>
+                          </label>
+                          <input class="form-control" id="first_author_name" aria-describedby="author1">
+                        </div>
+
+                        <div id="author1" class="form-group" style="display: none">
+                          <label for="second_author_name" class="font-weight-bold">
+                            <span>Full Name of Second </span>
+                            <span class="font-italic">Additional </span>
+                            <span>Authors</span>
+                          </label>
+                          <input class="form-control" id="second_author_name" aria-describedby="author2">
+                        </div>
+
+                        <div id="author2" class="form-group" style="display: none">
+                          <label for="third_author_name" class="font-weight-bold">
+                            <span>Full Name of Third </span>
+                            <span class="font-italic">Additional </span>
+                            <span>Authors</span>
+                          </label>
+                          <input class="form-control" id="third_author_name" aria-describedby="author3">
+                        </div>
+
+                        <div id="author3" class="form-group" style="display: none">
+                          <label for="fourth_author_name" class="font-weight-bold">
+                            <span>Full Name of Fourth </span>
+                            <span class="font-italic">Additional </span>
+                            <span>Authors</span>
+                          </label>
+                          <input class="form-control" id="fourth_author_name" aria-describedby="author4">
+                        </div>
+
+                        <div id="author4" class="form-group" style="display: none">
+                          <label for="fifth_author_name" class="font-weight-bold">
+                            <span>Full Name of Fifth </span>
+                            <span class="font-italic">Additional </span>
+                            <span>Authors</span>
+                          </label>
+                          <input class="form-control" id="fifth_author_name" aria-describedby="author5">
+                        </div>
+
+                        <!-- These are the buttons for adding and removing additional authors -->
+                        <div class="form-group">
+                          <div class="text-right">
+                            <button onClick="addAuthor()" type="button" class="btn btn-primary">Add additional author</button>
+                            <button onClick="removeAuthor()" type="button" id="remove" class="btn btn-danger" style="display: none;">X</button>
+                          </div>
+                        </div>
+                        <!-- End the 5 additional authors -->
+
+                        <div class="form-group">
+                          <label for="presentation_title" class="font-weight-bold">
+                            <span>Title of Presentation</span>
+                            <span class="text-danger"> *</span>
+                          </label>
+                          <input class="form-control" id="presentation_title" aria-describedby="presentation">
+                          <div class="invalid-feedback">Sorry, you missed this one.</div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="presentation_type" class="font-weight-bold">
+                            <span>Type of Presentation</span>
+                            <span class="text-danger"> *</span>
+                          </label>
+                          <select class="form-control" id="presentation_type" placeholder="Select One">
+                            <option value="" selected disabled>-- Select One --</option>
+                            <option value="Oral Presentation">Oral Presentation</option>
+                            <option vlaue="Poster Presentation">Poster Presentation</option>
+                          </select>
+                          <div class="invalid-feedback">Sorry, you missed this one.</div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="faculty_mentor_name" class="font-weight-bold">
+                            <span>Full Name of Faculty Mentor</span>
+                            <span class="text-danger"> *</span>
+                          </label>
+                          <input class="form-control" id="faculty_mentor_name" aria-describedby="facultyName">
+                          <div class="invalid-feedback">Sorry, you missed this one.</div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="faculty_mentor_email" class="font-weight-bold">
+                            <span>Email Address of Faculty Mentor</span>
+                            <span class="text-danger"> *</span>
+                          </label>
+                          <input class="form-control" id="faculty_mentor_email" aria-describedby="facultyEmail">
+                          <div class="invalid-feedback">Sorry, you missed this one.</div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="text-right">
+                            <button onClick="checkInput()" type="button" class="btn btn-primary text-right">Submit</button>
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>

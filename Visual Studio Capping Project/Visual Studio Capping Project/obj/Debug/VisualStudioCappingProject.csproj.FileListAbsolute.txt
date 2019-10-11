@@ -1,0 +1,13 @@
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\bin\Visual Studio Capping Project.dll.config
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\bin\Visual Studio Capping Project.dll
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\bin\Visual Studio Capping Project.pdb
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\bin\DotNetCasClient.dll
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\bin\DotNetCasClient.pdb
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\bin\DotNetCasClient.xml
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\obj\Debug\VisualStudioCappingProject.csprojAssemblyReference.cache
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\obj\Debug\VisualStudioCappingProject.csproj.CoreCompileInputs.cache
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\obj\Debug\VisualStudioCappingProject.csproj.CopyComplete
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\obj\Debug\Visual Studio Capping Project.dll
+D:\Users\Dale\Documents\Projects\capping-regalia\Visual Studio Capping Project\Visual Studio Capping Project\obj\Debug\Visual Studio Capping Project.pdb

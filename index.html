@@ -139,14 +139,14 @@
                     <div class="card">
                       <!-- <div class="container"> -->
                         <div class="card-header">
-                            <div class="d-flex justify-content-between" style="margin-top: 15px;">
-                              <div class="form-group">
-                                  <button type="button" class="btn btn-info btn-lg" style="height: 55px;">Use Last Years Order</button>
-                              </div>
-                              <div class="form-group">
-                                  <button type="button" class="btn btn-info btn-lg" style="height: 55px;">Place a New Order</button>
-                              </div>
+                          <div class="d-flex justify-content-between" style="margin-top: 15px;">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-info btn-lg" style="height: 55px;">Place a New Order</button>
                             </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-info btn-lg" style="height: 55px;">Use Last Years Order</button>
+                            </div>
+                          </div>
                         </div>
                         <div class="card-body">
 
@@ -205,38 +205,84 @@
                               <span>Height</span>
                               <span class="text-danger"> *</span>
                             </label>
-                            <input class="form-control" id="height" aria-describedby="height">
+                            <div class="container row">
+                              <input style="width: 75px;" class="form-control" id="feet">
+                              <label style="padding: 8 16px 0 8px;">feet</label>
+                              <input style="width: 75px;" class="form-control" id="inches">
+                              <label style="padding: 8 16px 0 8px">inches</label>
+                            </div>
                             <div class="invalid-feedback">Sorry, you missed this one!</div>
                           </div>
 
                           <div class="form-group">
-                            <label for="presentation_type" class="font-weight-bold">
-                              <span>Type of Presentation</span>
+                            <label for="weight" class="font-weight-bold">
+                              <span>Weight</span>
                               <span class="text-danger"> *</span>
                             </label>
-                            <select class="form-control" id="presentation_type" placeholder="Select One">
+                            <div class="container row">
+                              <input style="width: 75px;" class="form-control" id="weight">
+                              <label style="padding: 8 16px 0 8px;">lbs</label>
+                            </div>
+                            <div class="invalid-feedback">Sorry, you missed this one!</div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="height" class="font-weight-bold">
+                              <span>Cap Size</span>
+                              <span class="text-danger"> *</span>
+                            </label>
+                            <div class="container row">
+                              <input style="width: 75px;" class="form-control" id="feet">
+                              <label style="padding: 8 16px 0 8px;"> Enter cap size or inches</label>
+                            </div>
+                            <div class="invalid-feedback">Sorry, you missed this one!</div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="gender" class="font-weight-bold">
+                              <span>Degree</span>
+                              <span class="text-danger"> *</span>
+                            </label>
+                            <input class="form-control" id="Degree" aria-describedby="degree">
+                            <div class="invalid-feedback">Sorry, you missed this one!</div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="institution" class="font-weight-bold">
+                              <span>Granting Institution</span>
+                              <span class="text-danger"> *</span>
+                            </label>
+                            <select class="form-control" id="institution" placeholder="Select One">
                               <option value="" selected disabled>-- Select One --</option>
-                              <option value="Oral Presentation">Oral Presentation</option>
-                              <option vlaue="Poster Presentation">Poster Presentation</option>
+                              <option value="Oral Presentation">option 1</option>
+                              <option vlaue="Poster Presentation">option 2</option>
                             </select>
                             <div class="invalid-feedback">Sorry, you missed this one!</div>
                           </div>
 
                           <div class="form-group">
-                            <label for="faculty_mentor_name" class="font-weight-bold">
-                              <span>Full Name of Faculty Mentor</span>
+                            <label for="city" class="font-weight-bold">
+                              <span>City</span>
                               <span class="text-danger"> *</span>
                             </label>
-                            <input class="form-control" id="faculty_mentor_name" aria-describedby="facultyName">
+                            <select class="form-control" id="city" placeholder="Select One">
+                              <option value="" selected disabled>-- Select One --</option>
+                              <option value="Oral Presentation">option 1</option>
+                              <option vlaue="Poster Presentation">option 2</option>
+                            </select>
                             <div class="invalid-feedback">Sorry, you missed this one!</div>
                           </div>
 
                           <div class="form-group">
-                            <label for="faculty_mentor_email" class="font-weight-bold">
-                              <span>Email Address of Faculty Mentor</span>
+                            <label for="state" class="font-weight-bold">
+                              <span>State</span>
                               <span class="text-danger"> *</span>
                             </label>
-                            <input class="form-control" id="faculty_mentor_email" aria-describedby="facultyEmail">
+                            <select class="form-control" id="state" placeholder="Select One">
+                              <option value="" selected disabled>-- Select One --</option>
+                              <option value="Oral Presentation">option 1</option>
+                              <option vlaue="Poster Presentation">option 2</option>
+                            </select>
                             <div class="invalid-feedback">Sorry, you missed this one!</div>
                           </div>
 

@@ -48,10 +48,9 @@
         </asp:DropDownList>
         <br />
         University:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:DropDownList ID="collegeDropDownList" runat="server" Height="23px" Width="153px">
-            <asp:ListItem>Marist</asp:ListItem>
-            <asp:ListItem>SUNY</asp:ListItem>
+        <asp:DropDownList ID="collegeDropDownList" runat="server" DataSourceID="XmlDataSource2" DataTextField="value" DataValueField="value" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="209px">
         </asp:DropDownList>
+        <asp:XmlDataSource ID="XmlDataSource2" runat="server" DataFile="~/XMLFile2.xml"></asp:XmlDataSource>
         <br />
         Degree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="degreeDropDownList" runat="server" Height="23px" Width="153px">
@@ -67,10 +66,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />
         <br />
-&nbsp;<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="XmlDataSource2" DataTextField="value" DataValueField="value">
-        </asp:DropDownList>
-        <asp:XmlDataSource ID="XmlDataSource2" runat="server" DataFile="~/XMLFile2.xml"></asp:XmlDataSource>
-        <p>
+&nbsp;<p>
         <asp:Button ID="Button1" runat="server" Height="44px" OnClick="Button1_Click" Text="Submit" Width="116px" />
         <p>
             &nbsp;</p>

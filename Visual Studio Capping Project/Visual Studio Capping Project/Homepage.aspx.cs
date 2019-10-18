@@ -33,7 +33,7 @@ namespace Visual_Studio_Capping_Project
             //   SqlCommand cmd = new SqlCommand("INSERT INTO Regalia" + "(Email, Name, PhoneNumber, Department, CapSize, HeadSize, University, Degree, State ) VALUES (@email, @name, @phonenumber, @department, @capsize, @headsize, @school, @degree, @state)", con);
             SqlCommand generateordernum = new SqlCommand("SELECT MAX(OrderID) FROM Orders", con);
 
-            ordernumber = generateordernum.ExecuteNonQuery();
+            ordernumber = Convert.ToInt32(generateordernum.ExecuteScalar());
             //ordernumber = 1;
 
             Debug.WriteLine("Ordernumber" + ordernumber);
@@ -108,6 +108,16 @@ namespace Visual_Studio_Capping_Project
         }
 
         protected void emailTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void collegeDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -5,15 +5,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace Visual_Studio_Capping_Project
 {
 
     public partial class Homepage : System.Web.UI.Page
     {
-        SqlCommand cmd = new SqlCommand();
+        SqlCommand faculty = new SqlCommand();
         SqlCommand orders = new SqlCommand();
+        SqlCommand generateordernum = new SqlCommand();
         SqlConnection con = new SqlConnection();
+        int ordernumber; 
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -28,34 +31,46 @@ namespace Visual_Studio_Capping_Project
             string date = DateTime.Now.ToString();
 
             //   SqlCommand cmd = new SqlCommand("INSERT INTO Regalia" + "(Email, Name, PhoneNumber, Department, CapSize, HeadSize, University, Degree, State ) VALUES (@email, @name, @phonenumber, @department, @capsize, @headsize, @school, @degree, @state)", con);
-            SqlCommand cmd = new SqlCommand("INSERT INTO Faculty" + "(Email, Name, PhoneNumber, Department, CapSize, HeadSize, University, Degree, State) VALUES (@email, @name, @phonenumber, @department, @capsize, @headsize, @school, @degree, @state)", con);
-            SqlCommand orders = new SqlCommand("INSERT INTO Orders" + "(Email, CeremonyType, CapSize, HeadSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@email, @ceremonytype, @capsize, @headsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )", con);
+            SqlCommand generateordernum = new SqlCommand("SELECT MAX(OrderID) FROM Orders", con);
+
+            ordernumber = generateordernum.ExecuteNonQuery();
+            //ordernumber = 1;
+
+            Debug.WriteLine("Ordernumber" + ordernumber);
+            Debug.WriteLine("Ordernumber1" + generateordernum.ExecuteNonQuery());
+
+            ordernumber = ordernumber + 1;
+
+            Debug.WriteLine("Ordernumber" + ordernumber);
+
+            SqlCommand faculty = new SqlCommand("INSERT INTO Faculty" + "(Email, Name, PhoneNumber, Department, CapSize, HeadSize, University, Degree, State) VALUES (@email, @name, @phonenumber, @department, @capsize, @headsize, @school, @degree, @state)", con);
+            SqlCommand orders = new SqlCommand("INSERT INTO Orders" + "(OrderID, Email, CeremonyType, CapSize, HeadSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @ceremonytype, @capsize, @headsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )", con);
 
 
 
 
-            cmd.Parameters.AddWithValue("@email", emailTextBox.Text);
-            cmd.Parameters.AddWithValue("@name", nameTextBox.Text);
+            faculty.Parameters.AddWithValue("@email", emailTextBox.Text);
+            faculty.Parameters.AddWithValue("@name", nameTextBox.Text);
 
-            cmd.Parameters.AddWithValue("@phonenumber", phoneNumberTextBox.Text);
-            cmd.Parameters.AddWithValue("@department", departmentTextBox.Text);
-            cmd.Parameters.AddWithValue("@capsize", capSizeTextBox.Text);
-            cmd.Parameters.AddWithValue("@headsize", headSizeTextBox.Text);
-            cmd.Parameters.AddWithValue("@weight", weightTextBox.Text);
-            cmd.Parameters.AddWithValue("@heightfeet", heightFeetTextBox.Text);
-            cmd.Parameters.AddWithValue("@heightinches", heightinchesTextBox.Text);
-            cmd.Parameters.AddWithValue("@city", cityTextBox.Text);
+            faculty.Parameters.AddWithValue("@phonenumber", phoneNumberTextBox.Text);
+            faculty.Parameters.AddWithValue("@department", departmentTextBox.Text);
+            faculty.Parameters.AddWithValue("@capsize", capSizeTextBox.Text);
+            faculty.Parameters.AddWithValue("@headsize", headSizeTextBox.Text);
+            faculty.Parameters.AddWithValue("@weight", weightTextBox.Text);
+            faculty.Parameters.AddWithValue("@heightfeet", heightFeetTextBox.Text);
+            faculty.Parameters.AddWithValue("@heightinches", heightinchesTextBox.Text);
+            faculty.Parameters.AddWithValue("@city", cityTextBox.Text);
 
-            cmd.Parameters.AddWithValue("@school", collegeDropDownList.SelectedItem.Value);
-            cmd.Parameters.AddWithValue("@degree", degreeDropDownList.SelectedItem.Value);
-            cmd.Parameters.AddWithValue("@state", stateDropDownList.SelectedItem.Value);
-            cmd.Parameters.AddWithValue("@ceremonytype", ceremonyDropDownList.SelectedItem.Value);
-
-
-
-            cmd.ExecuteNonQuery();
+            faculty.Parameters.AddWithValue("@school", collegeDropDownList.SelectedItem.Value);
+            faculty.Parameters.AddWithValue("@degree", degreeDropDownList.SelectedItem.Value);
+            faculty.Parameters.AddWithValue("@state", stateDropDownList.SelectedItem.Value);
+            faculty.Parameters.AddWithValue("@ceremonytype", ceremonyDropDownList.SelectedItem.Value);
 
 
+
+            faculty.ExecuteNonQuery();
+
+            orders.Parameters.AddWithValue("@ordernumber", ordernumber);
             orders.Parameters.AddWithValue("@email", emailTextBox.Text);
             orders.Parameters.AddWithValue("@name", nameTextBox.Text);
 

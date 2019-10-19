@@ -96,6 +96,8 @@ namespace Visual_Studio_Capping_Project
                 SqlCommand orders = new SqlCommand("UPDATE Orders SET CeremonyType = @ceremonytype, CapSize = @capsize, HeadSize = @headsize, Weight = @weight, HeightFeet = @heightfeet, HeightInches = @heightinches, Degree = @degree, College = @school, CollegeCity = @city, CollegeState = @state WHERE Email = @email", con);
 
                 UpdateInfo(faculty, orders);
+
+                Server.Transfer("UpdateUserPage.html");
                 
             }
 
@@ -107,6 +109,8 @@ namespace Visual_Studio_Capping_Project
                 SqlCommand orders = new SqlCommand("INSERT INTO Orders" + "(OrderID, Email, CeremonyType, CapSize, HeadSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @ceremonytype, @capsize, @headsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )", con);
 
                 UpdateInfo(faculty, orders);
+
+                Server.Transfer("NewUserPage.html");
                 
             }
             con.Close();

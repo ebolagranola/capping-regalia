@@ -59,10 +59,22 @@ namespace Visual_Studio_Capping_Project
         }
 
         public int Ordernumber() {
-
+            int ordernumber;
+            
             SqlCommand generateordernum = new SqlCommand("SELECT MAX(OrderID) FROM Orders", con);
+           // Debug.WriteLine(Convert.ToInt32(generateordernum.ExecuteScalar()));
 
-            int ordernumber = (Convert.ToInt32(generateordernum.ExecuteScalar())) + 1;
+
+            if (generateordernum.ExecuteScalar() is DBNull)
+            {
+
+                ordernumber = 1;
+
+            }
+
+            else {
+                ordernumber = (Convert.ToInt32(generateordernum.ExecuteScalar())) + 1;
+            }
 
             return ordernumber;
         }

@@ -34,8 +34,12 @@
     <WarningLevel>4</WarningLevel>
     <PublishDatabaseSettings>
       <Objects>
-        <ObjectGroup Name="SQL Server" Order="1">
-          <Destination Path="Data Source = 10.10.9.100%3b User ID = sa%3b Password = Passw0rd12%3b Connect Timeout = 30%3b Encrypt = False%3b TrustServerCertificate = False%3b ApplicationIntent = ReadWrite%3b MultiSubnetFailover = False%3b Initial Catalog=Capping" />
+        <ObjectGroup Name="myConnectionString-Deployment" Order="2" xmlns="">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source = 10.10.9.100%3b User ID = sa%3b Password = Passw0rd12%3b Connect Timeout = 30%3b Encrypt = False%3b TrustServerCertificate = False%3b ApplicationIntent = ReadWrite%3b MultiSubnetFailover = False%3b Initial Catalog=Capping" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\myConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
         </ObjectGroup>
       </Objects>
     </PublishDatabaseSettings>
@@ -91,7 +95,7 @@
     <Content Include="Homepage.aspx" />
     <Content Include="UpdateUserPage.html" />
     <Content Include="NewUserPage.html" />
-    <Content Include="Web.config">
+    <Content Include="Webold.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="XMLFile1.xml" />
@@ -119,12 +123,20 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
+    <None Include="Webold.Debug.config">
+      <DependentUpon>Webold.config</DependentUpon>
+    </None>
+    <None Include="Webold.Release.config">
+      <DependentUpon>Webold.config</DependentUpon>
+    </None>
+    <Content Include="Web1.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -32,6 +32,13 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="SQL Server" Order="1">
+          <Destination Path="Data Source = 10.10.9.100%3b User ID = sa%3b Password = Passw0rd12%3b Connect Timeout = 30%3b Encrypt = False%3b TrustServerCertificate = False%3b ApplicationIntent = ReadWrite%3b MultiSubnetFailover = False%3b Initial Catalog=Capping" />
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +48,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="myConnectionString-Deployment" Order="1" xmlns="">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source = 10.10.9.100%3b User ID = sa%3b Password = Passw0rd12%3b Connect Timeout = 30%3b Encrypt = False%3b TrustServerCertificate = False%3b ApplicationIntent = ReadWrite%3b MultiSubnetFailover = False%3b Initial Catalog=Capping" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\myConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetCasClient, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">

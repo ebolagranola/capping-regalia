@@ -17,8 +17,7 @@ namespace Visual_Studio_Capping_Project
         SqlCommand generateordernum = new SqlCommand();
         SqlCommand findemail = new SqlCommand();
         SqlConnection con = new SqlConnection();
-        int ordernumber;
-        string enteredemail;
+     
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -28,84 +27,88 @@ namespace Visual_Studio_Capping_Project
             con.Open();
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
 
-            enteredemail = emailTextBox.Text;
-
-            Debug.Write(enteredemail);
-
-            string date = DateTime.Now.ToString();
-
-            //   SqlCommand cmd = new SqlCommand("INSERT INTO Regalia" + "(Email, Name, PhoneNumber, Department, CapSize, HeadSize, University, Degree, State ) VALUES (@email, @name, @phonenumber, @department, @capsize, @headsize, @school, @degree, @state)", con);
-            SqlCommand generateordernum = new SqlCommand("SELECT MAX(OrderID) FROM Orders", con);
-
-            ordernumber = Convert.ToInt32(generateordernum.ExecuteScalar());
-
-            ordernumber = ordernumber + 1;
-
-            
-
-            SqlCommand findemail = new SqlCommand("SELECT 1 FROM Faculty WHERE Email = @email", con);
-
-            findemail.Parameters.AddWithValue("@email", emailTextBox.Text);
-
-            SqlCommand faculty = new SqlCommand("INSERT INTO Faculty" + "(Email, Name, PhoneNumber, Department, CapSize, HeadSize, University, Degree, State) VALUES (@email, @name, @phonenumber, @department, @capsize, @headsize, @school, @degree, @state)", con);
-            SqlCommand orders = new SqlCommand("INSERT INTO Orders" + "(OrderID, Email, CeremonyType, CapSize, HeadSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @ceremonytype, @capsize, @headsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )", con);
-
-            //  if (int.IsNullOrEmpty(findemail.ExecuteScalar)) {
-            Debug.WriteLine("test" + Convert.ToInt32(findemail.ExecuteScalar()));
-
-            if (Convert.ToInt32(findemail.ExecuteScalar()) == 1)
-            {
-
-                Debug.WriteLine("Found the email address" + emailTextBox.Text);
-
-            }
-            else {
-                Debug.WriteLine("Did not find this email");
-
-            }
+        public void UpdateInfo(SqlCommand faculty, SqlCommand orders) {
 
             faculty.Parameters.AddWithValue("@email", emailTextBox.Text);
             faculty.Parameters.AddWithValue("@name", nameTextBox.Text);
-
             faculty.Parameters.AddWithValue("@phonenumber", phoneNumberTextBox.Text);
             faculty.Parameters.AddWithValue("@department", departmentTextBox.Text);
             faculty.Parameters.AddWithValue("@capsize", capSizeTextBox.Text);
             faculty.Parameters.AddWithValue("@headsize", headSizeTextBox.Text);
-            faculty.Parameters.AddWithValue("@weight", weightTextBox.Text);
-            faculty.Parameters.AddWithValue("@heightfeet", heightFeetTextBox.Text);
-            faculty.Parameters.AddWithValue("@heightinches", heightinchesTextBox.Text);
-            faculty.Parameters.AddWithValue("@city", cityTextBox.Text);
-
             faculty.Parameters.AddWithValue("@school", collegeDropDownList.SelectedItem.Value);
             faculty.Parameters.AddWithValue("@degree", degreeDropDownList.SelectedItem.Value);
             faculty.Parameters.AddWithValue("@state", stateDropDownList.SelectedItem.Value);
-            faculty.Parameters.AddWithValue("@ceremonytype", ceremonyDropDownList.SelectedItem.Value);
-
-
 
             faculty.ExecuteNonQuery();
 
-            orders.Parameters.AddWithValue("@ordernumber", ordernumber);
+            orders.Parameters.AddWithValue("@ordernumber", Ordernumber());
             orders.Parameters.AddWithValue("@email", emailTextBox.Text);
-            orders.Parameters.AddWithValue("@name", nameTextBox.Text);
-
-            orders.Parameters.AddWithValue("@phonenumber", phoneNumberTextBox.Text);
-            orders.Parameters.AddWithValue("@department", departmentTextBox.Text);
             orders.Parameters.AddWithValue("@capsize", capSizeTextBox.Text);
             orders.Parameters.AddWithValue("@headsize", headSizeTextBox.Text);
             orders.Parameters.AddWithValue("@weight", weightTextBox.Text);
             orders.Parameters.AddWithValue("@heightfeet", heightFeetTextBox.Text);
             orders.Parameters.AddWithValue("@heightinches", heightinchesTextBox.Text);
             orders.Parameters.AddWithValue("@city", cityTextBox.Text);
-
             orders.Parameters.AddWithValue("@school", collegeDropDownList.SelectedItem.Value);
             orders.Parameters.AddWithValue("@degree", degreeDropDownList.SelectedItem.Value);
             orders.Parameters.AddWithValue("@state", stateDropDownList.SelectedItem.Value);
             orders.Parameters.AddWithValue("@ceremonytype", ceremonyDropDownList.SelectedItem.Value);
+
             orders.ExecuteNonQuery();
+        }
+
+        public int Ordernumber() {
+
+            SqlCommand generateordernum = new SqlCommand("SELECT MAX(OrderID) FROM Orders", con);
+
+            int ordernumber = (Convert.ToInt32(generateordernum.ExecuteScalar())) + 1;
+
+            return ordernumber;
+        }
+
+        public Boolean EmailAlreadyExists() {
+            SqlCommand findemail = new SqlCommand("SELECT 1 FROM Faculty WHERE Email = @email", con);
+
+            findemail.Parameters.AddWithValue("@email", emailTextBox.Text);
+
+            if (Convert.ToInt32(findemail.ExecuteScalar()) == 1)
+            {
+                return true;
+            }
+
+            else {
+                return false;
+
+          }
+
+        }
+
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+            if (EmailAlreadyExists() == true){
+
+                Debug.WriteLine("Found this email");
+
+                SqlCommand faculty = new SqlCommand("UPDATE Faculty SET Name = @name, PhoneNumber = @phonenumber, Department = @department, CapSize = @capsize, HeadSize = @headsize, University = @school, Degree = @degree, State = @state WHERE Email = @email", con);
+                SqlCommand orders = new SqlCommand("UPDATE Orders SET CeremonyType = @ceremonytype, CapSize = @capsize, HeadSize = @headsize, Weight = @weight, HeightFeet = @heightfeet, HeightInches = @heightinches, Degree = @degree, College = @school, CollegeCity = @city, CollegeState = @state WHERE Email = @email", con);
+
+                UpdateInfo(faculty, orders);
+                
+            }
+
+            else if(EmailAlreadyExists() == false){
+
+                Debug.WriteLine("Did not find this email");
+
+                SqlCommand faculty = new SqlCommand("INSERT INTO Faculty" + "(Email, Name, PhoneNumber, Department, CapSize, HeadSize, University, Degree, State) VALUES (@email, @name, @phonenumber, @department, @capsize, @headsize, @school, @degree, @state)", con);
+                SqlCommand orders = new SqlCommand("INSERT INTO Orders" + "(OrderID, Email, CeremonyType, CapSize, HeadSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @ceremonytype, @capsize, @headsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )", con);
+
+                UpdateInfo(faculty, orders);
+                
+            }
             con.Close();
 
         }

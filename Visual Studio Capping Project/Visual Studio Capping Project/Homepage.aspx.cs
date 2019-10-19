@@ -15,8 +15,10 @@ namespace Visual_Studio_Capping_Project
         SqlCommand faculty = new SqlCommand();
         SqlCommand orders = new SqlCommand();
         SqlCommand generateordernum = new SqlCommand();
+        SqlCommand findemail = new SqlCommand();
         SqlConnection con = new SqlConnection();
-        int ordernumber; 
+        int ordernumber;
+        string enteredemail;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -28,26 +30,42 @@ namespace Visual_Studio_Capping_Project
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+
+            enteredemail = emailTextBox.Text;
+
+            Debug.Write(enteredemail);
+
             string date = DateTime.Now.ToString();
 
             //   SqlCommand cmd = new SqlCommand("INSERT INTO Regalia" + "(Email, Name, PhoneNumber, Department, CapSize, HeadSize, University, Degree, State ) VALUES (@email, @name, @phonenumber, @department, @capsize, @headsize, @school, @degree, @state)", con);
             SqlCommand generateordernum = new SqlCommand("SELECT MAX(OrderID) FROM Orders", con);
 
             ordernumber = Convert.ToInt32(generateordernum.ExecuteScalar());
-            //ordernumber = 1;
-
-            Debug.WriteLine("Ordernumber" + ordernumber);
-            Debug.WriteLine("Ordernumber1" + generateordernum.ExecuteNonQuery());
 
             ordernumber = ordernumber + 1;
 
-            Debug.WriteLine("Ordernumber" + ordernumber);
+            
+
+            SqlCommand findemail = new SqlCommand("SELECT 1 FROM Faculty WHERE Email = @email", con);
+
+            findemail.Parameters.AddWithValue("@email", emailTextBox.Text);
 
             SqlCommand faculty = new SqlCommand("INSERT INTO Faculty" + "(Email, Name, PhoneNumber, Department, CapSize, HeadSize, University, Degree, State) VALUES (@email, @name, @phonenumber, @department, @capsize, @headsize, @school, @degree, @state)", con);
             SqlCommand orders = new SqlCommand("INSERT INTO Orders" + "(OrderID, Email, CeremonyType, CapSize, HeadSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @ceremonytype, @capsize, @headsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )", con);
 
+            //  if (int.IsNullOrEmpty(findemail.ExecuteScalar)) {
+            Debug.WriteLine("test" + Convert.ToInt32(findemail.ExecuteScalar()));
 
+            if (Convert.ToInt32(findemail.ExecuteScalar()) == 1)
+            {
 
+                Debug.WriteLine("Found the email address" + emailTextBox.Text);
+
+            }
+            else {
+                Debug.WriteLine("Did not find this email");
+
+            }
 
             faculty.Parameters.AddWithValue("@email", emailTextBox.Text);
             faculty.Parameters.AddWithValue("@name", nameTextBox.Text);

@@ -31,28 +31,28 @@ namespace Visual_Studio_Capping_Project
 
         public void UpdateInfo(SqlCommand faculty, SqlCommand orders) {
 
-            faculty.Parameters.AddWithValue("@email", emailTextBox.Text);
-            faculty.Parameters.AddWithValue("@name", nameTextBox.Text);
-            faculty.Parameters.AddWithValue("@phonenumber", phoneNumberTextBox.Text);
-            faculty.Parameters.AddWithValue("@department", departmentTextBox.Text);
-            faculty.Parameters.AddWithValue("@capsize", capSizeTextBox.Text);
+            faculty.Parameters.AddWithValue("@email", Request.Form["emailTextBox"]);
+            faculty.Parameters.AddWithValue("@name", Request.Form["nameTextBox"]);
+            faculty.Parameters.AddWithValue("@phonenumber", Request.Form["phoneNumberTextBox"]);
+            faculty.Parameters.AddWithValue("@department", Request.Form["departmentTextBox"]);
+            faculty.Parameters.AddWithValue("@capsize", Request.Form["capSizeTextBox"]);
             faculty.Parameters.AddWithValue("@headsize", headSizeTextBox.Text);
             faculty.Parameters.AddWithValue("@school", collegeDropDownList.SelectedItem.Value);
-            faculty.Parameters.AddWithValue("@degree", degreeDropDownList.SelectedItem.Value);
+            faculty.Parameters.AddWithValue("@degree", degreeDropDownList.Items[degreeDropDownList.SelectedIndex].Text);
             faculty.Parameters.AddWithValue("@state", stateDropDownList.SelectedItem.Value);
 
             faculty.ExecuteNonQuery();
 
             orders.Parameters.AddWithValue("@ordernumber", Ordernumber());
-            orders.Parameters.AddWithValue("@email", emailTextBox.Text);
-            orders.Parameters.AddWithValue("@capsize", capSizeTextBox.Text);
+            orders.Parameters.AddWithValue("@email", Request.Form["emailTextBox"]);
+            orders.Parameters.AddWithValue("@capsize", Request.Form["capSizeTextBox"]);
             orders.Parameters.AddWithValue("@headsize", headSizeTextBox.Text);
-            orders.Parameters.AddWithValue("@weight", weightTextBox.Text);
-            orders.Parameters.AddWithValue("@heightfeet", heightFeetTextBox.Text);
-            orders.Parameters.AddWithValue("@heightinches", heightinchesTextBox.Text);
-            orders.Parameters.AddWithValue("@city", cityTextBox.Text);
+            orders.Parameters.AddWithValue("@weight", Request.Form["weightTextBox"]);
+            orders.Parameters.AddWithValue("@heightfeet", Request.Form["heightFeetTextBox"]);
+            orders.Parameters.AddWithValue("@heightinches", Request.Form["heightInchesTextBox"]);
+            orders.Parameters.AddWithValue("@city", Request.Form["cityTextBox"]);
             orders.Parameters.AddWithValue("@school", collegeDropDownList.SelectedItem.Value);
-            orders.Parameters.AddWithValue("@degree", degreeDropDownList.SelectedItem.Value);
+            orders.Parameters.AddWithValue("@degree", degreeDropDownList.Items[degreeDropDownList.SelectedIndex].Text);
             orders.Parameters.AddWithValue("@state", stateDropDownList.SelectedItem.Value);
             orders.Parameters.AddWithValue("@ceremonytype", ceremonyDropDownList.SelectedItem.Value);
 
@@ -83,7 +83,7 @@ namespace Visual_Studio_Capping_Project
         public Boolean EmailAlreadyExists() {
             SqlCommand findemail = new SqlCommand("SELECT 1 FROM Faculty WHERE Email = @email", con);
 
-            findemail.Parameters.AddWithValue("@email", emailTextBox.Text);
+            findemail.Parameters.AddWithValue("@email", Request.Form["emailTextBox"]);
 
             if (Convert.ToInt32(findemail.ExecuteScalar()) == 1)
             {

@@ -22,67 +22,22 @@ namespace Visual_Studio_Capping_Project {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// emailTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox emailTextBox;
-        
-        /// <summary>
-        /// weightTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox weightTextBox;
-        
-        /// <summary>
-        /// cityTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cityTextBox;
-        
-        /// <summary>
-        /// heightinchesTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox heightinchesTextBox;
-        
-        /// <summary>
-        /// heightFeetTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox heightFeetTextBox;
-        
-        /// <summary>
         /// nameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nameTextBox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText nameTextBox;
         
         /// <summary>
-        /// phoneNumberTextBox control.
+        /// emailTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox phoneNumberTextBox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText emailTextBox;
         
         /// <summary>
         /// departmentTextBox control.
@@ -91,7 +46,43 @@ namespace Visual_Studio_Capping_Project {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox departmentTextBox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText departmentTextBox;
+        
+        /// <summary>
+        /// phoneNumberTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText phoneNumberTextBox;
+        
+        /// <summary>
+        /// heightFeetTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText heightFeetTextBox;
+        
+        /// <summary>
+        /// heightInchesTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText heightInchesTextBox;
+        
+        /// <summary>
+        /// weightTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText weightTextBox;
         
         /// <summary>
         /// capSizeTextBox control.
@@ -100,7 +91,25 @@ namespace Visual_Studio_Capping_Project {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox capSizeTextBox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText capSizeTextBox;
+        
+        /// <summary>
+        /// degreeDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect degreeDropDownList;
+        
+        /// <summary>
+        /// cityTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText cityTextBox;
         
         /// <summary>
         /// headSizeTextBox control.
@@ -137,15 +146,6 @@ namespace Visual_Studio_Capping_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.XmlDataSource XmlDataSource2;
-        
-        /// <summary>
-        /// degreeDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList degreeDropDownList;
         
         /// <summary>
         /// stateDropDownList control.

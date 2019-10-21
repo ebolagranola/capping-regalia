@@ -164,7 +164,7 @@
                         </div>
                         </div>
                         <div class="card-body">
-
+ <form id="form1" runat="server">
                         <p>
                         <span class="font-weight-bold" style="font-size: 22px;">1. </span>
                         <span class="font-weight-bold">Which Ceremony are you attending? </span>
@@ -172,12 +172,14 @@
                         <span>(Check one or both):</span>
                         </p>
 
-                        <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                         
+
+                            <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="fridayCheckBox" runat="server" value="1">
                         <label class="form-check-label" for="exampleCheck1">Friday Evening (Adult & Masters)</label>
                         </div>
                         <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <input type="checkbox" class="form-check-input" id="saturdayCheckBox" runat="server" value="1">
                         <label class="form-check-label" for="exampleCheck1">Saturday (Traditional Bachelors)</label>
                         </div>
 
@@ -190,10 +192,10 @@
 
                <!--         <body style="height: 5000px">
                    -->    
-                   
-                   <form id="form1" runat="server">
+                  
         
-      
+
+                      
                         <div class="form-group">
                         <label for="name" class="font-weight-bold">
                         <span>Name</span>
@@ -295,7 +297,16 @@
                         <div class="invalid-feedback">Sorry, you missed this one!</div>
                         </div>
        
-
+                <div class="form-group">
+                        <label for="state" class="font-weight-bold">
+                        <span>State</span>
+                        <span class="text-danger"> *</span>
+                        </label>
+                        <select class="form-control" id="Select1" placeholder="Select One" runat="server" DataFile="~/XMLFile1.xml">
+                        
+                        </select>
+                        <div class="invalid-feedback">Sorry, you missed this one!</div>
+                        </div>
                           
                     
                         </div>
@@ -308,15 +319,15 @@
                         </div>
                <body>
     
-                        Head Size(Inches):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    State:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:DropDownList ID="stateDropDownList" runat="server" DataSourceID="XmlDataSource1" DataTextField="value" DataValueField="value">
+                        </asp:DropDownList>
+                        &nbsp;<asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/XMLFile1.xml"></asp:XmlDataSource>
+                        <br />     
+                   
+                   Head Size(Inches):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:TextBox ID="headSizeTextBox" runat="server"></asp:TextBox>
                         <br />
-                        Ceremony&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:DropDownList ID="ceremonyDropDownList" runat="server" Height="24px" Width="212px" OnSelectedIndexChanged="collegeDropDownList0_SelectedIndexChanged">
-                        <asp:ListItem>Saturday (Traditional Bachelors)</asp:ListItem>
-                        <asp:ListItem>Friday Evening (Adult &amp; Masters)</asp:ListItem>
-                        </asp:DropDownList>
-                        <br />
+                    
                         University:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:DropDownList ID="collegeDropDownList" runat="server" DataSourceID="XmlDataSource2" DataTextField="value" DataValueField="value" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="209px">
                         </asp:DropDownList>
@@ -324,10 +335,7 @@
                         <br />
         
                         <br />
-                        State:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:DropDownList ID="stateDropDownList" runat="server" DataSourceID="XmlDataSource1" DataTextField="value" DataValueField="value">
-                        </asp:DropDownList>
-                        &nbsp;<asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/XMLFile1.xml"></asp:XmlDataSource>
-                        <br />
+                       
      
                         &nbsp;<p>
                         <asp:Button ID="Button1" runat="server" Height="44px" OnClick="Button1_Click" Text="Submit" Width="116px" />

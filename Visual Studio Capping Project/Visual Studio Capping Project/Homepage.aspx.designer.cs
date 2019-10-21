@@ -22,6 +22,24 @@ namespace Visual_Studio_Capping_Project {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// fridayCheckBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox fridayCheckBox;
+        
+        /// <summary>
+        /// saturdayCheckBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox saturdayCheckBox;
+        
+        /// <summary>
         /// nameTextBox control.
         /// </summary>
         /// <remarks>
@@ -112,40 +130,13 @@ namespace Visual_Studio_Capping_Project {
         protected global::System.Web.UI.HtmlControls.HtmlInputText cityTextBox;
         
         /// <summary>
-        /// headSizeTextBox control.
+        /// Select1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox headSizeTextBox;
-        
-        /// <summary>
-        /// ceremonyDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ceremonyDropDownList;
-        
-        /// <summary>
-        /// collegeDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList collegeDropDownList;
-        
-        /// <summary>
-        /// XmlDataSource2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.XmlDataSource XmlDataSource2;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect Select1;
         
         /// <summary>
         /// stateDropDownList control.
@@ -164,6 +155,33 @@ namespace Visual_Studio_Capping_Project {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.XmlDataSource XmlDataSource1;
+        
+        /// <summary>
+        /// headSizeTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox headSizeTextBox;
+        
+        /// <summary>
+        /// collegeDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList collegeDropDownList;
+        
+        /// <summary>
+        /// XmlDataSource2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.XmlDataSource XmlDataSource2;
         
         /// <summary>
         /// Button1 control.

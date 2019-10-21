@@ -54,7 +54,7 @@ namespace Visual_Studio_Capping_Project
             orders.Parameters.AddWithValue("@school", collegeDropDownList.SelectedItem.Value);
             orders.Parameters.AddWithValue("@degree", degreeDropDownList.Items[degreeDropDownList.SelectedIndex].Text);
             orders.Parameters.AddWithValue("@state", stateDropDownList.SelectedItem.Value);
-            orders.Parameters.AddWithValue("@ceremonytype", ceremonyDropDownList.SelectedItem.Value);
+            orders.Parameters.AddWithValue("@ceremonytype", Ceremony());
 
             orders.ExecuteNonQuery();
         }
@@ -97,9 +97,35 @@ namespace Visual_Studio_Capping_Project
 
         }
 
+        public String Ceremony() {
+
+            String ceremony;
+
+            if (Request.Form["fridayCheckBox"] == "1" && Request.Form["saturdayCheckBox"] != "1")
+            {
+                ceremony = "Friday";
+            }
+            else if (Request.Form["saturdayCheckBox"] == "1" && Request.Form["fridayCheckBox"] != "1")
+            {
+                ceremony = "Saturday";
+            }
+            else if (Request.Form["fridayCheckBox"] == "1" && Request.Form["saturdayCheckBox"] == "1")
+            {
+                ceremony = "Friday and Saturday";
+            }
+            else {
+                ceremony = "Not Attending";
+            }
+
+            return ceremony;
+
+        }
+
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+
+            Debug.WriteLine(Ceremony());
 
             if (EmailAlreadyExists() == true){
 
@@ -147,7 +173,7 @@ namespace Visual_Studio_Capping_Project
 
         protected void emailTextBox_TextChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         protected void collegeDropDownList_SelectedIndexChanged(object sender, EventArgs e)

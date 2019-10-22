@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Data;
 
 namespace Visual_Studio_Capping_Project
 {
@@ -25,7 +26,55 @@ namespace Visual_Studio_Capping_Project
            // con.ConnectionString = "Data Source=DESKTOP-AUSRECR;User ID=sa;Password=alpaca;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False; Initial Catalog=Capping";
             con.ConnectionString = "Data Source = 10.10.9.100; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
 
+
             con.Open();
+
+
+            PopulateStates();
+
+            PopulateColleges();
+
+
+
+        }
+
+        public void PopulateStates() {
+            if (!IsPostBack)
+            {
+                string ConnectString = "Data Source = 10.10.9.100; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
+                string QueryString = "select * from States";
+
+                SqlConnection myConnection = new SqlConnection(ConnectString);
+                SqlDataAdapter myCommand = new SqlDataAdapter(QueryString, myConnection);
+                DataSet ds = new DataSet();
+                myCommand.Fill(ds, "value");
+
+                stateDropDownList.DataSource = ds;
+                stateDropDownList.DataTextField = "value";
+                stateDropDownList.DataValueField = "value";
+                stateDropDownList.DataBind();
+            }
+
+        }
+
+        public void PopulateColleges() {
+            if (!IsPostBack)
+            {
+                string ConnectString = "Data Source = 10.10.9.100; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
+                string QueryString = "select * from InstitutionCampus$";
+
+                SqlConnection myConnection = new SqlConnection(ConnectString);
+                SqlDataAdapter myCommand = new SqlDataAdapter(QueryString, myConnection);
+                DataSet ds = new DataSet();
+                myCommand.Fill(ds, "LocationName");
+
+                collegeDropDownList.DataSource = ds;
+                collegeDropDownList.DataTextField = "LocationName";
+                collegeDropDownList.DataValueField = "LocationName";
+                collegeDropDownList.DataBind();
+            }
+
+
         }
 
 
@@ -36,24 +85,24 @@ namespace Visual_Studio_Capping_Project
             faculty.Parameters.AddWithValue("@phonenumber", Request.Form["phoneNumberTextBox"]);
             faculty.Parameters.AddWithValue("@department", Request.Form["departmentTextBox"]);
             faculty.Parameters.AddWithValue("@capsize", Request.Form["capSizeTextBox"]);
-            faculty.Parameters.AddWithValue("@headsize", headSizeTextBox.Text);
-            faculty.Parameters.AddWithValue("@school", collegeDropDownList.SelectedItem.Value);
+            faculty.Parameters.AddWithValue("@headsize", 0);
+            faculty.Parameters.AddWithValue("@school", Request.Form["collegeDropDownList"]);
             faculty.Parameters.AddWithValue("@degree", degreeDropDownList.Items[degreeDropDownList.SelectedIndex].Text);
-            faculty.Parameters.AddWithValue("@state", stateDropDownList.SelectedItem.Value);
+            faculty.Parameters.AddWithValue("@state", Request.Form["stateDropDownList"]);
 
             faculty.ExecuteNonQuery();
 
             orders.Parameters.AddWithValue("@ordernumber", Ordernumber());
             orders.Parameters.AddWithValue("@email", Request.Form["emailTextBox"]);
             orders.Parameters.AddWithValue("@capsize", Request.Form["capSizeTextBox"]);
-            orders.Parameters.AddWithValue("@headsize", headSizeTextBox.Text);
+            orders.Parameters.AddWithValue("@headsize", 0);
             orders.Parameters.AddWithValue("@weight", Request.Form["weightTextBox"]);
             orders.Parameters.AddWithValue("@heightfeet", Request.Form["heightFeetTextBox"]);
             orders.Parameters.AddWithValue("@heightinches", Request.Form["heightInchesTextBox"]);
             orders.Parameters.AddWithValue("@city", Request.Form["cityTextBox"]);
-            orders.Parameters.AddWithValue("@school", collegeDropDownList.SelectedItem.Value);
+            orders.Parameters.AddWithValue("@school", Request.Form["collegeDropDownList"]);
             orders.Parameters.AddWithValue("@degree", degreeDropDownList.Items[degreeDropDownList.SelectedIndex].Text);
-            orders.Parameters.AddWithValue("@state", stateDropDownList.SelectedItem.Value);
+            orders.Parameters.AddWithValue("@state", Request.Form["stateDropDownList"]);
             orders.Parameters.AddWithValue("@ceremonytype", Ceremony());
 
             orders.ExecuteNonQuery();

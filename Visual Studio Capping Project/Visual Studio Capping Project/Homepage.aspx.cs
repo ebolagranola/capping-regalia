@@ -61,7 +61,7 @@ namespace Visual_Studio_Capping_Project
             if (!IsPostBack)
             {
                 string ConnectString = "Data Source = 10.10.9.100; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
-                string QueryString = "select * from InstitutionCampus$";
+                string QueryString = "select LocationName from InstitutionCampus$";
 
                 SqlConnection myConnection = new SqlConnection(ConnectString);
                 SqlDataAdapter myCommand = new SqlDataAdapter(QueryString, myConnection);

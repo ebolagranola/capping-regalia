@@ -37,10 +37,9 @@
       <!-- <h1 class="text-white" style="font-size: 70px;">
         Marist College
       </h1> -->
-      <div class="row d-flex">
-        <div class="justify-content-between">
-          <span>
-            <img id="marist_logo" src="images/marist_logo.png">
+      <div class="row">
+          <span class="justify-content-between ml-auto">
+            <img id="marist_logo" src="./client/images/marist_logo.png">
           </span>
           <span class="text-white ml-auto" style="font-size: 24px;">
             <div>
@@ -50,7 +49,6 @@
               Rented Regalia Request
             </div>
           </span>
-        </div>
       </div>
   </div>
 </nav>

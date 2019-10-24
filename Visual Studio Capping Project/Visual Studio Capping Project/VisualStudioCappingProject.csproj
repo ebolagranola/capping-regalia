@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin.aspx" />
+    <Content Include="client\images\marist_logo.png" />
     <Content Include="Homepage.aspx" />
     <Content Include="UpdateUserPage.html" />
     <Content Include="NewUserPage.html" />
@@ -146,6 +147,7 @@
     </None>
     <Content Include="Web1.config" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

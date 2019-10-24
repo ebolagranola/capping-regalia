@@ -205,34 +205,44 @@ namespace Visual_Studio_Capping_Project
 
         }
 
+
+        public void Text_Changed(Object sender, EventArgs e)
+        {
+            TextBox t = (TextBox)(sender);
+            //use t as the current textbox that raised the event.
+            Debug.WriteLine(Request.Form["emailTextBox"]);
+        }
+
+
+
         protected void emailTextBox0_TextChanged(object sender, EventArgs e)
         {
-
+            Debug.WriteLine("text changed");
         }
 
         protected void emailTextBox0_TextChanged1(object sender, EventArgs e)
         {
-
+            Debug.WriteLine(Request.Form["emailTextBox"]);
         }
 
         protected void collegeDropDownList0_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Debug.WriteLine(Request.Form["emailTextBox"]);
         }
 
         protected void emailTextBox_TextChanged(object sender, EventArgs e)
         {
-           
+            Debug.WriteLine(Request.Form["emailTextBox"]);
         }
 
         protected void collegeDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Debug.WriteLine(Request.Form["emailTextBox"]);
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Debug.WriteLine(Request.Form["emailTextBox"]);
         }
     }
 }

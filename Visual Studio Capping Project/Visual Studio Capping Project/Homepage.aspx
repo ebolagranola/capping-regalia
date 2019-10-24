@@ -215,12 +215,27 @@
                             <span>Email</span>
                             <span class="text-danger"> *</span>
                             </label>
-                            <input class="form-control" id="emailTextBox" type="Text" aria-describedby="department" runat="server">
+                            <input class="form-control" id="emailTextBox" type="Text" aria-describedby="department" runat="server" AutoPostBack="true" OnTextChanged="emailTextBox0_TextChanged">
                             <div class="invalid-feedback">Sorry, you missed this one!</div>
                             </div>
 
 
-                            <div class="form-group">
+                                <asp:TextBox ID="TextBox2" runat="server" autopostback="true" OnTextChanged="Text_Changed"></asp:TextBox><br />
+                                
+                                <asp:TextBox ID="txtClientNumber"  AutoPostBack="true"  
+    runat="server" Width="100px"  onFocus="select()"
+    OnTextChanged="Text_Changed"  ></asp:TextBox>
+
+                                <input type="text" onkeydown="myFunction()">
+
+    <script>
+    function myFunction() {
+        test
+    }
+    </script>
+
+
+                                <div class="form-group">
                             <label for="department" class="font-weight-bold">
                             <span>Department</span>
                             <span class="text-danger"> *</span>
@@ -328,7 +343,9 @@
                             <button ID="Button1" onServerClick="Button1_Click" type="button" class="btn btn-primary text-right" runat="server">Submit</button>
                                
                                 
-                                
+                             
+
+
 
                             </div>
                             </div>

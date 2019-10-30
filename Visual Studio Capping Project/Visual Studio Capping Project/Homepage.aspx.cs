@@ -28,7 +28,7 @@ namespace Visual_Studio_Capping_Project
             
             //Connection strings for various databases, the commended ones are old and outdated
             
-            // con.ConnectionString = "Data Source=DESKTOP-AUSRECR;User ID=sa;Password=alpaca;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False; Initial Catalog=Capping";
+            //con.ConnectionString = "Data Source=DESKTOP-AUSRECR;User ID=sa;Password=alpaca;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False; Initial Catalog=Capping";
             //con.ConnectionString = "Data Source = 10.10.9.100; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
             con.ConnectionString = "Data Source = 72.76.93.24; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
 
@@ -39,8 +39,7 @@ namespace Visual_Studio_Capping_Project
 
             PopulateStates();
 
-       //   This is commented out because the ECRL is down and we are in the middle of rebuilding our DB
-          PopulateColleges();
+            PopulateColleges();
 
 
 
@@ -92,8 +91,8 @@ namespace Visual_Studio_Capping_Project
 
         }
 
-
-        public void UpdateInfo(SqlCommand faculty, SqlCommand orders) {
+        //This funciton takes in SQL commands for each table and assignes variables based on the information present in the website
+        public void WriteDB(SqlCommand faculty, SqlCommand orders) {
 
             faculty.Parameters.AddWithValue("@email", Request.Form["emailTextBox"]);
             faculty.Parameters.AddWithValue("@name", Request.Form["nameTextBox"]);
@@ -123,11 +122,11 @@ namespace Visual_Studio_Capping_Project
             orders.ExecuteNonQuery();
         }
 
+        //This function is used to generate ordernumbers, it reads the DB for the largest number then adds one 
         public int Ordernumber() {
             int ordernumber;
             
             SqlCommand generateordernum = new SqlCommand("SELECT MAX(OrderID) FROM Orders", con);
-           // Debug.WriteLine(Convert.ToInt32(generateordernum.ExecuteScalar()));
 
 
             if (generateordernum.ExecuteScalar() is DBNull)
@@ -144,6 +143,7 @@ namespace Visual_Studio_Capping_Project
             return ordernumber;
         }
 
+        //This function is used to query the DB to find if an email has already been entered and returns a boolean
         public Boolean EmailAlreadyExists() {
             SqlCommand findemail = new SqlCommand("SELECT 1 FROM Faculty WHERE Email = @email", con);
 
@@ -161,6 +161,7 @@ namespace Visual_Studio_Capping_Project
 
         }
 
+        //This function is used to check the values of the checkboxes at the top of the webpage to find the different combinations of ceremony attendance
         public String Ceremony() {
 
             String ceremony;
@@ -186,11 +187,13 @@ namespace Visual_Studio_Capping_Project
         }
 
 
+        //This function is run on click of the submit button
         protected void Button1_Click(object sender, EventArgs e)
         {
 
             Debug.WriteLine(Ceremony());
 
+            //If the email exits used the UPDATE SQL command to change the information
             if (EmailAlreadyExists() == true){
 
                 Debug.WriteLine("Found this email");
@@ -198,12 +201,13 @@ namespace Visual_Studio_Capping_Project
                 SqlCommand faculty = new SqlCommand("UPDATE Faculty SET Name = @name, PhoneNumber = @phonenumber, Department = @department, CapSize = @capsize, HeadSize = @headsize, University = @school, Degree = @degree, State = @state WHERE Email = @email", con);
                 SqlCommand orders = new SqlCommand("UPDATE Orders SET CeremonyType = @ceremonytype, CapSize = @capsize, HeadSize = @headsize, Weight = @weight, HeightFeet = @heightfeet, HeightInches = @heightinches, Degree = @degree, College = @school, CollegeCity = @city, CollegeState = @state WHERE Email = @email", con);
 
-                UpdateInfo(faculty, orders);
+                WriteDB(faculty, orders);
 
                 Server.Transfer("UpdateUserPage.html");
                 
             }
 
+            //If the email does not exist use the INSERT command to add the new data to the DB
             else if(EmailAlreadyExists() == false){
 
                 Debug.WriteLine("Did not find this email");
@@ -211,7 +215,7 @@ namespace Visual_Studio_Capping_Project
                 SqlCommand faculty = new SqlCommand("INSERT INTO Faculty" + "(Email, Name, PhoneNumber, Department, CapSize, HeadSize, University, Degree, State) VALUES (@email, @name, @phonenumber, @department, @capsize, @headsize, @school, @degree, @state)", con);
                 SqlCommand orders = new SqlCommand("INSERT INTO Orders" + "(OrderID, Email, CeremonyType, CapSize, HeadSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @ceremonytype, @capsize, @headsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )", con);
 
-                UpdateInfo(faculty, orders);
+                WriteDB(faculty, orders);
 
                 Server.Transfer("NewUserPage.html");
                 

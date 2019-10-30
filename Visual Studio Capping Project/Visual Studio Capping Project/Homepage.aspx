@@ -23,10 +23,27 @@
    </style>
 </head>
 <form id="form1" runat="server">
+<nav class="navbar navbar-dark bg-danger">
+  <div class="container">
+      <div class="row">
+          <span class="justify-content-between ml-auto">
+            <img id="marist_logo" src="./client/images/marist_logo.png">
+          </span>
+          <span class="text-white ml-auto" style="font-size: 24px;">
+            <div>
+              Faculty/Administrator
+            </div>
+            <div>
+              Rented Regalia Request
+            </div>
+          </span>
+      </div>
+  </div>
+</nav>
    <div class="container" style="padding-top: 25px;">
       <div class="row">
          <div class="mx-auto col-lg-10 col-sm-*">
-            <div class="card-columns">
+            <!--<div class="card-columns">
                <div id="mainCard" class="card">
                   <div class="card-header text-white bg-danger">
                      <div class="container">
@@ -44,7 +61,7 @@
                            </span>
                         </div>
                      </div>
-                  </div>
+                  </div>-->
                   <div class="card-body">
                      <div class="container">
                         <div class="row">

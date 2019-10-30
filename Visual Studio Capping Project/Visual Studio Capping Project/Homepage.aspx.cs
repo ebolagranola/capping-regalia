@@ -13,6 +13,8 @@ namespace Visual_Studio_Capping_Project
 
     public partial class Homepage : System.Web.UI.Page
     {
+        //Construct all the SQL commands we will be using
+
         SqlCommand faculty = new SqlCommand();
         SqlCommand orders = new SqlCommand();
         SqlCommand generateordernum = new SqlCommand();
@@ -23,6 +25,9 @@ namespace Visual_Studio_Capping_Project
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            //Connection strings for various databases, the commended ones are old and outdated
+            
             // con.ConnectionString = "Data Source=DESKTOP-AUSRECR;User ID=sa;Password=alpaca;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False; Initial Catalog=Capping";
             //con.ConnectionString = "Data Source = 10.10.9.100; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
             con.ConnectionString = "Data Source = 72.76.93.24; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
@@ -30,34 +35,43 @@ namespace Visual_Studio_Capping_Project
 
             con.Open();
 
+            //These funtions populate the two drop down lists on the website by reading the database 
 
-      //      PopulateStates();
+            PopulateStates();
 
-       //     PopulateColleges();
+       //   This is commented out because the ECRL is down and we are in the middle of rebuilding our DB
+          PopulateColleges();
 
 
 
         }
 
-  /*      public void PopulateStates() {
+
+        //This function reads the States table in the database and addes each value to the drop down list for selecting a state
+        public void PopulateStates() {
             if (!IsPostBack)
             {
+
                 string ConnectString = "Data Source = 72.76.93.24; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
+                // string ConnectString = "Data Source = 72.76.93.24; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
                 string QueryString = "select * from States";
 
                 SqlConnection myConnection = new SqlConnection(ConnectString);
                 SqlDataAdapter myCommand = new SqlDataAdapter(QueryString, myConnection);
                 DataSet ds = new DataSet();
-                myCommand.Fill(ds, "value");
+
+                myCommand.Fill(ds, "Value");
 
                 stateDropDownList.DataSource = ds;
-                stateDropDownList.DataTextField = "value";
-                stateDropDownList.DataValueField = "value";
+                stateDropDownList.DataTextField = "Value";
+                stateDropDownList.DataValueField = "Value";
                 stateDropDownList.DataBind();
             }
 
         }
 
+        //This function reads the table that has every college and adds them to the drop down list for colleges, in the future this fucntion will be updated to query the DB on demand to reduce load times
+        //This is currently commented out because the ECRL is not working and we need to rebuild the DB
         public void PopulateColleges() {
             if (!IsPostBack)
             {
@@ -77,7 +91,7 @@ namespace Visual_Studio_Capping_Project
 
 
         }
-*/
+
 
         public void UpdateInfo(SqlCommand faculty, SqlCommand orders) {
 

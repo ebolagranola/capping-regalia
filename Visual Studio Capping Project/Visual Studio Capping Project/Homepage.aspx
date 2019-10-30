@@ -24,21 +24,19 @@
 </head>
 <form id="form1" runat="server">
 <nav class="navbar navbar-dark bg-danger">
-  <div class="container">
-      <div class="row">
-          <span class="justify-content-between ml-auto">
+    <div class="container">
+        <span style="width: 70%;">
             <img id="marist_logo" src="./client/images/marist_logo.png">
-          </span>
-          <span class="text-white ml-auto" style="font-size: 24px;">
+        </span>
+        <span class="text-white ml-auto" style="font-size: 24px;">
             <div>
-              Faculty/Administrator
+                Faculty/Administrator
             </div>
             <div>
-              Rented Regalia Request
+                Rented Regalia Request
             </div>
-          </span>
-      </div>
-  </div>
+        </span>
+    </div>
 </nav>
    <div class="container" style="padding-top: 25px;">
       <div class="row">

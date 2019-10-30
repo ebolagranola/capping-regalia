@@ -220,7 +220,7 @@
                             </div>
 
 
-                                <asp:TextBox ID="TextBox2" runat="server" autopostback="true" OnTextChanged="Text_Changed"></asp:TextBox><br />
+   <!--                             <asp:TextBox ID="TextBox2" runat="server" autopostback="true" OnTextChanged="Text_Changed"></asp:TextBox><br />
                                 
                                 <asp:TextBox ID="txtClientNumber"  AutoPostBack="true"  
     runat="server" Width="100px"  onFocus="select()"
@@ -234,7 +234,7 @@
     }
     </script>
 
-
+-->
                                 <div class="form-group">
                             <label for="department" class="font-weight-bold">
                             <span>Department</span>

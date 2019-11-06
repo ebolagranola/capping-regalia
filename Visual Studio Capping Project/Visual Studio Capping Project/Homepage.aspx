@@ -26,7 +26,7 @@
 <nav class="navbar navbar-dark bg-danger">
     <div class="container">
         <span style="width: 70%;">
-            <img id="marist_logo" src="./client/images/marist_logo.png">
+            <img id="marist_logo" src="./marist_logo.png">
         </span>
         <span class="text-white ml-auto" style="font-size: 24px;">
             <div>

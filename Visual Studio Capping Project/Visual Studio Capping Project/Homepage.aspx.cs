@@ -190,7 +190,7 @@ namespace Visual_Studio_Capping_Project
 
         public static void SendEmail(String email, String name) {
             MailMessage mailMessage = new MailMessage("maristregalia@gmail.com", email);
-            mailMessage.Subject = "Your order on MaristReglia.site";
+            mailMessage.Subject = "Your order on MaristRegalia.site";
             mailMessage.Body = "Hey " + name + ", we have recived your order and put the information in our database";
 
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);

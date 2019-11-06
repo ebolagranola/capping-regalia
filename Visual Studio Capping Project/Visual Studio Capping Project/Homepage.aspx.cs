@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Data;
+using System.Configuration;
+using System.Net.Mail;
 
 namespace Visual_Studio_Capping_Project
 {
@@ -186,10 +188,29 @@ namespace Visual_Studio_Capping_Project
 
         }
 
+        public static void SendEmail(String email, String name) {
+            MailMessage mailMessage = new MailMessage("maristregalia@gmail.com", email);
+            mailMessage.Subject = "Look At Me!";
+            mailMessage.Body = "Hey " + name + ", I sent this email from our website, how you like me now?";
+
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+            smtpClient.Credentials = new System.Net.NetworkCredential()
+            {
+                UserName = "maristregalia@gmail.com",
+                Password = "vkojywyjcjgwsziy"
+            };
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
+
+        }
 
         //This function is run on click of the submit button
         protected void Button1_Click(object sender, EventArgs e)
         {
+
+            Debug.WriteLine(Request.Form["emailTextBox"]);
+
+            SendEmail(Request.Form["emailTextBox"], Request.Form["nameTextBox"]);
 
             Debug.WriteLine(Ceremony());
 
@@ -232,7 +253,10 @@ namespace Visual_Studio_Capping_Project
             Debug.WriteLine(Request.Form["emailTextBox"]);
         }
 
+        public void test() {
+            Debug.WriteLine("This is working");
 
+        }
 
         protected void emailTextBox0_TextChanged(object sender, EventArgs e)
         {

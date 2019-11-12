@@ -58,6 +58,15 @@ namespace Visual_Studio_Capping_Project {
         protected global::System.Web.UI.HtmlControls.HtmlInputText emailTextBox;
         
         /// <summary>
+        /// MyTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox MyTextBox;
+        
+        /// <summary>
         /// departmentTextBox control.
         /// </summary>
         /// <remarks>

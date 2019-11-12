@@ -39,15 +39,33 @@ namespace Visual_Studio_Capping_Project
 
             con.Open();
 
+
+            var ctrlName = Request.Params[Page.postEventSourceID];
+            var args = Request.Params[Page.postEventArgumentID];
+
+            if (ctrlName == nameTextBox.UniqueID && args == "OnKeyPress")
+            {
+                MyTextBox_OnKeyPress(ctrlName, args);
+            }
+
             //These funtions populate the two drop down lists on the website by reading the database 
+
+            // emailTextBox.Attributes.Add("onKeyDown", "hello();");
 
             PopulateStates();
 
-            PopulateColleges();
+           // PopulateColleges();
 
 
 
         }
+
+        private void MyTextBox_OnKeyPress(string ctrlName, string args)
+        {
+            Debug.WriteLine("test");
+            PopulateColleges(Request.Form["nameTextBox"]);
+        }
+
 
 
         //This function reads the States table in the database and addes each value to the drop down list for selecting a state
@@ -75,11 +93,11 @@ namespace Visual_Studio_Capping_Project
 
         //This function reads the table that has every college and adds them to the drop down list for colleges, in the future this fucntion will be updated to query the DB on demand to reduce load times
         //This is currently commented out because the ECRL is not working and we need to rebuild the DB
-        public void PopulateColleges() {
+        public void PopulateColleges(String college) {
             if (!IsPostBack)
             {
                 string ConnectString = "Data Source = 10.10.9.100; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
-                string QueryString = "select LocationName from InstitutionCampus$";
+                string QueryString = "select LocationName from InstitutionCampus$ where LocationName like '%@college%'";
 
                 SqlConnection myConnection = new SqlConnection(ConnectString);
                 SqlDataAdapter myCommand = new SqlDataAdapter(QueryString, myConnection);
@@ -255,7 +273,7 @@ namespace Visual_Studio_Capping_Project
             Debug.WriteLine(Request.Form["emailTextBox"]);
         }
 
-        public void test() {
+        public void Test() {
             Debug.WriteLine("This is working");
 
         }

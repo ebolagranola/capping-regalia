@@ -94,6 +94,11 @@
   <ItemGroup>
     <Content Include="Admin.aspx" />
     <Content Include="Homepage.aspx" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="UpdateUserPage.html" />
     <Content Include="NewUserPage.html" />
     <Content Include="Webold.config">
@@ -145,6 +150,10 @@
       <DependentUpon>Webold.config</DependentUpon>
     </None>
     <Content Include="Web1.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\esm\" />
+    <Folder Include="Scripts\umd\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

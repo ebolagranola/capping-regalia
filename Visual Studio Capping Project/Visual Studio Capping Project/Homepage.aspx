@@ -22,7 +22,15 @@
       }
    </style>
 </head>
+
+
+
+<body>
 <form id="form1" runat="server">
+
+   
+  
+
 <nav class="navbar navbar-dark bg-danger">
     <div class="container">
         <span style="width: 70%;">
@@ -196,7 +204,7 @@
                                        <span>Name</span>
                                        <span class="text-danger"> *</span>
                                        </label>
-                                       <input class="form-control" id="nameTextBox" type="Text" aria-describedby="department" runat="server">
+                                       <input class="form-control" id="nameTextBox" type="Text" aria-describedby="department" runat="server" onkeydown="__doPostBack(this.name,'OnKeyPress');">
                                        <div class="invalid-feedback">Sorry, you missed this one!</div>
                                     </div>
                                     <div class="form-group">
@@ -204,11 +212,26 @@
                                        <span>Email</span>
                                        <span class="text-danger"> *</span>
                                        </label>
-                                       <input class="form-control" id="emailTextBox" type="Text" aria-describedby="department" runat="server" AutoPostBack="true" OnKeyDown="test()">
+                                       
+                                        
+                                        
+                                        <input class="form-control" id="emailTextBox" type="Text" aria-describedby="department" runat="server" AutoPostBack="true" OnKeyDown="CallingServerSideFunction()" ClientMode="Static" EnablePageMethods="true">
                                        <div class="invalid-feedback">Sorry, you missed this one!</div>
                                     </div>
-                                  
-                                       
+                                 
+
+                                     <asp:textbox id="MyTextBox" runat="server" onkeydown="__doPostBack(this.name,'OnKeyPress');" ></asp:textbox>
+
+                                    <script type="text/javascript">
+
+
+                                        function hello() {
+
+    alert("hi")
+
+    }
+
+</script>
                                     <div class="form-group">
                                        <label for="department" class="font-weight-bold">
                                        <span>Department</span>
@@ -308,6 +331,7 @@
                                        </div>
                                     </div>
 </form>
+    </body>
 </div>
 <!-- </div> -->
 </div>

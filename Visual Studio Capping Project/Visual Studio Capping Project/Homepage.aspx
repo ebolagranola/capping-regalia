@@ -34,7 +34,8 @@
 <nav class="navbar navbar-dark" style="background-color: #b31b1b;">
     <div class="container">
         <span style="width: 70%;">
-            <img id="marist_logo" src="./marist_logo.png">
+            <!-- <img id="marist_logo" src="./marist_logo.png"> -->
+            <img src="https://www.marist.edu/marist-theme/images/marist-header-logo.png" alt="Marist College logo">
         </span>
         <span class="text-white ml-auto" style="font-size: 24px;">
             <div>
@@ -327,11 +328,12 @@
                                     </div>
                                     <div class="form-group">
                                        <div class="text-right">
-                                          <button ID="Button1" onServerClick="Button1_Click" type="button" class="btn btn-primary text-right" runat="server">Submit</button>
+                                          <button ID="Button1" onServerClick="Button1_Click" type="button" class="btn text-white text-right" style="background-color: #006e7a;" runat="server">Submit</button>
                                        </div>
                                     </div>
 </form>
-    </body>
+
+</body>
 </div>
 <!-- </div> -->
 </div>
@@ -339,6 +341,18 @@
 </div>
 </div>
 </div>
+</div>
+<div class="container-fluid text-white" id="footer-bottom-wrapper" style="background-color: #404040; min-width: 100%; height: 219px;">
+    <div class="container">
+        <div class="row" id="footer-bottom">
+            <div class="span12" id="marist-info">
+                <img src="https://www.marist.edu/marist-theme/images/marist-header-logo.png" alt="Marist College logo">
+                <p>Marist College, 3399 North Road, Poughkeepsie, NY 12601 | 845-575-3000<br>
+                © Copyright
+                2019 Marist College. All Rights Reserved. <a href="https://www.marist.edu/disclaimers">Disclaimers</a> | <a href="https://www.marist.edu/privacy-policy">Privacy Policy</a> | <a href="https://www.marist.edu/web-accessibility-policy">Accessibility Policy</a></p>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 </div>

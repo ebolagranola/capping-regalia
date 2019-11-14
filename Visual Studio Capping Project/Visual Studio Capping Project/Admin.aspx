@@ -1,6 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="Visual_Studio_Capping_Project.Admin" %>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+<style>
+
+</style>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,16 +17,16 @@
           <div class="row">
             <div class="mx-auto col-lg-12 col-xs-*">
               <div class="card">
-                <div class="card-header bg-danger text-white">
+                <div class="card-header text-white" style="background-color: #b31b1b;">
                   <h2>
                     Regalia Entries
                   </h2>
                 </div>
                 <div class="card-body">
                   <div class="d-flex justify-content-around">
-                    <button onClick="exportFacultyTable()" type="button" class="btn btn-primary text-right">Export Faculty Table to Excel</button>
-                    <button onClick="exportUserData()" type="button" class="btn btn-primary text-right">Export Orders table to Excel</button>
-                    <button onClick="exportUserData()" type="button" class="btn btn-primary text-right">Export All to Excel</button>
+                    <button onClick="exportFacultyTable()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Export Faculty Table to Excel</button>
+                    <button onClick="exportUserData()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Export Orders table to Excel</button>
+                    <button onClick="exportUserData()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Export All to Excel</button>
                   </div>
 
 
@@ -38,7 +42,7 @@
                             <div class="card-body">                
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CappingConnectionString %>" OnSelecting="SqlDataSource1_Selecting" SelectCommand="SELECT * FROM [Faculty]"></asp:SqlDataSource>
                                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:CappingConnectionString %>" SelectCommand="SELECT * FROM [Orders]"></asp:SqlDataSource>
-                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Email" DataSourceID="SqlDataSource1">
+                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Email" DataSourceID="SqlDataSource1" CssClass="small table table-bordered table-striped table-sm table-hover">
                                     <Columns>
                                         <asp:BoundField DataField="Email" HeaderText="Email" ReadOnly="True" SortExpression="Email" />
                                         <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
@@ -66,7 +70,7 @@
                                   </h2>
                                 </div>
                                     <div class="card-body">
-                                        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" DataSourceID="SqlDataSource2">
+                                        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" DataSourceID="SqlDataSource2" CssClass="small table table-bordered table-striped table-sm table-hover">
                                             <Columns>
                                                 <asp:BoundField DataField="OrderID" HeaderText="OrderID" ReadOnly="True" SortExpression="OrderID" />
                                                 <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />

@@ -173,7 +173,7 @@
                                           <button type="button" class="btn btn-info btn-lg" style="height: 55px;">Place a New Order</button>
                                        </div>
                                        <div class="form-group">
-                                          <button type="button" class="btn btn-info btn-lg" style="height: 55px;">Use Last Years Order</button>
+                                          <button type="button" class="btn btn-info btn-lg" style="height: 55px;">Load Last Years Order</button>
                                        </div>
                                     </div>
                                  </div>

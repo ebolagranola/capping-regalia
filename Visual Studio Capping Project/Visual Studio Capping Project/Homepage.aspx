@@ -31,7 +31,7 @@
    
   
 
-<nav class="navbar navbar-dark bg-danger">
+<nav class="navbar navbar-dark" style="background-color: #b31b1b;">
     <div class="container">
         <span style="width: 70%;">
             <img id="marist_logo" src="./marist_logo.png">
@@ -170,10 +170,10 @@
                                  <div class="card-header">
                                     <div class="d-flex justify-content-between" style="margin-top: 15px;">
                                        <div class="form-group">
-                                          <button type="button" class="btn btn-info btn-lg" style="height: 55px;">Place a New Order</button>
+                                          <button type="button" class="btn text-white btn-lg" style="height: 55px; background-color: #006e7a;">Place a New Order</button>
                                        </div>
                                        <div class="form-group">
-                                          <button type="button" class="btn btn-info btn-lg" style="height: 55px;">Load Last Years Order</button>
+                                          <button type="button" class="btn text-white btn-lg" style="height: 55px; background-color: #006e7a;">Load Last Years Order</button>
                                        </div>
                                     </div>
                                  </div>

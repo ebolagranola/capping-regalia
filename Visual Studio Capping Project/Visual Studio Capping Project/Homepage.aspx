@@ -342,19 +342,17 @@
 </div>
 </div>
 </div>
-<div class="container-fluid text-white" id="footer-bottom-wrapper" style="background-color: #404040; min-width: 100%; height: 219px;">
-    <div class="container">
-        <div class="row" id="footer-bottom">
-            <div class="span12" id="marist-info">
-                <img src="https://www.marist.edu/marist-theme/images/marist-header-logo.png" alt="Marist College logo">
-                <p>Marist College, 3399 North Road, Poughkeepsie, NY 12601 | 845-575-3000<br>
-                © Copyright
-                2019 Marist College. All Rights Reserved. <a href="https://www.marist.edu/disclaimers">Disclaimers</a> | <a href="https://www.marist.edu/privacy-policy">Privacy Policy</a> | <a href="https://www.marist.edu/web-accessibility-policy">Accessibility Policy</a></p>
-            </div>
+</div>
+</div>
+<div class="container-fluid text-white" id="footer-bottom-wrapper" style="background-color: #404040; height: 219px; bottom: ">
+    <div class="container-fluid" id="footer-bottom">
+        <div id="marist-info" style="margin-top: 60px;">
+            <img src="https://www.marist.edu/marist-theme/images/marist-header-logo.png" alt="Marist College logo">
+            <p>Marist College, 3399 North Road, Poughkeepsie, NY 12601 | 845-575-3000<br>
+            © Copyright
+            2019 Marist College. All Rights Reserved. <a href="https://www.marist.edu/disclaimers">Disclaimers</a> | <a href="https://www.marist.edu/privacy-policy">Privacy Policy</a> | <a href="https://www.marist.edu/web-accessibility-policy">Accessibility Policy</a></p>
         </div>
     </div>
-</div>
-</div>
 </div>
 </div>
 </div>

@@ -50,25 +50,6 @@
    <div class="container" style="padding-top: 25px;">
       <div class="row">
          <div class="mx-auto col-lg-10 col-sm-*">
-            <!--<div class="card-columns">
-               <div id="mainCard" class="card">
-                  <div class="card-header text-white bg-danger">
-                     <div class="container">
-                        <div class="row d-flex">
-                           <h1 style="font-size: 70px;">
-                              Marist College
-                           </h1>
-                           <span class="ml-auto float-right" style="margin: auto 0 auto auto; font-size: 24px;">
-                              <div>
-                                 Faculty/Administrator
-                              </div>
-                              <div>
-                                 Rented Regalia Request
-                              </div>
-                           </span>
-                        </div>
-                     </div>
-                  </div>-->
                   <div class="card-body">
                      <div class="container">
                         <div class="row">
@@ -221,18 +202,16 @@
                                     </div>
                                  
 
-                                     <asp:textbox id="MyTextBox" runat="server" onkeydown="__doPostBack(this.name,'OnKeyPress');" ></asp:textbox>
+                                    <asp:textbox id="MyTextBox" runat="server" onkeydown="__doPostBack(this.name,'OnKeyPress');" ></asp:textbox>
 
                                     <script type="text/javascript">
 
-
                                         function hello() {
+                                            alert("hi")
+                                        }
 
-    alert("hi")
+                                    </script>
 
-    }
-
-</script>
                                     <div class="form-group">
                                        <label for="department" class="font-weight-bold">
                                        <span>Department</span>
@@ -331,20 +310,17 @@
                                           <button ID="Button1" onServerClick="Button1_Click" type="button" class="btn text-white text-right" style="background-color: #006e7a;" runat="server">Submit</button>
                                        </div>
                                     </div>
-</form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-</body>
-</div>
-<!-- </div> -->
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="container-fluid text-white" id="footer-bottom-wrapper" style="background-color: #404040; height: 219px; bottom: ">
+<div class="container-fluid text-white" id="footer-bottom-wrapper" style="background-color: #404040; height: 219px; width: 100%">
     <div class="container-fluid" id="footer-bottom">
         <div id="marist-info" style="margin-top: 60px;">
             <img src="https://www.marist.edu/marist-theme/images/marist-header-logo.png" alt="Marist College logo">
@@ -354,5 +330,7 @@
         </div>
     </div>
 </div>
-</div>
-</div>
+
+    </form>
+
+</body>

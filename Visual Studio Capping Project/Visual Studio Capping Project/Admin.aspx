@@ -53,6 +53,8 @@
                                         <asp:BoundField DataField="University" HeaderText="University" SortExpression="University" />
                                         <asp:BoundField DataField="Degree" HeaderText="Degree" SortExpression="Degree" />
                                         <asp:BoundField DataField="State" HeaderText="State" SortExpression="State" />
+                                        <asp:BoundField HeaderText="Delete" />
+                                        <asp:BoundField HeaderText="Edit" />
                                     </Columns>
                                 </asp:GridView>
                             </div>
@@ -85,6 +87,8 @@
                                                 <asp:BoundField DataField="College" HeaderText="College" SortExpression="College" />
                                                 <asp:BoundField DataField="CollegeCity" HeaderText="CollegeCity" SortExpression="CollegeCity" />
                                                 <asp:BoundField DataField="CollegeState" HeaderText="CollegeState" SortExpression="CollegeState" />
+                                                <asp:BoundField HeaderText="Delete" />
+                                                <asp:BoundField HeaderText="Edit" />
                                             </Columns>
                                         </asp:GridView>
                                     </div>

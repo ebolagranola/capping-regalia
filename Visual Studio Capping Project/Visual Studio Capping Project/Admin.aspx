@@ -26,15 +26,15 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-around">
-                            <button onClick="showFaculty()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Show Faculty Table</button>
-                            <button onClick="showOrders()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Show Faculty Table</button>
-                            <button onClick="exportFacultyTable()" type="button" class="btn text-white text-right bg-success">Export Faculty Table to Excel</button>
-                            <button onClick="exportUserData()" type="button" class="btn text-white text-right bg-success">Export Orders table to Excel</button>
-                            <button onClick="exportUserData()" type="button" class="btn text-white text-right bg-success">Export All to Excel</button>
+                        <button onClick="showFaculty()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Show Faculty Table</button>
+                        <button onClick="showOrders()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Show Faculty Table</button>
+                        <button onClick="exportFacultyTable()" type="button" class="btn text-white text-right bg-success">Export Faculty Table to Excel</button>
+                        <button onClick="exportUserData()" type="button" class="btn text-white text-right bg-success">Export Orders table to Excel</button>
+                        <button onClick="exportUserData()" type="button" class="btn text-white text-right bg-success">Export All to Excel</button>
                     </div>
 
 
-                    <div id="facultyTable" class="container" style="padding-top: 25px; min-width: 100%">
+                    <div id="facultyTable" class="container" style="padding-top: 25px; min-width: 100%; display: none;">
                       <div class="row">
                         <div class="mx-auto col-lg-12 col-xs-*">
                           <div class="card">
@@ -66,7 +66,7 @@
                         </div>
                       </div>
                     </div>
-                    <div id="ordersTable" class="container" style="padding-top: 25px; min-width: 100%">
+                    <div id="ordersTable" class="container" style="padding-top: 25px; min-width: 100%; display: none;">
                         <div class="row">
                             <div class="mx-auto col-lg-12 col-xs-*">
                                 <div class="card">
@@ -115,4 +115,14 @@
 
     var editRow = $('th:contains("Edit")').index();
     console.log(editRow);
+
+    function showFaculty() {
+        document.getElementById("facultyTable").style.display = "initial";
+        document.getElementById("ordersTable").style.display = "none";
+    }
+
+    function showOrders() {
+        document.getElementById("facultyTable").style.display = "none";
+        document.getElementById("ordersTable").style.display = "initial";
+    }
 </script>

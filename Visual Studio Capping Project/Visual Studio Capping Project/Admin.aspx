@@ -119,6 +119,10 @@
         console.log(deleteRow);
         var editRow = $('#facultyTable th:contains("Edit")').index();
         console.log(editRow);
+
+        //var rowNums = $('#facultyTable tbody').querySelectorAll("tr");
+        var rowNums = document.getElementById("facultyTable").querySelectorAll("tr");
+        console.log("Length: " + rowNums.length);
     }
 
     function showOrders() {
@@ -129,5 +133,8 @@
         console.log(deleteRow);
         var editRow = $('#ordersTable th:contains("Edit")').index();
         console.log(editRow);
+
+        var rowNums = document.getElementById("ordersTable").querySelectorAll("tr");
+        console.log("Length: " + rowNums.length);
     }
 </script>

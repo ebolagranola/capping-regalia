@@ -10,6 +10,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -23,14 +25,16 @@
                   </h2>
                 </div>
                 <div class="card-body">
-                  <div class="d-flex justify-content-around">
-                    <button onClick="exportFacultyTable()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Export Faculty Table to Excel</button>
-                    <button onClick="exportUserData()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Export Orders table to Excel</button>
-                    <button onClick="exportUserData()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Export All to Excel</button>
-                  </div>
+                    <div class="d-flex justify-content-around">
+                            <button onClick="showFaculty()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Show Faculty Table</button>
+                            <button onClick="showOrders()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Show Faculty Table</button>
+                            <button onClick="exportFacultyTable()" type="button" class="btn text-white text-right bg-success">Export Faculty Table to Excel</button>
+                            <button onClick="exportUserData()" type="button" class="btn text-white text-right bg-success">Export Orders table to Excel</button>
+                            <button onClick="exportUserData()" type="button" class="btn text-white text-right bg-success">Export All to Excel</button>
+                    </div>
 
 
-                    <div class="container" style="padding-top: 25px; min-width: 100%">
+                    <div id="facultyTable" class="container" style="padding-top: 25px; min-width: 100%">
                       <div class="row">
                         <div class="mx-auto col-lg-12 col-xs-*">
                           <div class="card">
@@ -62,15 +66,15 @@
                         </div>
                       </div>
                     </div>
-                        <div class="container" style="padding-top: 25px; min-width: 100%">
-                          <div class="row">
+                    <div id="ordersTable" class="container" style="padding-top: 25px; min-width: 100%">
+                        <div class="row">
                             <div class="mx-auto col-lg-12 col-xs-*">
-                              <div class="card">
-                                <div class="card-header">
-                                  <h2>
-                                    Orders Table
-                                  </h2>
-                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2>
+                                            Orders Table
+                                        </h2>
+                                    </div>
                                     <div class="card-body">
                                         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderID" DataSourceID="SqlDataSource2" CssClass="small table table-bordered table-striped table-sm table-hover">
                                             <Columns>
@@ -104,3 +108,11 @@
     </form>
 </body>
 </html>
+
+<script>
+    var deleteRow = $('th:contains("Delete")').index();
+    console.log(deleteRow);
+
+    var editRow = $('th:contains("Edit")').index();
+    console.log(editRow);
+</script>

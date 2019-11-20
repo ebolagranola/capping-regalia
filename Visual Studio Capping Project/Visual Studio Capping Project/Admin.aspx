@@ -116,13 +116,23 @@
         document.getElementById("ordersTable").style.display = "none";
 
         var deleteRow = $('#facultyTable th:contains("Delete")').index();
-        console.log(deleteRow);
         var editRow = $('#facultyTable th:contains("Edit")').index();
-        console.log(editRow);
 
-        //var rowNums = $('#facultyTable tbody').querySelectorAll("tr");
         var rowNums = document.getElementById("facultyTable").querySelectorAll("tr");
-        console.log("Length: " + rowNums.length);
+
+        for (var i = 1; i < rowNums.length; i++) {
+            console.log(document.getElementById("facultyTable").querySelectorAll("tr")[i].querySelectorAll("td")[deleteRow]);
+            document.getElementById("facultyTable").querySelectorAll("tr")[i].querySelectorAll("td")[deleteRow].innerHTML = "<button style='font-size: 12px;' type='button' class='btn btn-danger btn-block'>" +
+                "<svg id='i-trash' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='15' height='15' fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'>" +
+                "<path d='M28 6 L6 6 8 30 24 30 26 6 4 6 M16 12 L16 24 M21 12 L20 24 M11 12 L12 24 M12 6 L13 2 19 2 20 6' />" +
+                "</svg>" +
+                "</button>";
+            document.getElementById("facultyTable").querySelectorAll("tr")[i].querySelectorAll("td")[editRow].innerHTML = "<button style='font-size: 12px;' type='button' class='btn btn-warning btn-block'>" +
+                "<svg id='i-compose' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='15' height='15' fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'>" +
+                "<path d='M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z' />" +
+                "</svg>" +
+                "</button>";
+        }
     }
 
     function showOrders() {
@@ -130,11 +140,21 @@
         document.getElementById("ordersTable").style.display = "initial";
 
         var deleteRow = $('#ordersTable th:contains("Delete")').index();
-        console.log(deleteRow);
         var editRow = $('#ordersTable th:contains("Edit")').index();
-        console.log(editRow);
 
         var rowNums = document.getElementById("ordersTable").querySelectorAll("tr");
-        console.log("Length: " + rowNums.length);
+
+        for (var i = 1; i < rowNums.length; i++) {
+            document.getElementById("ordersTable").querySelectorAll("tr")[i].querySelectorAll("td")[deleteRow].innerHTML = "<button style='font-size: 12px;' type='button' class='btn btn-danger btn-block'>" +
+                "<svg id='i-trash' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='15' height='15' fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'>" +
+                "<path d='M28 6 L6 6 8 30 24 30 26 6 4 6 M16 12 L16 24 M21 12 L20 24 M11 12 L12 24 M12 6 L13 2 19 2 20 6' />" +
+                "</svg>" +
+                "</button>";
+            document.getElementById("ordersTable").querySelectorAll("tr")[i].querySelectorAll("td")[editRow].innerHTML = "<button style='font-size: 12px;' type='button' class='btn btn-warning btn-block'>" +
+                "<svg id='i-compose' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='15' height='15' fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'>" +
+                "<path d='M27 15 L27 30 2 30 2 5 17 5 M30 6 L26 2 9 19 7 25 13 23 Z M22 6 L26 10 Z M9 19 L13 23 Z' />" +
+                "</svg>" +
+                "</button>";
+        }
     }
 </script>

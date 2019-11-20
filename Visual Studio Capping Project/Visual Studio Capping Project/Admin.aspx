@@ -110,19 +110,24 @@
 </html>
 
 <script>
-    var deleteRow = $('th:contains("Delete")').index();
-    console.log(deleteRow);
-
-    var editRow = $('th:contains("Edit")').index();
-    console.log(editRow);
 
     function showFaculty() {
         document.getElementById("facultyTable").style.display = "initial";
         document.getElementById("ordersTable").style.display = "none";
+
+        var deleteRow = $('#facultyTable th:contains("Delete")').index();
+        console.log(deleteRow);
+        var editRow = $('#facultyTable th:contains("Edit")').index();
+        console.log(editRow);
     }
 
     function showOrders() {
         document.getElementById("facultyTable").style.display = "none";
         document.getElementById("ordersTable").style.display = "initial";
+
+        var deleteRow = $('#ordersTable th:contains("Delete")').index();
+        console.log(deleteRow);
+        var editRow = $('#ordersTable th:contains("Edit")').index();
+        console.log(editRow);
     }
 </script>

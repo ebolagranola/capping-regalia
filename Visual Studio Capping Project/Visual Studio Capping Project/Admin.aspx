@@ -43,11 +43,12 @@
                                 Faculty Table
                               </h2>
                             </div>
-                            <div class="card-body">                
+                            <div class="card-body">
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CappingConnectionString %>" OnSelecting="SqlDataSource1_Selecting" SelectCommand="SELECT * FROM [Faculty]"></asp:SqlDataSource>
                                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:CappingConnectionString %>" SelectCommand="SELECT * FROM [Orders]"></asp:SqlDataSource>
                                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Email" DataSourceID="SqlDataSource1" CssClass="small table table-bordered table-striped table-sm table-hover">
                                     <Columns>
+                                        <asp:CommandField ShowEditButton="True" />
                                         <asp:BoundField DataField="Email" HeaderText="Email" ReadOnly="True" SortExpression="Email" />
                                         <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                                         <asp:BoundField DataField="PhoneNumber" HeaderText="PhoneNumber" SortExpression="PhoneNumber" />

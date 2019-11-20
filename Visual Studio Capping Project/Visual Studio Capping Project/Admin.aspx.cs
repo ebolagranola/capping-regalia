@@ -19,6 +19,13 @@ namespace Visual_Studio_Capping_Project
         {
 
         }
+
+        //protected bool IsInEditMode {
+        //    get { return this.isEditMode; }
+
+        //    set { this.isEditMode = value; }
+        //}
+
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             String connectionString = "Data Source = 10.10.9.100; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";

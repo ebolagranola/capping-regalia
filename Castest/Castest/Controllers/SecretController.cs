@@ -92,7 +92,7 @@ namespace Castest.Controllers
         }
 
 
-        public void WriteHistoric()
+        public ActionResult WriteHistoric()
         {
             con.ConnectionString = connectionstring;
 
@@ -109,7 +109,7 @@ namespace Castest.Controllers
 
             con.Close();
 
-
+            return View("AdminRedirect");
 
         }
 
@@ -253,7 +253,7 @@ namespace Castest.Controllers
 
             con.Close();
 
-            return View("AddAdmin");
+            return View("AdminRedirect");
 
         }
 
@@ -319,9 +319,12 @@ namespace Castest.Controllers
 
             Debug.WriteLine("DOes this shit work");
 
-           // con.ConnectionString = connectionstring;
+            // con.ConnectionString = connectionstring;
 
-          //  con.Open();
+            //  con.Open();
+
+            ViewBag.ID = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
+
 
             if (EmailAlreadyExists(User.Identity.Name) == true)
             {
@@ -700,6 +703,223 @@ namespace Castest.Controllers
             smtpClient.Send(mailMessage);
 
         }
-  
+
+
+        public void ExportOrders()
+        {
+
+            con.ConnectionString = connectionstring;
+
+            con.Open();
+
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Orders", con))
+            {
+
+                using (SqlDataAdapter sda = new SqlDataAdapter())
+
+                {
+
+                    cmd.Connection = con;
+                    sda.SelectCommand = cmd;
+
+                    using (DataTable dt = new DataTable())
+                    {
+
+                        sda.Fill(dt);
+
+                        //Build the CSV file data as a Comma separated string.
+                        string csv = string.Empty;
+
+                        foreach (DataColumn column in dt.Columns)
+                        {
+                            
+                            //Add the Header row for CSV file.
+                            csv += column.ColumnName + ',';
+                        }
+
+                        //Add new line.
+                        csv += "\r\n";
+
+                        foreach (DataRow row in dt.Rows)
+                        {
+
+                            foreach (DataColumn column in dt.Columns)
+                            {
+            
+                            //Add the Data rows.
+                            csv += row[column.ColumnName].ToString().Replace(",", ";") + ',';
+
+                            }
+
+                            //Add new line.
+                            csv += "\r\n";
+
+                        }
+
+                        String Date = DateTime.Today.ToString("MM/dd/yyyy");
+
+                        //Download the CSV file.
+                        Response.Clear();
+                        Response.Buffer = true;
+                        Response.AddHeader("content-disposition", "attachment;filename=Orders_Table_"+ Date + ".csv");
+                        Response.Charset = "";
+                        Response.ContentType = "application/text";
+                        Response.Output.Write(csv);
+                        Response.Flush();
+                        Response.End();
+
+                    }
+
+                }
+         
+            }
+
+        }
+
+        public void ExportFaculty()
+        {
+
+            con.ConnectionString = connectionstring;
+
+            con.Open();
+
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Faculty", con))
+            {
+
+                using (SqlDataAdapter sda = new SqlDataAdapter())
+
+                {
+
+                    cmd.Connection = con;
+                    sda.SelectCommand = cmd;
+
+                    using (DataTable dt = new DataTable())
+                    {
+
+                        sda.Fill(dt);
+
+                        //Build the CSV file data as a Comma separated string.
+                        string csv = string.Empty;
+
+                        foreach (DataColumn column in dt.Columns)
+                        {
+
+                            //Add the Header row for CSV file.
+                            csv += column.ColumnName + ',';
+                        }
+
+                        //Add new line.
+                        csv += "\r\n";
+
+                        foreach (DataRow row in dt.Rows)
+                        {
+
+                            foreach (DataColumn column in dt.Columns)
+                            {
+
+                                //Add the Data rows.
+                                csv += row[column.ColumnName].ToString().Replace(",", ";") + ',';
+
+                            }
+
+                            //Add new line.
+                            csv += "\r\n";
+
+                        }
+
+                        String Date = DateTime.Today.ToString("MM/dd/yyyy");
+
+                        //Download the CSV file.
+                        Response.Clear();
+                        Response.Buffer = true;
+                        Response.AddHeader("content-disposition", "attachment;filename=Faculty_Table_" + Date + ".csv");
+                        Response.Charset = "";
+                        Response.ContentType = "application/text";
+                        Response.Output.Write(csv);
+                        Response.Flush();
+                        Response.End();
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        public void ExportHistoricOrders()
+        {
+
+            con.ConnectionString = connectionstring;
+
+            con.Open();
+
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM HistoricOrders", con))
+            {
+
+                using (SqlDataAdapter sda = new SqlDataAdapter())
+
+                {
+
+                    cmd.Connection = con;
+                    sda.SelectCommand = cmd;
+
+                    using (DataTable dt = new DataTable())
+                    {
+
+                        sda.Fill(dt);
+
+                        //Build the CSV file data as a Comma separated string.
+                        string csv = string.Empty;
+
+                        foreach (DataColumn column in dt.Columns)
+                        {
+
+                            //Add the Header row for CSV file.
+                            csv += column.ColumnName + ',';
+                        }
+
+                        //Add new line.
+                        csv += "\r\n";
+
+                        foreach (DataRow row in dt.Rows)
+                        {
+
+                            foreach (DataColumn column in dt.Columns)
+                            {
+
+                                //Add the Data rows.
+                                csv += row[column.ColumnName].ToString().Replace(",", ";") + ',';
+
+                            }
+
+                            //Add new line.
+                            csv += "\r\n";
+
+                        }
+
+                        String Date = DateTime.Today.ToString("MM/dd/yyyy");
+
+                        //Download the CSV file.
+                        Response.Clear();
+                        Response.Buffer = true;
+                        Response.AddHeader("content-disposition", "attachment;filename=Historic_Orders_Table_" + Date + ".csv");
+                        Response.Charset = "";
+                        Response.ContentType = "application/text";
+                        Response.Output.Write(csv);
+                        Response.Flush();
+                        Response.End();
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
+
     }
 }

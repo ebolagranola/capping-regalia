@@ -98,7 +98,7 @@
 
 
 
-                                                         <td><Button ID="btnDelete" type="button" onclick="ConfirmDeleteFaculty(@item.Email)" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
+                                                         <td><Button ID="btnDelete"  type="button" onclick="ConfirmDeleteFaculty('@item.Email')" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
 
 
 
@@ -268,10 +268,14 @@
     <script>
 
         function ConfirmDeleteFaculty(email) {
-           var r = confrim("You are about to delete the active faculty member and the order existing for them. Are you sure you would like to do this?");
+           var r = confirm("You are about to delete the active faculty member and the order existing for them. Are you sure you would like to do this?");
             if (r == true) {
-                
-                window.location.replace("/Web/DeleteFaculty/" + email);
+
+
+                var id = email.substr(0, 8);
+
+
+                window.location.replace("/Web/DeleteFaculty/" + id);
 
             }
             else {

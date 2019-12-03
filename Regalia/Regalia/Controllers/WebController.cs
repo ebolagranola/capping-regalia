@@ -198,11 +198,38 @@ namespace Regalia.Controllers
 
         }
 
-        public ActionResult DeleteFaculty(String email)
+
+        public Boolean Test(String email) {
+
+
+
+            if (email != null)
+            {
+
+                return true;
+
+
+            }
+
+            else {
+
+                return false;
+
+
+            }
+
+
+        }
+
+
+        public ActionResult DeleteFaculty(String id)
         {
 
             if (isAdmin())
             {
+
+                String email = id + "@marist.edu";
+
 
                 if (email != User.Identity.Name)
                 {
@@ -233,7 +260,7 @@ namespace Regalia.Controllers
 
                 else
                 {
-                    return (View("NotAdminRedirect"));
+                    return (View("AdminRedirect"));
 
 
                 }

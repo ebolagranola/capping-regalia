@@ -26,35 +26,13 @@ namespace Regalia.Controllers
         SqlCommand generateordernum = new SqlCommand();
         SqlCommand findemail = new SqlCommand();
 
-        //  String connectionstring = "Data Source = 10.10.9.100; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
-
         string connectionstring = System.IO.File.ReadAllText(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory.ToString(),@"ConnectionString.txt"));
 
-        public void Test() {
-
-            Debug.WriteLine(connectionstring);
-
-
-        }
+      
 
 
         public ActionResult GetData(bool fridayCheckBox, bool saturdayCheckBox, String Name, String PhoneNumber, String Department, int Feet, int Inches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitutionState, String InstitutionCity)
         {
-
-            Debug.WriteLine(User.Identity.Name);
-            Debug.WriteLine(Ceremony(fridayCheckBox, saturdayCheckBox));
-            Debug.WriteLine(Name);
-            Debug.WriteLine(PhoneNumber);
-            Debug.WriteLine(Department);
-            Debug.WriteLine(Feet);
-            Debug.WriteLine(Inches);
-            Debug.WriteLine(Weight);
-            Debug.WriteLine(CapSize);
-            Debug.WriteLine(Degree);
-            Debug.WriteLine(GrantingInstitution);
-            Debug.WriteLine(InstitutionState);
-            Debug.WriteLine(InstitutionCity);
-
 
             String facultystring;
             String ordersstring;
@@ -143,11 +121,7 @@ namespace Regalia.Controllers
         public void WriteDB(String facultystring, String ordersstring, String Email, String Ceremony, String Name, String PhoneNumber, String Department, int Feet, int Inches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitiutionState, String InstitutionCity)
         {
 
-            //Connection strings for various databases, the commended ones are old and outdated
-
-            //con.ConnectionString = "Data Source=DESKTOP-AUSRECR;User ID=sa;Password=alpaca;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False; Initial Catalog=Capping";
             con.ConnectionString = connectionstring;
-            //con.ConnectionString = "Data Source = 72.76.93.24; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
 
             con.Open();
 
@@ -375,12 +349,6 @@ namespace Regalia.Controllers
         public ActionResult Index()
         {
 
-            Debug.WriteLine("DOes this shit work");
-
-            // con.ConnectionString = connectionstring;
-
-            //  con.Open();
-
             ViewBag.ID = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
 
@@ -501,23 +469,12 @@ namespace Regalia.Controllers
 
 
 
-        }
-
-
-        //Construct all the SQL commands we will be using
-
-        
-        
-
-        //This funciton takes in SQL commands for each table and assignes variables based on the information present in the website
-        
+        } 
 
         //This function is used to generate ordernumbers, it reads the DB for the largest number then adds one 
         public int Ordernumber()
         {
             int ordernumber;
-
-        //    con.Open();
 
             SqlCommand generateordernum = new SqlCommand("SELECT MAX(OrderID) FROM Orders", con);
             SqlCommand generatehistoricordernum = new SqlCommand("SELECT MAX(OrderID) FROM HistoricOrders", con);
@@ -572,11 +529,6 @@ namespace Regalia.Controllers
 
             }
 
-
-           
-
-       //     con.Close();
-
             return ordernumber;
 
         }
@@ -589,26 +541,12 @@ namespace Regalia.Controllers
 
             con.Open();
 
-
-            if (con.State.ToString() == "Open")
-            {
-                Debug.WriteLine("Open");
-            }
-            else
-            {
-                Debug.WriteLine("Closed");
-            }
-
-
-
             SqlCommand findemail = new SqlCommand("SELECT 1 FROM Faculty WHERE Email = @email", con);
 
             findemail.Parameters.AddWithValue("@email", Email);
 
             if (Convert.ToInt32(findemail.ExecuteScalar()) == 1)
             {
-
-                Debug.WriteLine("True");
 
                 con.Close();
                 return true;
@@ -617,8 +555,6 @@ namespace Regalia.Controllers
 
             else
             {
-
-                Debug.WriteLine("False");
 
                 con.Close();
                 return false;
@@ -641,8 +577,6 @@ namespace Regalia.Controllers
             if (Convert.ToInt32(findemail.ExecuteScalar()) == 1)
             {
 
-                Debug.WriteLine("Found order True");
-
                 con.Close();
                 return true;
 
@@ -650,8 +584,6 @@ namespace Regalia.Controllers
 
             else
             {
-
-                Debug.WriteLine("Didnt find order False");
 
                 con.Close();
                 return false;
@@ -674,8 +606,6 @@ namespace Regalia.Controllers
             if (Convert.ToInt32(findemail.ExecuteScalar()) == 1)
             {
 
-                Debug.WriteLine("Found order True");
-
                 con.Close();
                 return true;
 
@@ -683,8 +613,6 @@ namespace Regalia.Controllers
 
             else
             {
-
-                Debug.WriteLine("Didnt find order False");
 
                 con.Close();
                 return false;
@@ -970,10 +898,7 @@ namespace Regalia.Controllers
 
             return View();
 
-
-
         }
-
 
     }
 }

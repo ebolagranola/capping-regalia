@@ -211,10 +211,16 @@ namespace Regalia.Controllers
 
                     con.Open();
 
+                    SqlCommand DeleteOrder = new SqlCommand("DELETE FROM Orders WHERE Email = @email", con);
+
                     SqlCommand deletefaculty = new SqlCommand("DELETE FROM Faculty WHERE Email = @email", con);
 
 
                     deletefaculty.Parameters.AddWithValue("@email", email);
+                    
+                    deleteOrder.Parameters.AddWithValue("@email", email);
+
+
 
                     deletefaculty.ExecuteScalar();
 

@@ -16,7 +16,7 @@ namespace Castest
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "SecretController", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "WebController", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

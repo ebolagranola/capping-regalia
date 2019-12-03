@@ -55,7 +55,7 @@
 
                                                <h2 style="float: left">Faculty Table</h2>
 
-                                               <button style="float: right" onClick="location.href='@Url.Action("ExportFaculty", "Secret")'" type="button" class="btn text-white text-right bg-success">Export Faculty Table to Excel</button>
+                                               <button style="float: right" onClick="location.href='@Url.Action("ExportFaculty", "Web")'" type="button" class="btn text-white text-right bg-success">Export Faculty Table to Excel</button>
                                             </div>
 
                                         </div>
@@ -98,7 +98,7 @@
 
 
 
-                                                         <td><Button ID="btnDelete" type="button" onclick="location.href='@Url.Action("DeleteFaculty", "Secret", new {email = item.Email })'" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
+                                                         <td><Button ID="btnDelete" type="button" onclick="location.href='@Url.Action("DeleteFaculty", "Web", new {email = item.Email })'" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
 
 
 
@@ -131,10 +131,10 @@
 
                                                 <h2 style="float: left">Orders Table</h2>
                                                 
-                                                    <button style="float: right" padding="15px" onClick="location.href='@Url.Action("ExportOrders", "Secret")'" type="button" class="btn text-white text-right bg-success">Export Current Orders Table to Excel</button>
+                                                    <button style="float: right" padding="15px" onClick="location.href='@Url.Action("ExportOrders", "Web")'" type="button" class="btn text-white text-right bg-success">Export Current Orders Table to Excel</button>
                                                 
                                                     
-                                                        <button id="space" style="float: right" onClick="location.href='@Url.Action("ExportHistoricOrders", "Secret")'" type="button" class="btn text-white text-right bg-success">Export Historic Orders to Excel</button>
+                                                        <button id="space" style="float: right" onClick="location.href='@Url.Action("ExportHistoricOrders", "Web")'" type="button" class="btn text-white text-right bg-success">Export Historic Orders to Excel</button>
                                                   
 
                                             </div>
@@ -186,7 +186,7 @@
 
 
 
-                                                        <td><Button ID="btnDelete" type="button" onclick="location.href='@Url.Action("DeleteOrder", "Secret", new {id = item.OrderID })'" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
+                                                        <td><Button ID="btnDelete" type="button" onclick="location.href='@Url.Action("DeleteOrder", "Web", new {id = item.OrderID })'" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
 
 
 
@@ -252,7 +252,7 @@
            var r = prompt("You are about to delete the active orders table and send the data to the historic table. This is irreversible and should typically only be done after each graduation. If you wish to continue, type 'CONFIRM'");
             if (r == "CONFIRM") {
                 
-                window.location.replace("/Secret/WriteHistoric");
+                window.location.replace("/Web/WriteHistoric");
 
             }
             else {

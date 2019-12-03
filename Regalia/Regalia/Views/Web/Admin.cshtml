@@ -98,7 +98,7 @@
 
 
 
-                                                         <td><Button ID="btnDelete" type="button" onclick="location.href='@Url.Action("DeleteFaculty", "Web", new {email = item.Email })'" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
+                                                         <td><Button ID="btnDelete" type="button" onclick="ConfirmDeleteFaculty(@item.Email)" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
 
 
 
@@ -253,6 +253,25 @@
             if (r == "CONFIRM") {
                 
                 window.location.replace("/Web/WriteHistoric");
+
+            }
+            else {
+
+            }
+
+
+        }
+
+
+    </script>
+
+    <script>
+
+        function ConfirmDeleteFaculty(email) {
+           var r = confrim("You are about to delete the active faculty member and the order existing for them. Are you sure you would like to do this?");
+            if (r == true) {
+                
+                window.location.replace("/Web/DeleteFaculty/" + email);
 
             }
             else {

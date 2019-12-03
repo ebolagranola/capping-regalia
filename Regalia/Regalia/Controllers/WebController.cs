@@ -111,7 +111,7 @@ namespace Regalia.Controllers
 
             else {
 
-                return View("Index");
+                return (View("NotAdminRedirect"));
 
             }
 
@@ -192,7 +192,7 @@ namespace Regalia.Controllers
 
             else {
 
-                return View("Index");
+                return (View("NotAdminRedirect"));
 
             }
 
@@ -226,7 +226,7 @@ namespace Regalia.Controllers
 
                 else
                 {
-                    return (View("AdminRedirect"));
+                    return (View("NotAdminRedirect"));
 
 
                 }
@@ -235,7 +235,7 @@ namespace Regalia.Controllers
 
             else {
 
-                return View("Index");
+                return (View("NotAdminRedirect"));
 
             }
 
@@ -283,7 +283,7 @@ namespace Regalia.Controllers
 
             else {
 
-                return View("Index");
+                return (View("NotAdminRedirect"));
 
             }
 
@@ -306,7 +306,7 @@ namespace Regalia.Controllers
 
             else {
 
-                return View("Index");
+                 return (View("NotAdminRedirect"));
 
             }
 

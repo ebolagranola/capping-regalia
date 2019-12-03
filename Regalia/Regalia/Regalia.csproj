@@ -187,6 +187,7 @@
     <Content Include="Views\Web\AdminRedirect.cshtml" />
     <Content Include="Views\Web\FormComplete.cshtml" />
     <Content Include="Views\Web\CompleteRedirect.cshtml" />
+    <Content Include="Views\Web\NotAdminRedirect.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

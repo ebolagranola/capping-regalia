@@ -222,6 +222,8 @@
     <Content Include="Views\Secret\Test.cshtml" />
     <Content Include="Views\Secret\AddAdmin.cshtml" />
     <Content Include="Views\Secret\AdminRedirect.cshtml" />
+    <Content Include="Views\Secret\FormComplete.cshtml" />
+    <Content Include="Views\Secret\CompleteRedirect.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

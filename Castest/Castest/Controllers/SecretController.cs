@@ -28,7 +28,7 @@ namespace Castest.Controllers
 
         String connectionstring = "Data Source = 10.10.9.100; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
 
-        public void GetData(bool fridayCheckBox, bool saturdayCheckBox, String Name, String PhoneNumber, String Department, int Feet, int Inches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitutionState, String InstitutionCity)
+        public ActionResult GetData(bool fridayCheckBox, bool saturdayCheckBox, String Name, String PhoneNumber, String Department, int Feet, int Inches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitutionState, String InstitutionCity)
         {
 
             Debug.WriteLine(User.Identity.Name);
@@ -45,7 +45,6 @@ namespace Castest.Controllers
             Debug.WriteLine(InstitutionState);
             Debug.WriteLine(InstitutionCity);
 
-            //   SendEmail(User.Identity.Name, Name);
 
             String facultystring;
             String ordersstring;
@@ -89,27 +88,44 @@ namespace Castest.Controllers
 
             }
 
+
+            SendEmail(User.Identity.Name, Name, PhoneNumber, Department, Feet, Inches, Weight, CapSize, Degree, GrantingInstitution, InstitutionState, InstitutionCity);
+
+
+            return View("CompleteRedirect");
+
         }
 
 
         public ActionResult WriteHistoric()
         {
-            con.ConnectionString = connectionstring;
 
-            con.Open();
+            if (isAdmin())
+            {
+
+                con.ConnectionString = connectionstring;
+
+                con.Open();
 
 
-            SqlCommand writehistoric = new SqlCommand("INSERT INTO HistoricOrders SELECT * FROM Orders", con);
-            SqlCommand clearorders = new SqlCommand("TRUNCATE TABLE Orders", con);
+                SqlCommand writehistoric = new SqlCommand("INSERT INTO HistoricOrders SELECT * FROM Orders", con);
+                SqlCommand clearorders = new SqlCommand("TRUNCATE TABLE Orders", con);
 
 
-    
-            writehistoric.ExecuteScalar();
-            clearorders.ExecuteScalar();
 
-            con.Close();
+                writehistoric.ExecuteScalar();
+                clearorders.ExecuteScalar();
 
-            return View("AdminRedirect");
+                con.Close();
+
+                return View("AdminRedirect");
+            }
+
+            else {
+
+                return View("Index");
+
+            }
 
         }
 
@@ -171,51 +187,71 @@ namespace Castest.Controllers
         public ActionResult DeleteOrder(String id)
         {
 
-            con.ConnectionString = connectionstring;
-
-            con.Open();
-
-            SqlCommand deleteorder = new SqlCommand("DELETE FROM Orders WHERE OrderID = @id", con);
-
-            deleteorder.Parameters.AddWithValue("@id", id);
-
-
-            deleteorder.ExecuteScalar();
-
-            con.Close();
-
-            return (View("AdminRedirect"));
-
-        }
-
-        public ActionResult DeleteFaculty(String email)
-        {
-
-
-            if (email != User.Identity.Name)
+            if (isAdmin())
             {
 
                 con.ConnectionString = connectionstring;
 
                 con.Open();
 
-                SqlCommand deletefaculty = new SqlCommand("DELETE FROM Faculty WHERE Email = @email", con);
-               
+                SqlCommand deleteorder = new SqlCommand("DELETE FROM Orders WHERE OrderID = @id", con);
 
-                deletefaculty.Parameters.AddWithValue("@email", email);
+                deleteorder.Parameters.AddWithValue("@id", id);
 
-                deletefaculty.ExecuteScalar();
+
+                deleteorder.ExecuteScalar();
 
                 con.Close();
 
                 return (View("AdminRedirect"));
+            }
+
+            else {
+
+                return View("Index");
 
             }
 
-            else
-            {
-                return (View("AdminRedirect"));
+        }
 
+        public ActionResult DeleteFaculty(String email)
+        {
+
+            if (isAdmin())
+            {
+
+                if (email != User.Identity.Name)
+                {
+
+                    con.ConnectionString = connectionstring;
+
+                    con.Open();
+
+                    SqlCommand deletefaculty = new SqlCommand("DELETE FROM Faculty WHERE Email = @email", con);
+
+
+                    deletefaculty.Parameters.AddWithValue("@email", email);
+
+                    deletefaculty.ExecuteScalar();
+
+                    con.Close();
+
+                    return (View("AdminRedirect"));
+
+                }
+
+                else
+                {
+                    return (View("AdminRedirect"));
+
+
+                }
+
+            }
+
+            else {
+
+                return View("Index");
 
             }
 
@@ -224,36 +260,48 @@ namespace Castest.Controllers
         public ActionResult NewAdmin(String id)
         {
 
-            con.ConnectionString = connectionstring;
-
-            if (EmailAlreadyExists(id + "@marist.edu"))
+            if (isAdmin())
             {
 
-                con.Open();
+                con.ConnectionString = connectionstring;
 
-                SqlCommand makeadmin = new SqlCommand("UPDATE Faculty SET isAdmin = 1 WHERE Email = @email", con);
+                if (EmailAlreadyExists(id + "@marist.edu"))
+                {
 
-                makeadmin.Parameters.AddWithValue("@email", id + "@marist.edu");
+                    con.Open();
 
-                makeadmin.ExecuteScalar();
+                    SqlCommand makeadmin = new SqlCommand("UPDATE Faculty SET isAdmin = 1 WHERE Email = @email", con);
+
+                    makeadmin.Parameters.AddWithValue("@email", id + "@marist.edu");
+
+                    makeadmin.ExecuteScalar();
+                }
+
+                else
+                {
+
+                    con.Open();
+
+                    SqlCommand makenewadmin = new SqlCommand("INSERT INTO Faculty (Email, isAdmin) VALUES (@email, 1)", con);
+
+                    makenewadmin.Parameters.AddWithValue("@email", id + "@marist.edu");
+
+                    makenewadmin.ExecuteScalar();
+
+
+                }
+
+                con.Close();
+
+                return View("AdminRedirect");
+
             }
 
             else {
 
-                con.Open();
-
-                SqlCommand makenewadmin = new SqlCommand("INSERT INTO Faculty (Email, isAdmin) VALUES (@email, 1)", con);
-
-                makenewadmin.Parameters.AddWithValue("@email", id + "@marist.edu");
-
-                makenewadmin.ExecuteScalar();
-
+                return View("Index");
 
             }
-
-            con.Close();
-
-            return View("AdminRedirect");
 
         }
 
@@ -687,11 +735,14 @@ namespace Castest.Controllers
 
         }
 
-        public static void SendEmail(String email, String name)
+
+
+        public static void SendEmail(String email, String name, String PhoneNumber, String Department, int Feet, int Inches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitutionState, String InstitutionCity)
         {
             MailMessage mailMessage = new MailMessage("maristregalia@gmail.com", email);
-            mailMessage.Subject = "Your order on MaristRegalia.site";
-            mailMessage.Body = "Hey " + name + ", we have recived your order and put the information in our database";
+            mailMessage.Subject = "Your order on MaristRegalia.site"; 
+            mailMessage.IsBodyHtml = true;
+            mailMessage.Body = "<p>Dear " + name + ",</p> <p> Thank you for submitting your regalia order!  We have the following information listed for you:<br/> Phone Number: " + PhoneNumber + " <br/> Department: " + Department + " <br/> Height: " + Feet + "\' " + Inches + "\"<br/>Weight: " + Weight + "<br />Cap Size: " + CapSize + "<br />Degree: " + Degree + "<br />Graduation Institution: " + GrantingInstitution + "<br />Graduation City: " + InstitutionCity + ", " + InstitutionState + "</p><p>If any of the previous information listed is incorrect, please revisit <a href='http://regalia.it.marist.edu/Secret/Index'>https://regalia.it.marist.edu</a> to correct any errors.</p><p>Regards,</p><p>Marist Regalia Orders Team</p><p>&nbsp;</p>";
 
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
             smtpClient.Credentials = new System.Net.NetworkCredential()
@@ -918,7 +969,13 @@ namespace Castest.Controllers
 
         }
 
+        public ActionResult FormComplete() {
 
+            return View();
+
+
+
+        }
 
 
     }

@@ -110,7 +110,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="FacultyTable1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DatabaseTable" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Faculties" EntityType="Self.Faculty" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <AssociationSet Name="FK_Orders_Orders" Association="Self.FK_Orders_Orders">
@@ -123,7 +123,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FacultyStoreContainer" CdmEntityContainer="FacultyTable1">
+        <EntityContainerMapping StorageEntityContainer="FacultyStoreContainer" CdmEntityContainer="DatabaseTable">
           <EntitySetMapping Name="Faculties">
             <EntityTypeMapping TypeName="Faculty.Faculty">
               <MappingFragment StoreEntitySet="Faculty">

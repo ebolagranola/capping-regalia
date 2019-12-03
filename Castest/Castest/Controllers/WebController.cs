@@ -26,7 +26,17 @@ namespace Castest.Controllers
         SqlCommand generateordernum = new SqlCommand();
         SqlCommand findemail = new SqlCommand();
 
-        String connectionstring = "Data Source = 10.10.9.100; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
+        //  String connectionstring = "Data Source = 10.10.9.100; User ID = sa; Password = Passw0rd12; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False; Initial Catalog=Capping";
+
+        string connectionstring = System.IO.File.ReadAllText(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory.ToString(),@"ConnectionString.txt"));
+
+        public void Test() {
+
+            Debug.WriteLine(connectionstring);
+
+
+        }
+
 
         public ActionResult GetData(bool fridayCheckBox, bool saturdayCheckBox, String Name, String PhoneNumber, String Department, int Feet, int Inches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitutionState, String InstitutionCity)
         {
@@ -311,7 +321,7 @@ namespace Castest.Controllers
             if (isAdmin() == true)
             {
 
-                FacultyTable1 faculty = new FacultyTable1();
+                DatabaseTable faculty = new DatabaseTable();
 
                 ViewBag.faculty = faculty.Faculties.ToList();
                 ViewBag.orders = faculty.Orders.ToList();
@@ -417,19 +427,6 @@ namespace Castest.Controllers
 
 
             }
-
-          //  con.Close();
-
-            if (con.State.ToString() == "Open")
-            {
-                Debug.WriteLine("Open");
-            }
-            else
-            {
-                Debug.WriteLine("Closed");
-            }
-
-
 
             return View();
 

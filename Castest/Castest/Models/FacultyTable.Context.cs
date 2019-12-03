@@ -13,10 +13,10 @@ namespace Castest.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FacultyTable1 : DbContext
+    public partial class DatabaseTable : DbContext
     {
-        public FacultyTable1()
-            : base("name=FacultyTable1")
+        public DatabaseTable()
+            : base("name=DatabaseTable")
         {
         }
     

@@ -108,39 +108,22 @@
     <Content Include="Global.asax" />
     <Content Include="Models\FacultyTable.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FacultyTable.edmx</DependentUpon>
+      <DependentUpon>DatabaseTables.edmx</DependentUpon>
       <LastGenOutput>FacultyTable.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\FacultyTable.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FacultyTable.edmx</DependentUpon>
+      <DependentUpon>DatabaseTables.edmx</DependentUpon>
       <LastGenOutput>FacultyTable.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\DatabaseTables.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>DatabaseTables.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\FacultyTable.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FacultyTable.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\FacultyTable.edmx.diagram">
-      <DependentUpon>FacultyTable.edmx</DependentUpon>
+    <Content Include="Models\DatabaseTables.edmx.diagram">
+      <DependentUpon>DatabaseTables.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -152,6 +135,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="ConnectionString.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -176,28 +160,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FacultyTable.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FacultyTable.Designer.cs">
+    <Compile Include="Models\DatabaseTables.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FacultyTable.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\InstitutionCampus.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>DatabaseTables.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
       <DependentUpon>FacultyTable.tt</DependentUpon>

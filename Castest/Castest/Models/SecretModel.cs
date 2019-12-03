@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Castest.Models
+namespace Regalia.Models
 {
     public class SecretModel
     {

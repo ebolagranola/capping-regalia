@@ -7,7 +7,7 @@ using System.Web.Routing;
 
 
 
-namespace Castest
+namespace Regalia
 {
 
     

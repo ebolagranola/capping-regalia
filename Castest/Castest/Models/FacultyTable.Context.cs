@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Castest.Models
+namespace Regalia.Models
 {
     using System;
     using System.Data.Entity;

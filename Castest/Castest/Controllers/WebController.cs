@@ -10,9 +10,9 @@ using System.Diagnostics;
 using System.Data;
 using System.Configuration;
 using System.Net.Mail;
-using Castest.Models;
+using Regalia.Models;
 
-namespace Castest.Controllers
+namespace Regalia.Controllers
 {
 
     [Authorize]

@@ -1,11 +1,7 @@
 ﻿<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 @model Regalia.Models.SecretModel
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" >
-</head>
 <style media="screen">
-
     .card-columns {
         column-count: 1;
     }
@@ -19,411 +15,336 @@
     }
 </style>
 
+<!--This is the primary form page-->
 
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Does this work?</title>
+    </head>
 
-<body onload="setallvalues()">
-
-
-    <div class="container" style="padding-top: 25px;">
-        <div class="row">
-            <div class="mx-auto col-lg-10 col-sm-*">
-                <div class="card-columns">
-                    <div class="card-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="container col-10">
-                                    <div style="float: right">
-                                        Not @ViewBag.ID? <a class="logout-link" href="https://auth.it.marist.edu/idp/profile/Logout"> Log Out</a>
-
-                                    </div>
-                                    <br>
-                                    <div class="card">
-
-                                        <div class="card-body">
-
-
-
-                                            <form action="GetData" method="post">
-
-                                                <p>
-                                                    <span class="font-weight-bold" style="font-size: 22px;">1. </span>
-                                                    <span class="font-weight-bold">Which Ceremony are you attending? </span>
-                                                    <span class="text-danger"> *</span>
-                                                    <span>(Check one or both):</span>
-                                                </p>
-                                                <div class="form-check">
-
-                                                    <input type="checkbox" class="form-check-input" name="fridayCheckBox" id="fridayCheckBox" value="true">
-                                                    <input type="hidden" value="false" name="fridayCheckBox" />
-                                                    <label class="form-check-label" for="exampleCheck1">Friday Evening (Adult & Masters)</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" name="saturdayCheckBox" id="saturdayCheckBox" value="true">
-                                                    <input type="hidden" value="false" name="saturdayCheckBox" />
-                                                    <label class="form-check-label" for="exampleCheck1">Saturday (Traditional Bachelors)</label>
-                                                </div>
-                                                <hr>
-                                                <p>
-                                                    <span class="font-weight-bold" style="font-size: 22px;">2. </span>
-                                                    <span class="font-weight-bold">Please Enter the Following Information:</span>
-                                                </p>
-
-
-
-
-
-                                                <label for="Name" class="font-weight-bold">
-                                                    <span>Name</span>
-                                                    <span class="text-danger"> *</span>
-                                                </label>
-
-                                                <input required class="form-control" type="text" name="Name" placeholder="Name" value="@ViewBag.Name" maxlength="50" />
-                                                <br>
-
-
-                                                <label for="PhoneNumber" class="font-weight-bold">
-                                                    <span>Phone Number</span>
-                                                    <span class="text-danger"> *</span>
-                                                </label>
-
-
-
-                                                <input required class="form-control" type="tel" name="PhoneNumber" placeholder="Phone Number" value="@ViewBag.PhoneNumber" maxlength="15" minlength="10" />
-                                                <br>
-                                                <label for="Department" class="font-weight-bold">
-                                                    <span>Department</span>
-                                                    <span class="text-danger"> *</span>
-                                                </label>
-
-                                                <select required name="Department" id="Department" class="form-control" value="@ViewBag.Department">
-                                                    <option selected disabled value="">Department</option>
-                                                    <option value="Academic Affairs">Academic Affairs</option>
-                                                    <option value="Academic Enhancement">Academic Enhancement</option>
-                                                    <option value="Academic Grants">Academic Grants</option>
-                                                    <option value="Accommodations and Accessibility">Accommodations &amp; Accessibility</option>
-                                                    <option value="Advancement Office">Advancement Office</option>
-                                                    <option value="Advancement Services">Advancement Services</option>
-                                                    <option value="Advising and Academic Services">Advising &amp; Academic Services</option>
-                                                    <option value="Annual Fund Office">Annual Fund Office</option>
-                                                    <option value="Athletics">Athletics</option>
-                                                    <option value="Budget, Planning and Analysis">Budget, Planning &amp; Analysis</option>
-                                                    <option value="Business Office">Business Office</option>
-                                                    <option value="CFO">CFO</option>
-                                                    <option value="Campus Ministry">Campus Ministry</option>
-                                                    <option value="Center for Career Services">Center for Career Services</option>
-                                                    <option value="Center for Multicultural Affairs">Center for Multicultural Affairs</option>
-                                                    <option value="College Activities">College Activities</option>
-                                                    <option value="College Marketing and Communications">College Marketing &amp; Communications</option>
-                                                    <option value="Computer Store">Computer Store</option>
-                                                    <option value="Counseling Center">Counseling Center</option>
-                                                    <option value="Digital Publication Center">Digital Publication Center</option>
-                                                    <option value="Dining Services">Dining Services</option>
-                                                    <option value="Enrollment Management">Enrollment Management</option>
-                                                    <option value="Executive Affairs">Executive Affairs</option>
-                                                    <option value="First Year Programs Leadership Dev">First Year Programs Leadership Dev</option>
-                                                    <option value="Grounds">Grounds</option>
-                                                    <option value="Health Services">Health Services</option>
-                                                    <option value="Housing and Residential Life">Housing &amp; Residential Life</option>
-                                                    <option value="Human Resources">Human Resources</option>
-                                                    <option value="Information Technology">Information Technology</option>
-                                                    <option value="Institutional Research and Planning">Institutional Research &amp; Planning</option>
-                                                    <option value="International Student Services">International Student Services</option>
-                                                    <option value="Learning Center">Learning Center</option>
-                                                    <option value="Liberty Partnership">Liberty Partnership</option>
-                                                    <option value="Library">Library</option>
-                                                    <option value="MIPO">MIPO</option>
-                                                    <option value="Marist International Programs">Marist International Programs</option>
-                                                    <option value="Mechanical Services">Mechanical Services</option>
-                                                    <option value="Media Center">Media Center</option>
-                                                    <option value="NYC Executive Center">NYC Executive Center</option>
-                                                    <option value="Payroll">Payroll</option>
-                                                    <option value="Physical Plant">Physical Plant</option>
-                                                    <option value="Physician Assistant Program">Physician Assistant Program</option>
-                                                    <option value="Postal Services">Postal Services</option>
-                                                    <option value="President's Office">President's Office</option>
-                                                    <option value="Purchasing">Purchasing</option>
-                                                    <option value="Registrar's Office">Registrar's Office</option>
-                                                    <option value="School Social and Behavioral Sciences">School Social &amp; Behavioral Sciences</option>
-                                                    <option value="School of Communication and the Arts">School of Communication &amp; the Arts</option>
-                                                    <option value="School of Computer Science and Math">School of Computer Science &amp; Math</option>
-                                                    <option value="School of Liberal Arts">School of Liberal Arts</option>
-                                                    <option value="School of Management">School of Management</option>
-                                                    <option value="School of Professional Programs">School of Professional Programs</option>
-                                                    <option value="School of Science">School of Science</option>
-                                                    <option value="Security">Security</option>
-                                                    <option value="Student Affairs">Student Affairs</option>
-                                                    <option value="Student Financial Services">Student Financial Services</option>
-                                                    <option value="Upward Bound">Upward Bound</option>
-                                                    <option value="Other">Other</option>
-                                                </select>
-
-                                                <br>
-                                                <label for="Height" class="font-weight-bold">
-                                                    <span>Height</span>
-                                                    <span class="text-danger"> *</span>
-                                                </label>
-
-                                                <div style="display:block;">
-                                                    <select required name="Feet" id="Feet" class="form-control">
-                                                        <option selected disabled value="">Feet</option>
-                                                        <option value="3">3'</option>
-                                                        <option value="4">4'</option>
-                                                        <option value="5">5'</option>
-                                                        <option value="6">6'</option>
-                                                        <option value="7">7'</option>
-
-                                                    </select>
-
+    <body onload="setallvalues()">
+        <div class="container" style="padding-top: 25px;">
+            <div class="row">
+                <div class="mx-auto col-lg-10 col-sm-*">
+                    <div class="card-columns">
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="container col-10">
+                                        <div style="float: right">
+                                            Not @ViewBag.ID? <a class="logout-link" href="https://auth.it.marist.edu/idp/profile/Logout"> Log Out</a>
+                                        </div>
+                                        <br>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <form action="GetData" method="post">
+                                                    <p>
+                                                        <span class="font-weight-bold" style="font-size: 22px;">1. </span>
+                                                        <span class="font-weight-bold">Which Ceremony are you attending? </span>
+                                                        <span class="text-danger"> *</span>
+                                                        <span>(Check one or both):</span>
+                                                    </p>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" name="fridayCheckBox" id="fridayCheckBox" value="true">
+                                                        <input type="hidden" value="false" name="fridayCheckBox" />
+                                                        <label class="form-check-label" for="exampleCheck1">Friday Evening (Adult & Masters)</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" name="saturdayCheckBox" id="saturdayCheckBox" value="true">
+                                                        <input type="hidden" value="false" name="saturdayCheckBox" />
+                                                        <label class="form-check-label" for="exampleCheck1">Saturday (Traditional Bachelors)</label>
+                                                    </div>
+                                                    <hr>
+                                                    <p>
+                                                        <span class="font-weight-bold" style="font-size: 22px;">2. </span>
+                                                        <span class="font-weight-bold">Please Enter the Following Information:</span>
+                                                    </p>
+                                                    <label for="Name" class="font-weight-bold">
+                                                        <span>Name</span>
+                                                        <span class="text-danger"> *</span>
+                                                    </label>
+                                                    <input required class="form-control" type="text" name="Name" placeholder="Name" value="@ViewBag.Name" maxlength="50" />
                                                     <br>
-
-                                                    <select required name="Inches" id="Inches" class="form-control">
-                                                        <option selected disabled value="">Inches</option>
-                                                        <option value="0">0"</option>
-                                                        <option value="1">1"</option>
-                                                        <option value="2">2"</option>
-                                                        <option value="3">3"</option>
-                                                        <option value="4">4"</option>
-                                                        <option value="5">5"</option>
-                                                        <option value="6">6"</option>
-                                                        <option value="7">7"</option>
-                                                        <option value="8">8"</option>
-                                                        <option value="9">9"</option>
-                                                        <option value="10">10"</option>
-                                                        <option value="11">11"</option>
+                                                    <label for="PhoneNumber" class="font-weight-bold">
+                                                        <span>Phone Number</span>
+                                                        <span class="text-danger"> *</span>
+                                                    </label>
+                                                    <input required class="form-control" type="tel" name="PhoneNumber" placeholder="Phone Number" value="@ViewBag.PhoneNumber" maxlength="15" minlength="10" />
+                                                    <br>
+                                                    <label for="Department" class="font-weight-bold">
+                                                        <span>Department</span>
+                                                        <span class="text-danger"> *</span>
+                                                    </label>
+                                                    <select required name="Department" id="Department" class="form-control" value="@ViewBag.Department">
+                                                        <option selected disabled value="">Department</option>
+                                                        <option value="Academic Affairs">Academic Affairs</option>
+                                                        <option value="Academic Enhancement">Academic Enhancement</option>
+                                                        <option value="Academic Grants">Academic Grants</option>
+                                                        <option value="Accommodations and Accessibility">Accommodations &amp; Accessibility</option>
+                                                        <option value="Advancement Office">Advancement Office</option>
+                                                        <option value="Advancement Services">Advancement Services</option>
+                                                        <option value="Advising and Academic Services">Advising &amp; Academic Services</option>
+                                                        <option value="Annual Fund Office">Annual Fund Office</option>
+                                                        <option value="Athletics">Athletics</option>
+                                                        <option value="Budget, Planning and Analysis">Budget, Planning &amp; Analysis</option>
+                                                        <option value="Business Office">Business Office</option>
+                                                        <option value="CFO">CFO</option>
+                                                        <option value="Campus Ministry">Campus Ministry</option>
+                                                        <option value="Center for Career Services">Center for Career Services</option>
+                                                        <option value="Center for Multicultural Affairs">Center for Multicultural Affairs</option>
+                                                        <option value="College Activities">College Activities</option>
+                                                        <option value="College Marketing and Communications">College Marketing &amp; Communications</option>
+                                                        <option value="Computer Store">Computer Store</option>
+                                                        <option value="Counseling Center">Counseling Center</option>
+                                                        <option value="Digital Publication Center">Digital Publication Center</option>
+                                                        <option value="Dining Services">Dining Services</option>
+                                                        <option value="Enrollment Management">Enrollment Management</option>
+                                                        <option value="Executive Affairs">Executive Affairs</option>
+                                                        <option value="First Year Programs Leadership Dev">First Year Programs Leadership Dev</option>
+                                                        <option value="Grounds">Grounds</option>
+                                                        <option value="Health Services">Health Services</option>
+                                                        <option value="Housing and Residential Life">Housing &amp; Residential Life</option>
+                                                        <option value="Human Resources">Human Resources</option>
+                                                        <option value="Information Technology">Information Technology</option>
+                                                        <option value="Institutional Research and Planning">Institutional Research &amp; Planning</option>
+                                                        <option value="International Student Services">International Student Services</option>
+                                                        <option value="Learning Center">Learning Center</option>
+                                                        <option value="Liberty Partnership">Liberty Partnership</option>
+                                                        <option value="Library">Library</option>
+                                                        <option value="MIPO">MIPO</option>
+                                                        <option value="Marist International Programs">Marist International Programs</option>
+                                                        <option value="Mechanical Services">Mechanical Services</option>
+                                                        <option value="Media Center">Media Center</option>
+                                                        <option value="NYC Executive Center">NYC Executive Center</option>
+                                                        <option value="Payroll">Payroll</option>
+                                                        <option value="Physical Plant">Physical Plant</option>
+                                                        <option value="Physician Assistant Program">Physician Assistant Program</option>
+                                                        <option value="Postal Services">Postal Services</option>
+                                                        <option value="President's Office">President's Office</option>
+                                                        <option value="Purchasing">Purchasing</option>
+                                                        <option value="Registrar's Office">Registrar's Office</option>
+                                                        <option value="School Social and Behavioral Sciences">School Social &amp; Behavioral Sciences</option>
+                                                        <option value="School of Communication and the Arts">School of Communication &amp; the Arts</option>
+                                                        <option value="School of Computer Science and Math">School of Computer Science &amp; Math</option>
+                                                        <option value="School of Liberal Arts">School of Liberal Arts</option>
+                                                        <option value="School of Management">School of Management</option>
+                                                        <option value="School of Professional Programs">School of Professional Programs</option>
+                                                        <option value="School of Science">School of Science</option>
+                                                        <option value="Security">Security</option>
+                                                        <option value="Student Affairs">Student Affairs</option>
+                                                        <option value="Student Financial Services">Student Financial Services</option>
+                                                        <option value="Upward Bound">Upward Bound</option>
+                                                        <option value="Other">Other</option>
                                                     </select>
-
-                                                </div>
-
-                                                <br>
-                                                <label for="Weight" class="font-weight-bold">
-                                                    <span>Weight</span>
-                                                    <span class="text-danger"> *</span>
-                                                </label>
-
-                                                <input required class="form-control" type="text" name="Weight" placeholder="Weight" value="@ViewBag.Weight" pattern="\d*" maxlength="3" />
-
-                                                <br>
-                                                <label for="Cap Size" class="font-weight-bold">
-                                                    <span>Cap Size</span>
-                                                    <span class="text-danger"> *</span>
-                                                </label>
-
-                                                <select required name="CapSize" id="CapSize" class="form-control">
-                                                    <option selected disabled value=""> Cap Size  &ensp;&nbsp;&emsp; Head Size </option>
-
-                                                    <option value="5 7/8">5 ⅞   &ensp;&emsp;&emsp;&emsp; 18 ½ - 18 ⅝</option>
-                                                    <option value="6">6         &nbsp;&nbsp;&emsp;&emsp;&nbsp;&emsp;&emsp; 18 ¾ - 19</option>
-                                                    <option value="6 1/8">6 ⅛   &ensp;&emsp;&emsp;&emsp; 19 ⅛ - 19 ⅜  </option>
-                                                    <option value="6 1/4">6 ¼   &ensp;&emsp;&emsp;&emsp; 19 ½ - 19 ¾</option>
-                                                    <option value="6 3/8">6 ⅜   &ensp;&emsp;&emsp;&emsp; 19 ⅞ - 20 ⅛</option>
-                                                    <option value="6 1/2">6 ½   &ensp;&emsp;&emsp;&emsp; 20 ¼ - 20 ½</option>
-                                                    <option value="6 5/8">6 ⅝   &ensp;&emsp;&emsp;&emsp; 20 ⅝ - 20 ⅞</option>
-                                                    <option value="6 3/4">6 ¾   &ensp;&emsp;&emsp;&emsp; 21   - 21 ⅜</option>
-                                                    <option value="6 7/8">6 ⅞   &ensp;&emsp;&emsp;&emsp; 21 ½ - 21 ¾</option>
-                                                    <option value="7">7         &nbsp;&nbsp;&emsp;&emsp;&nbsp;&emsp;&emsp; 21 ⅞ - 22 ⅛</option>
-                                                    <option value="7 1/8">7 ⅛   &ensp;&emsp;&emsp;&emsp; 22 ¼ - 22 ½</option>
-                                                    <option value="7 1/4">7 ¼   &ensp;&emsp;&emsp;&emsp; 22 ⅝ - 22 ⅞</option>
-                                                    <option value="7 3/8">7 ⅜   &ensp;&emsp;&emsp;&emsp; 23 - 23 ¼</option>
-                                                    <option value="7 1/2">7 ½   &ensp;&emsp;&emsp;&emsp; 23 ⅜ - 23 ⅝</option>
-                                                    <option value="7 5/8">7 ⅝   &ensp;&emsp;&emsp;&emsp; 23 ¾ - 24 ⅛</option>
-                                                    <option value="7 3/4">7 ¾   &ensp;&emsp;&emsp;&emsp; 24 ¼ - 24 ½</option>
-                                                    <option value="7 7/8">7 ⅞   &ensp;&emsp;&emsp;&emsp; 24 ⅝ - 24 ⅞</option>
-                                                    <option value="8">    8      &nbsp;&nbsp;&emsp;&emsp;&nbsp;&emsp;&emsp; 25 - 25 ¼</option>
-                                                </select>
-
-
-
-                                                <br>
-
-                                                <label for="Degree" class="font-weight-bold">
-                                                    <span>Degree</span>
-                                                    <span class="text-danger"> *</span>
-                                                </label>
-
-
-
-
-                                                <select required name="Degree" id="Degree" class="form-control">
-                                                    <option selected disabled value="">Degree</option>
-                                                    <option value="Associate Degree">Associate Degree</option>
-                                                    <option value="Bachelors Degree">Bachelor's Degree</option>
-                                                    <option value="Masters Degree">Master's Degree</option>
-                                                    <option value="Doctoral Degree">Doctoral Degree</option>
-                                                </select>
-
-                                                <br>
-                                                <label for="GrantingInstitution" class="font-weight-bold">
-                                                    <span>Granting Institution</span>
-                                                    <span class="text-danger"> *</span>
-                                                </label>
-
-                                                <input required class="form-control" type="text" name="GrantingInstitution" placeholder="University Name" value="@ViewBag.University" maxlength="50" />
-
-                                                <br>
-
-                                                <label for="InstitutionState" class="font-weight-bold">
-                                                    <span>Institution State</span>
-                                                    <span class="text-danger"> *</span>
-                                                </label>
-
-                                                <select required name="InstitutionState" id="InstitutionState" class="form-control">
-                                                    <option selected disabled value="">State</option>
-                                                    <option value="AL">Alabama</option>
-                                                    <option value="AK">Alaska</option>
-                                                    <option value="AZ">Arizona</option>
-                                                    <option value="AR">Arkansas</option>
-                                                    <option value="CA">California</option>
-                                                    <option value="CO">Colorado</option>
-                                                    <option value="CT">Connecticut</option>
-                                                    <option value="DE">Delaware</option>
-                                                    <option value="DC">District Of Columbia</option>
-                                                    <option value="FL">Florida</option>
-                                                    <option value="GA">Georgia</option>
-                                                    <option value="HI">Hawaii</option>
-                                                    <option value="ID">Idaho</option>
-                                                    <option value="IL">Illinois</option>
-                                                    <option value="IN">Indiana</option>
-                                                    <option value="IA">Iowa</option>
-                                                    <option value="KS">Kansas</option>
-                                                    <option value="KY">Kentucky</option>
-                                                    <option value="LA">Louisiana</option>
-                                                    <option value="ME">Maine</option>
-                                                    <option value="MD">Maryland</option>
-                                                    <option value="MA">Massachusetts</option>
-                                                    <option value="MI">Michigan</option>
-                                                    <option value="MN">Minnesota</option>
-                                                    <option value="MS">Mississippi</option>
-                                                    <option value="MO">Missouri</option>
-                                                    <option value="MT">Montana</option>
-                                                    <option value="NE">Nebraska</option>
-                                                    <option value="NV">Nevada</option>
-                                                    <option value="NH">New Hampshire</option>
-                                                    <option value="NJ">New Jersey</option>
-                                                    <option value="NM">New Mexico</option>
-                                                    <option value="NY">New York</option>
-                                                    <option value="NC">North Carolina</option>
-                                                    <option value="ND">North Dakota</option>
-                                                    <option value="OH">Ohio</option>
-                                                    <option value="OK">Oklahoma</option>
-                                                    <option value="OR">Oregon</option>
-                                                    <option value="PA">Pennsylvania</option>
-                                                    <option value="RI">Rhode Island</option>
-                                                    <option value="SC">South Carolina</option>
-                                                    <option value="SD">South Dakota</option>
-                                                    <option value="TN">Tennessee</option>
-                                                    <option value="TX">Texas</option>
-                                                    <option value="UT">Utah</option>
-                                                    <option value="VT">Vermont</option>
-                                                    <option value="VA">Virginia</option>
-                                                    <option value="WA">Washington</option>
-                                                    <option value="WV">West Virginia</option>
-                                                    <option value="WI">Wisconsin</option>
-                                                    <option value="WY">Wyoming</option>
-
-
-                                                </select>
-
-
-
-                                                <br>
-                                                <label for="InstitutionCity" class="font-weight-bold">
-                                                    <span>Institution City</span>
-                                                    <span class="text-danger"> *</span>
-                                                </label>
-
-                                                <input required autocomplete="off" class="form-control" type="text" name="InstitutionCity" value="@ViewBag.City" placeholder="University City" maxlength="50" />
-
-
-
-                                                <br>
-
-
-
-
-
-                                                <div class="text-right">
-                                                    <input type="submit" value="Submit" class="btn text-white text-right" style="background-color: #006e7a;" />
-                                                </div>
-
-
-
-
-
-
-
-
-
-                                            </form>
-
-
-                                            <script>
-
-
-                                            function setallvalues() {
-
-                                                DegreePopulate('Degree', '@ViewBag.Degree');
-                                                DepartmentPopulate('Department', '@ViewBag.Department');
-                                                HeightFeetPopulate('Feet', '@ViewBag.Feet');
-                                                HeightInchesPopulate('Inches', '@ViewBag.Inches');
-                                                CapSizePopulate('CapSize', '@ViewBag.CapSize');
-                                                StatePopulate('InstitutionState', '@ViewBag.State');
-
-
-                                            }
-
-
-
-                                            function DepartmentPopulate(id, value) {
-
-                                                let element = document.getElementById(id);
-                                                element.value = value;
-
-                                            }
-
-                                            function HeightFeetPopulate(id, value) {
-
-                                                let element = document.getElementById(id);
-                                                element.value = value;
-
-                                            }
-
-                                            function HeightInchesPopulate(id, value) {
-
-                                                let element = document.getElementById(id);
-                                                element.value = value;
-
-                                            }
-
-                                            function CapSizePopulate(id, value) {
-
-                                                let element = document.getElementById(id);
-                                                element.value = value;
-
-                                            }
-
-                                            function DegreePopulate(id, value) {
-
-                                                let element = document.getElementById(id);
-                                                element.value = value;
-
-                                            }
-
-                                            function StatePopulate(id, value) {
-
-
-
-
-
-                                                let element = document.getElementById(id);
-                                                element.value = value;
-
-                                            }
-
-                                            </script>
-
-
-
-
+                                                    <br>
+                                                    <label for="Height" class="font-weight-bold">
+                                                        <span>Height</span>
+                                                        <span class="text-danger"> *</span>
+                                                    </label>
+                                                    <div style="display:block;">
+                                                        <select required name="Feet" id="Feet" class="form-control">
+                                                            <option selected disabled value="">Feet</option>
+                                                            <option value="3">3'</option>
+                                                            <option value="4">4'</option>
+                                                            <option value="5">5'</option>
+                                                            <option value="6">6'</option>
+                                                            <option value="7">7'</option>
+                                                        </select>
+                                                        <br>
+                                                        <select required name="Inches" id="Inches" class="form-control">
+                                                            <option selected disabled value="">Inches</option>
+                                                            <option value="0">0"</option>
+                                                            <option value="1">1"</option>
+                                                            <option value="2">2"</option>
+                                                            <option value="3">3"</option>
+                                                            <option value="4">4"</option>
+                                                            <option value="5">5"</option>
+                                                            <option value="6">6"</option>
+                                                            <option value="7">7"</option>
+                                                            <option value="8">8"</option>
+                                                            <option value="9">9"</option>
+                                                            <option value="10">10"</option>
+                                                            <option value="11">11"</option>
+                                                        </select>
+                                                    </div>
+                                                    <br>
+                                                    <label for="Weight" class="font-weight-bold">
+                                                        <span>Weight</span>
+                                                        <span class="text-danger"> *</span>
+                                                    </label>
+                                                    <input required class="form-control" type="text" name="Weight" placeholder="Weight" value="@ViewBag.Weight" pattern="\d*" maxlength="3" />
+                                                    <br>
+                                                    <label for="Cap Size" class="font-weight-bold">
+                                                        <span>Cap Size</span>
+                                                        <span class="text-danger"> *</span>
+                                                    </label>
+                                                    <select required name="CapSize" id="CapSize" class="form-control">
+                                                        <option selected disabled value=""> Cap Size  &ensp;&nbsp;&emsp; Head Size </option>
+                                                        <option value="5 7/8">5 ⅞   &ensp;&emsp;&emsp;&emsp; 18 ½ - 18 ⅝</option>
+                                                        <option value="6">6         &nbsp;&nbsp;&emsp;&emsp;&nbsp;&emsp;&emsp; 18 ¾ - 19</option>
+                                                        <option value="6 1/8">6 ⅛   &ensp;&emsp;&emsp;&emsp; 19 ⅛ - 19 ⅜  </option>
+                                                        <option value="6 1/4">6 ¼   &ensp;&emsp;&emsp;&emsp; 19 ½ - 19 ¾</option>
+                                                        <option value="6 3/8">6 ⅜   &ensp;&emsp;&emsp;&emsp; 19 ⅞ - 20 ⅛</option>
+                                                        <option value="6 1/2">6 ½   &ensp;&emsp;&emsp;&emsp; 20 ¼ - 20 ½</option>
+                                                        <option value="6 5/8">6 ⅝   &ensp;&emsp;&emsp;&emsp; 20 ⅝ - 20 ⅞</option>
+                                                        <option value="6 3/4">6 ¾   &ensp;&emsp;&emsp;&emsp; 21   - 21 ⅜</option>
+                                                        <option value="6 7/8">6 ⅞   &ensp;&emsp;&emsp;&emsp; 21 ½ - 21 ¾</option>
+                                                        <option value="7">7         &nbsp;&nbsp;&emsp;&emsp;&nbsp;&emsp;&emsp; 21 ⅞ - 22 ⅛</option>
+                                                        <option value="7 1/8">7 ⅛   &ensp;&emsp;&emsp;&emsp; 22 ¼ - 22 ½</option>
+                                                        <option value="7 1/4">7 ¼   &ensp;&emsp;&emsp;&emsp; 22 ⅝ - 22 ⅞</option>
+                                                        <option value="7 3/8">7 ⅜   &ensp;&emsp;&emsp;&emsp; 23 - 23 ¼</option>
+                                                        <option value="7 1/2">7 ½   &ensp;&emsp;&emsp;&emsp; 23 ⅜ - 23 ⅝</option>
+                                                        <option value="7 5/8">7 ⅝   &ensp;&emsp;&emsp;&emsp; 23 ¾ - 24 ⅛</option>
+                                                        <option value="7 3/4">7 ¾   &ensp;&emsp;&emsp;&emsp; 24 ¼ - 24 ½</option>
+                                                        <option value="7 7/8">7 ⅞   &ensp;&emsp;&emsp;&emsp; 24 ⅝ - 24 ⅞</option>
+                                                        <option value="8">    8      &nbsp;&nbsp;&emsp;&emsp;&nbsp;&emsp;&emsp; 25 - 25 ¼</option>
+                                                    </select>
+                                                    <br>
+                                                    <label for="Degree" class="font-weight-bold">
+                                                        <span>Degree</span>
+                                                        <span class="text-danger"> *</span>
+                                                    </label>
+                                                    <select required name="Degree" id="Degree" class="form-control">
+                                                        <option selected disabled value="">Degree</option>
+                                                        <option value="Associate Degree">Associate Degree</option>
+                                                        <option value="Bachelors Degree">Bachelor's Degree</option>
+                                                        <option value="Masters Degree">Master's Degree</option>
+                                                        <option value="Doctoral Degree">Doctoral Degree</option>
+                                                    </select>
+                                                    <br>
+                                                    <label for="GrantingInstitution" class="font-weight-bold">
+                                                        <span>Granting Institution</span>
+                                                        <span class="text-danger"> *</span>
+                                                    </label>
+                                                    <input required class="form-control" type="text" name="GrantingInstitution" placeholder="University Name" value="@ViewBag.University" maxlength="50" />
+                                                    <br>
+                                                    <label for="InstitutionState" class="font-weight-bold">
+                                                        <span>Institution State</span>
+                                                        <span class="text-danger"> *</span>
+                                                    </label>
+                                                    <select required name="InstitutionState" id="InstitutionState" class="form-control">
+                                                        <option selected disabled value="">State</option>
+                                                        <option value="AL">Alabama</option>
+                                                        <option value="AK">Alaska</option>
+                                                        <option value="AZ">Arizona</option>
+                                                        <option value="AR">Arkansas</option>
+                                                        <option value="CA">California</option>
+                                                        <option value="CO">Colorado</option>
+                                                        <option value="CT">Connecticut</option>
+                                                        <option value="DE">Delaware</option>
+                                                        <option value="DC">District Of Columbia</option>
+                                                        <option value="FL">Florida</option>
+                                                        <option value="GA">Georgia</option>
+                                                        <option value="HI">Hawaii</option>
+                                                        <option value="ID">Idaho</option>
+                                                        <option value="IL">Illinois</option>
+                                                        <option value="IN">Indiana</option>
+                                                        <option value="IA">Iowa</option>
+                                                        <option value="KS">Kansas</option>
+                                                        <option value="KY">Kentucky</option>
+                                                        <option value="LA">Louisiana</option>
+                                                        <option value="ME">Maine</option>
+                                                        <option value="MD">Maryland</option>
+                                                        <option value="MA">Massachusetts</option>
+                                                        <option value="MI">Michigan</option>
+                                                        <option value="MN">Minnesota</option>
+                                                        <option value="MS">Mississippi</option>
+                                                        <option value="MO">Missouri</option>
+                                                        <option value="MT">Montana</option>
+                                                        <option value="NE">Nebraska</option>
+                                                        <option value="NV">Nevada</option>
+                                                        <option value="NH">New Hampshire</option>
+                                                        <option value="NJ">New Jersey</option>
+                                                        <option value="NM">New Mexico</option>
+                                                        <option value="NY">New York</option>
+                                                        <option value="NC">North Carolina</option>
+                                                        <option value="ND">North Dakota</option>
+                                                        <option value="OH">Ohio</option>
+                                                        <option value="OK">Oklahoma</option>
+                                                        <option value="OR">Oregon</option>
+                                                        <option value="PA">Pennsylvania</option>
+                                                        <option value="RI">Rhode Island</option>
+                                                        <option value="SC">South Carolina</option>
+                                                        <option value="SD">South Dakota</option>
+                                                        <option value="TN">Tennessee</option>
+                                                        <option value="TX">Texas</option>
+                                                        <option value="UT">Utah</option>
+                                                        <option value="VT">Vermont</option>
+                                                        <option value="VA">Virginia</option>
+                                                        <option value="WA">Washington</option>
+                                                        <option value="WV">West Virginia</option>
+                                                        <option value="WI">Wisconsin</option>
+                                                        <option value="WY">Wyoming</option>
+                                                    </select>
+                                                    <br>
+                                                    <label for="InstitutionCity" class="font-weight-bold">
+                                                        <span>Institution City</span>
+                                                        <span class="text-danger"> *</span>
+                                                    </label>
+                                                    <input required autocomplete="off" class="form-control" type="text" name="InstitutionCity" value="@ViewBag.City" placeholder="University City" maxlength="50" />
+                                                    <br>
+                                                    <div class="text-right">
+                                                        <input type="submit" value="Submit" class="btn text-white text-right" style="background-color: #006e7a;" />
+                                                    </div>
+                                                </form>
+
+                                                <script>
+                                                        function setallvalues() {
+
+                                                            DegreePopulate('Degree', '@ViewBag.Degree');
+                                                            DepartmentPopulate('Department', '@ViewBag.Department');
+                                                            HeightFeetPopulate('Feet', '@ViewBag.Feet');
+                                                            HeightInchesPopulate('Inches', '@ViewBag.Inches');
+                                                            CapSizePopulate('CapSize', '@ViewBag.CapSize');
+                                                            StatePopulate('InstitutionState', '@ViewBag.State');
+
+                                                        }
+
+                                                        function DepartmentPopulate(id, value) {
+
+                                                            let element = document.getElementById(id);
+                                                            element.value = value;
+
+                                                        }
+
+                                                        function HeightFeetPopulate(id, value) {
+
+                                                            let element = document.getElementById(id);
+                                                            element.value = value;
+
+                                                        }
+
+                                                        function HeightInchesPopulate(id, value) {
+
+                                                            let element = document.getElementById(id);
+                                                            element.value = value;
+
+                                                        }
+
+                                                        function CapSizePopulate(id, value) {
+
+                                                            let element = document.getElementById(id);
+                                                            element.value = value;
+
+                                                        }
+
+                                                        function DegreePopulate(id, value) {
+
+                                                            let element = document.getElementById(id);
+                                                            element.value = value;
+
+                                                        }
+
+                                                        function StatePopulate(id, value) {
+
+                                                            let element = document.getElementById(id);
+                                                            element.value = value;
+
+                                                        }
+
+                                                </script>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -433,5 +354,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
+</html>

@@ -1,89 +1,85 @@
 ﻿<!DOCTYPE html>
 <html>
 
+    <head>
 
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Regalia</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<head>
-
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <!--   <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-        <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <style>
-        * {
-            margin: 0;
-        }
-
-        html, body {
-            height: 100%;
-        }
-
-        .page-wrap {
-            min-height: 80%;
-            /* equal to footer height */
-            margin-bottom: 0px;
-        }
-
-            .page-wrap:after {
-                content: "";
-                display: block;
+        <style>
+            * {
+                margin: 0;
             }
 
-            .site-footer, .page-wrap:after {
-                height: 0px;
+            html, body {
+                height: 100%;
             }
 
-        .site-footer {
+            .page-wrap {
+                min-height: 80%;
+                margin-bottom: 0px;
+            }
+
+                .page-wrap:after {
+                    content: "";
+                    display: block;
+                }
+
+                .site-footer, .page-wrap:after {
+                    height: 0px;
+                }
+
+            .site-footer {
             
-        }
-    </style>
+            }
+        </style>
+
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-dark" style="background-color: #b31b1b;">
+            <div class="container">
+                <span style="width: 70%;">
+                    <img src="https://www.marist.edu/marist-theme/images/marist-header-logo.png" alt="Marist College logo">
+                </span>
+                <span class="text-white ml-auto" style="font-size: 24px;">
+                    <div>
+                        Faculty/Administrator
+                    </div>
+                    <div>
+                        Rented Regalia Request
+                    </div>
+                </span>
+            </div>
+        </nav>
+
+        <div class="page-wrap">
+    
+        
+            @RenderBody()
 
 
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-</head>
-<body>
-    <nav class="navbar navbar-dark" style="background-color: #b31b1b;">
-        <div class="container">
-            <span style="width: 70%;">
-                <!-- <img id="marist_logo" src="./marist_logo.png"> -->
-                <img src="https://www.marist.edu/marist-theme/images/marist-header-logo.png" alt="Marist College logo">
-            </span>
-            <span class="text-white ml-auto" style="font-size: 24px;">
-                <div>
-                    Faculty/Administrator
-                </div>
-                <div>
-                    Rented Regalia Request
-                </div>
-            </span>
         </div>
-    </nav>
-
-    <div class="page-wrap">
-    @RenderBody()
-
-
-    </div>
-    <div class="site-footer">
-        <footer>
-            <div class="container-fluid text-white" id="footer-bottom-wrapper" style="background-color: #404040; height: 120px; bottom: ">
-                <div class="container-fluid" id="footer-bottom">
-                    <div id="marist-info" style="margin-top: 60px;">
-                        <img src="https://www.marist.edu/marist-theme/images/marist-header-logo.png" alt="Marist College logo">
-                        <p>
-                            Marist College, 3399 North Road, Poughkeepsie, NY 12601 | 845-575-3000<br>
-                            © Copyright
-                            2019 Marist College. All Rights Reserved. <a href="https://www.marist.edu/disclaimers">Disclaimers</a> | <a href="https://www.marist.edu/privacy-policy">Privacy Policy</a> | <a href="https://www.marist.edu/web-accessibility-policy">Accessibility Policy</a>
-                        </p>
+    
+        <div class="site-footer">
+            <footer>
+                <div class="container-fluid text-white" id="footer-bottom-wrapper" style="background-color: #404040; height: 120px; bottom: ">
+                    <div class="container-fluid" id="footer-bottom">
+                        <div id="marist-info" style="margin-top: 60px;">
+                            <img src="https://www.marist.edu/marist-theme/images/marist-header-logo.png" alt="Marist College logo">
+                            <p>
+                                Marist College, 3399 North Road, Poughkeepsie, NY 12601 | 845-575-3000<br>
+                                © Copyright
+                                2019 Marist College. All Rights Reserved. <a href="https://www.marist.edu/disclaimers">Disclaimers</a> | <a href="https://www.marist.edu/privacy-policy">Privacy Policy</a> | <a href="https://www.marist.edu/web-accessibility-policy">Accessibility Policy</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
-    </div>
-</body>
+            </footer>
+        </div>
+    </body>
 </html>

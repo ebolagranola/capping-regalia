@@ -186,9 +186,8 @@
 
 
 
-                                                        //<td><Button ID="btnDelete" type="button" onclick="location.href='@Url.Action("DeleteOrder", "Web", new {id = item.OrderID })'" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
-                                                        //<td><Button ID="btnDelete"  type="button" onclick="ConfirmDeleteFaculty('@item.Email')" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
-                                                        <td><Button ID="btnDelete" type="button" onclick="ConfirmDeleteOrders('@item.Email')" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
+                                                      
+                                                        <td><Button ID="btnDelete" type="button" onclick="ConfirmDeleteOrders('@item.OrderID')" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
 
 
 
@@ -291,12 +290,12 @@
 
     <script>
 
-        function ConfirmDeleteOrders(email) {
+        function ConfirmDeleteOrders(id) {
            var r = confirm("You are about to delete this order from the existing table. Are you sure you would like to do this?");
             if (r == true) {
 
 
-                window.location.replace("/Web/DeleteOrder/");
+                window.location.replace("/Web/DeleteOrder/" + id);
 
             }
             else {

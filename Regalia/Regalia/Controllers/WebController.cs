@@ -15,6 +15,7 @@ using Regalia.Models;
 namespace Regalia.Controllers
 {
 
+    //This line right here protects everything below behind cas
     [Authorize]
 
     public class WebController : Controller

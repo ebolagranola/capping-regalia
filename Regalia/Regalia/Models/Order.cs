@@ -16,6 +16,7 @@ namespace Regalia.Models
     {
         public int OrderID { get; set; }
         public string Email { get; set; }
+        public string Name { get; set; }
         public Nullable<System.DateTime> DateandTime { get; set; }
         public string CeremonyType { get; set; }
         public string CapSize { get; set; }

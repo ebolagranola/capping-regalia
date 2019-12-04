@@ -46,7 +46,7 @@ namespace Regalia.Controllers
                 if (OrderAlreadyExists(User.Identity.Name) == true)
                 {
 
-                    ordersstring = "UPDATE Orders SET DateandTime = @dateandtime, CeremonyType = @ceremonytype, CapSize = @capsize, Weight = @weight, HeightFeet = @heightfeet, HeightInches = @heightinches, Degree = @degree, College = @school, CollegeCity = @city, CollegeState = @state WHERE Email = @email";
+                    ordersstring = "UPDATE Orders SET Name = @name, DateandTime = @dateandtime, CeremonyType = @ceremonytype, CapSize = @capsize, Weight = @weight, HeightFeet = @heightfeet, HeightInches = @heightinches, Degree = @degree, College = @school, CollegeCity = @city, CollegeState = @state WHERE Email = @email";
 
                     WriteDB(facultystring, ordersstring, User.Identity.Name, Ceremony(fridayCheckBox, saturdayCheckBox), Name, PhoneNumber, Department, Feet, Inches, Weight, CapSize, Degree, GrantingInstitution, InstitutionState, InstitutionCity);
 
@@ -55,7 +55,7 @@ namespace Regalia.Controllers
                 else if (OrderAlreadyExists(User.Identity.Name) == false)
                 {
 
-                    ordersstring = "INSERT INTO Orders" + "(OrderID, Email, DateandTime, CeremonyType, CapSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @dateandtime, @ceremonytype, @capsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )";
+                    ordersstring = "INSERT INTO Orders" + "(OrderID, Email, Name, DateandTime, CeremonyType, CapSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @name, @dateandtime, @ceremonytype, @capsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )";
 
                     WriteDB(facultystring, ordersstring, User.Identity.Name, Ceremony(fridayCheckBox, saturdayCheckBox), Name, PhoneNumber, Department, Feet, Inches, Weight, CapSize, Degree, GrantingInstitution, InstitutionState, InstitutionCity);
 
@@ -70,7 +70,7 @@ namespace Regalia.Controllers
                 OrderAlreadyExists(User.Identity.Name);
 
                 facultystring = "INSERT INTO Faculty" + "(Email, Name, PhoneNumber, Department, CapSize, University, Degree, Inches, Feet, Weight, isAdmin) VALUES (@email, @name, @phonenumber, @department, @capsize, @school, @degree, @inches, @feet, @weight, @isadmin)";
-                ordersstring = "INSERT INTO Orders" + "(OrderID, Email, DateandTime, CeremonyType, CapSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @dateandtime, @ceremonytype, @capsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )";
+                ordersstring = "INSERT INTO Orders" + "(OrderID, Email, Name, DateandTime, CeremonyType, CapSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @name, @dateandtime, @ceremonytype, @capsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )";
 
                 WriteDB(facultystring, ordersstring, User.Identity.Name, Ceremony(fridayCheckBox, saturdayCheckBox), Name, PhoneNumber, Department, Feet, Inches, Weight, CapSize, Degree, GrantingInstitution, InstitutionState, InstitutionCity);
 
@@ -149,6 +149,7 @@ namespace Regalia.Controllers
 
             orders.Parameters.AddWithValue("@ordernumber", Ordernumber());
             orders.Parameters.AddWithValue("@email", Email);
+            orders.Parameters.AddWithValue("@name", Name);
             orders.Parameters.AddWithValue("@capsize", CapSize);
             orders.Parameters.AddWithValue("@weight", Weight);
             orders.Parameters.AddWithValue("@heightfeet", Feet);
@@ -329,10 +330,10 @@ namespace Regalia.Controllers
             if (isAdmin() == true)
             {
 
-                DatabaseTable faculty = new DatabaseTable();
+                AdminDatabaseConnectionString constring = new AdminDatabaseConnectionString();
 
-                ViewBag.faculty = faculty.Faculties.ToList();
-                ViewBag.orders = faculty.Orders.ToList();
+                ViewBag.faculty = constring.Faculties.ToList();
+                ViewBag.orders = constring.Orders.ToList();
 
                 return View();
 

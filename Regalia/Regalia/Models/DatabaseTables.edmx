@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Faculty.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DatabaseTables.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Faculty">
           <Key>
             <PropertyRef Name="Email" />
@@ -27,6 +27,7 @@
           </Key>
           <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="40" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="DateandTime" Type="datetime" />
           <Property Name="CeremonyType" Type="varchar" MaxLength="40" />
           <Property Name="CapSize" Type="varchar" MaxLength="5" />
@@ -50,7 +51,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="FacultyStoreContainer">
+        <EntityContainer Name="DatabaseTablesStoreContainer">
           <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Orders_Orders" Association="Self.FK_Orders_Orders">
@@ -62,7 +63,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Faculty" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DatabaseTables" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Faculty">
           <Key>
             <PropertyRef Name="Email" />
@@ -86,6 +87,7 @@
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DateandTime" Type="DateTime" Precision="3" />
           <Property Name="CeremonyType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="CapSize" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
@@ -110,7 +112,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DatabaseTable" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AdminDatabaseConnectionString" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Faculties" EntityType="Self.Faculty" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <AssociationSet Name="FK_Orders_Orders" Association="Self.FK_Orders_Orders">
@@ -123,9 +125,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FacultyStoreContainer" CdmEntityContainer="DatabaseTable">
+        <EntityContainerMapping StorageEntityContainer="DatabaseTablesStoreContainer" CdmEntityContainer="AdminDatabaseConnectionString">
           <EntitySetMapping Name="Faculties">
-            <EntityTypeMapping TypeName="Faculty.Faculty">
+            <EntityTypeMapping TypeName="DatabaseTables.Faculty">
               <MappingFragment StoreEntitySet="Faculty">
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -142,10 +144,11 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="Faculty.Order">
+            <EntityTypeMapping TypeName="DatabaseTables.Order">
               <MappingFragment StoreEntitySet="Orders">
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
                 <ScalarProperty Name="CeremonyType" ColumnName="CeremonyType" />
                 <ScalarProperty Name="CapSize" ColumnName="CapSize" />

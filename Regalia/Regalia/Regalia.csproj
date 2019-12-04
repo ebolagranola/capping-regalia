@@ -106,15 +106,15 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\FacultyTable.Context.tt">
+    <Content Include="Models\DatabaseTables.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DatabaseTables.edmx</DependentUpon>
-      <LastGenOutput>FacultyTable.Context.cs</LastGenOutput>
+      <LastGenOutput>DatabaseTables.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\FacultyTable.tt">
+    <Content Include="Models\DatabaseTables.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DatabaseTables.edmx</DependentUpon>
-      <LastGenOutput>FacultyTable.cs</LastGenOutput>
+      <LastGenOutput>DatabaseTables.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -147,26 +147,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Faculty.cs">
-      <DependentUpon>FacultyTable.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FacultyTable.Context.cs">
+    <Compile Include="Models\DatabaseTables.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FacultyTable.Context.tt</DependentUpon>
+      <DependentUpon>DatabaseTables.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FacultyTable.cs">
+    <Compile Include="Models\DatabaseTables.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FacultyTable.tt</DependentUpon>
+      <DependentUpon>DatabaseTables.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DatabaseTables.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseTables.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Faculty.cs">
+      <DependentUpon>DatabaseTables.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>FacultyTable.tt</DependentUpon>
+      <DependentUpon>DatabaseTables.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SecretModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

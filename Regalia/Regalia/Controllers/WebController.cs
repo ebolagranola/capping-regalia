@@ -385,7 +385,7 @@ namespace Regalia.Controllers
         {
 
             ViewBag.ID = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
-
+            ViewBag.anything = "test";
 
             if (EmailAlreadyExists(User.Identity.Name) == true)
             {
@@ -399,6 +399,7 @@ namespace Regalia.Controllers
                 ViewBag.CapSize = GetUserData("CapSize");
                 ViewBag.Degree = GetUserData("Degree");
                 ViewBag.University = GetUserData("University");
+                
                 
             }
 
@@ -417,7 +418,9 @@ namespace Regalia.Controllers
 
             if (OrderAlreadyExists(User.Identity.Name) || HistoricOrderAlreadyExists(User.Identity.Name))
             {
-                ViewBag.State = GetOrderData("CollegeState");
+
+             //   ViewBag.State = "TEST";
+                //ViewBag.State = GetOrderData("CollegeState");
                 ViewBag.City = GetOrderData("CollegeCity");
 
 
@@ -425,7 +428,7 @@ namespace Regalia.Controllers
 
             else
             {
-                ViewBag.State = "State";
+            //    ViewBag.State = "State";
                 ViewBag.City = null;
 
 

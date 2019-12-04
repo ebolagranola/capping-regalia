@@ -384,8 +384,7 @@ namespace Regalia.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.ID = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
-            ViewBag.anything = "test";
+             ViewBag.ID = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
             if (EmailAlreadyExists(User.Identity.Name) == true)
             {
@@ -406,12 +405,12 @@ namespace Regalia.Controllers
             else {
                 ViewBag.Name = null;
                 ViewBag.PhoneNumber = null;
-                ViewBag.Department = "Department";
-                ViewBag.Feet = "Feet";
-                ViewBag.Inches = "Inches";
+                ViewBag.Department = null;
+                ViewBag.Feet = null;
+                ViewBag.Inches = null;
                 ViewBag.Weight = null;
                 ViewBag.CapSize = null;
-                ViewBag.Degree = "Degree";
+                ViewBag.Degree = null;
                 ViewBag.University = null;
                 
             }
@@ -420,7 +419,7 @@ namespace Regalia.Controllers
             {
 
              //   ViewBag.State = "TEST";
-                //ViewBag.State = GetOrderData("CollegeState");
+                ViewBag.State = GetOrderData("CollegeState");
                 ViewBag.City = GetOrderData("CollegeCity");
 
 
@@ -428,7 +427,7 @@ namespace Regalia.Controllers
 
             else
             {
-            //    ViewBag.State = "State";
+                ViewBag.State = null;
                 ViewBag.City = null;
 
 

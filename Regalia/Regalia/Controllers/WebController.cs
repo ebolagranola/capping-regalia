@@ -21,17 +21,20 @@ namespace Regalia.Controllers
     public class WebController : Controller
     {
 
+        //Define several of the SQL commands used in later functions 
         SqlConnection con = new SqlConnection();
         SqlCommand faculty = new SqlCommand();
         SqlCommand orders = new SqlCommand();
         SqlCommand generateordernum = new SqlCommand();
         SqlCommand findemail = new SqlCommand();
 
+        //This string reads the text file containing the connection string, this was done to make the software more portable
         string connectionstring = System.IO.File.ReadAllText(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory.ToString(),@"ConnectionString.txt"));
 
       
 
-
+        //This function gets all of the data from the webpage when the submit button is clicked and creates the appropriate SQL command to write the information
+        //To the database or update the existing information
         public ActionResult GetData(bool fridayCheckBox, bool saturdayCheckBox, String Name, String PhoneNumber, String Department, int Feet, int Inches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitutionState, String InstitutionCity)
         {
 
@@ -44,6 +47,7 @@ namespace Regalia.Controllers
                 con.ConnectionString = connectionstring;
                 facultystring = "UPDATE Faculty SET Name = @name, PhoneNumber = @phonenumber, Department = @department, CapSize = @capsize, University = @school, Degree = @degree, Inches = @inches, Feet = @feet, Weight = @weight WHERE Email = @email";
 
+                //If the order already exists then update it rather than add a new one
                 if (OrderAlreadyExists(User.Identity.Name) == true)
                 {
 
@@ -85,7 +89,8 @@ namespace Regalia.Controllers
 
         }
 
-
+        //This fucntion is called when the active database is written to the historic, it first copies the exact active database into the 
+        //historic table then clears the active table in preparation for the next ceremony
         public ActionResult WriteHistoric()
         {
 
@@ -118,7 +123,8 @@ namespace Regalia.Controllers
 
         }
 
-
+        //This is the function that executes the SQL commands from above by taking in all of the values as well as the SQL command generated in the
+        //Get data fucntion
         public void WriteDB(String facultystring, String ordersstring, String Email, String Ceremony, String Name, String PhoneNumber, String Department, int Feet, int Inches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitiutionState, String InstitutionCity)
         {
 
@@ -169,7 +175,8 @@ namespace Regalia.Controllers
 
         }
 
-
+        //This fucntion is used to delete orders from the orders database, since it is an admin fucntion it first checks to see if the 
+        //User is authorized to execute the command before running
         public ActionResult DeleteOrder(String id)
         {
 
@@ -200,30 +207,8 @@ namespace Regalia.Controllers
 
         }
 
-
-        public Boolean Test(String email) {
-
-
-
-            if (email != null)
-            {
-
-                return true;
-
-
-            }
-
-            else {
-
-                return false;
-
-
-            }
-
-
-        }
-
-
+        //This is the fucntion used to delete faculty from the faculty table,  it first deletes the orders in the active table associated with 
+        //the faculty because they are forign keys to the faulty table.  THen it 
         public ActionResult DeleteFaculty(String id)
         {
 
@@ -325,6 +310,8 @@ namespace Regalia.Controllers
 
         }
 
+        //Function that loads the admin page and checks if the user is an admin and should
+        //have access to the page
         public ActionResult Admin()
         {
 
@@ -348,7 +335,8 @@ namespace Regalia.Controllers
 
         }
 
-
+        //This fucntion takes the user ID from CAS and checks the database to see if the account
+        //has admin privledges
         public bool isAdmin()
         {
 
@@ -381,7 +369,9 @@ namespace Regalia.Controllers
 
         }
 
-
+        //This funciton is what loads the primary survey page, it checks the databse to get the 
+        //Users data for autofill and assigns them to ViewBag variables the HTML page
+        //Uses to populate the fields
         public ActionResult Index()
         {
 
@@ -419,10 +409,8 @@ namespace Regalia.Controllers
             if (OrderAlreadyExists(User.Identity.Name) || HistoricOrderAlreadyExists(User.Identity.Name))
             {
 
-             //   ViewBag.State = "TEST";
                 ViewBag.State = GetOrderData("CollegeState");
                 ViewBag.City = GetOrderData("CollegeCity");
-
 
             }
 
@@ -438,6 +426,7 @@ namespace Regalia.Controllers
 
         }
 
+        //This fucntion 
         public String GetUserData(String Input)
         {
 

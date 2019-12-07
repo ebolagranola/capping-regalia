@@ -15,7 +15,7 @@ using Regalia.Models;
 namespace Regalia.Controllers
 {
 
-    //This line right here protects everything below behind cas
+    //This line right here protects everything below behind CAS authentication
     [Authorize]
 
     public class WebController : Controller
@@ -262,6 +262,7 @@ namespace Regalia.Controllers
 
         }
 
+        //Function for adding new admins, checks if the current user is an admin and changes the database of the faculty member whos ID was entered
         public ActionResult NewAdmin(String id)
         {
 
@@ -426,7 +427,7 @@ namespace Regalia.Controllers
 
         }
 
-        //This fucntion 
+        //This fucntion is used to read the DB and return user data for use in other parts of this code
         public String GetUserData(String Input)
         {
 
@@ -446,6 +447,8 @@ namespace Regalia.Controllers
 
         }
 
+        //This function is used to read the database and get order data for the given column name in the database
+        //It reads the most recent information from both the active orders table and the historic orders table
         public String GetOrderData(String Input)
         {
 
@@ -498,7 +501,8 @@ namespace Regalia.Controllers
 
         } 
 
-        //This function is used to generate ordernumbers, it reads the DB for the largest number then adds one 
+        //This function is used to generate ordernumbers, it reads the DB for the largest number then adds one it does this
+        //by checking both the active orders table and the historic orders table
         public int Ordernumber()
         {
             int ordernumber;
@@ -590,6 +594,8 @@ namespace Regalia.Controllers
 
         }
 
+
+        //This function is used to find if an order already exists from a users account
         public Boolean OrderAlreadyExists(String Email)
         {
 
@@ -619,6 +625,7 @@ namespace Regalia.Controllers
 
         }
 
+        //This fucntion is used to see if the user has a historic order in the historic database
         public Boolean HistoricOrderAlreadyExists(String Email)
         {
 
@@ -688,17 +695,20 @@ namespace Regalia.Controllers
         }
 
 
-
+        //This fucniton takes in all of the users data and sends an email to them formatted in HTML
         public static void SendEmail(String email, String name, String PhoneNumber, String Department, int Feet, int Inches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitutionState, String InstitutionCity)
         {
+            //Change this to reflect the email you would like to use
             MailMessage mailMessage = new MailMessage("maristregalia@gmail.com", email);
             mailMessage.Subject = "Your order on MaristRegalia.site"; 
             mailMessage.IsBodyHtml = true;
             mailMessage.Body = "<p>Dear " + name + ",</p> <p> Thank you for submitting your regalia order!  We have the following information listed for you:<br/> Phone Number: " + PhoneNumber + " <br/> Department: " + Department + " <br/> Height: " + Feet + "\' " + Inches + "\"<br/>Weight: " + Weight + "<br />Cap Size: " + CapSize + "<br />Degree: " + Degree + "<br />Graduation Institution: " + GrantingInstitution + "<br />Graduation City: " + InstitutionCity + ", " + InstitutionState + "</p><p>If any of the previous information listed is incorrect, please revisit <a href='http://regalia.it.marist.edu/Web/Index'>https://regalia.it.marist.edu</a> to correct any errors.</p><p>Regards,</p><p>Marist Regalia Orders Team</p><p>&nbsp;</p>";
 
+            //This is the mail server the email is sent from
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
             smtpClient.Credentials = new System.Net.NetworkCredential()
             {
+                //Here is the account information for the email
                 UserName = "maristregalia@gmail.com",
                 Password = "vkojywyjcjgwsziy"
             };

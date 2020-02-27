@@ -375,7 +375,7 @@ namespace Regalia.Controllers
         //Uses to populate the fields
         public ActionResult Index()
         {
-
+   //         Debug.WriteLine(User.Identity.NameClainType);
              ViewBag.ID = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
             if (EmailAlreadyExists(User.Identity.Name) == true)

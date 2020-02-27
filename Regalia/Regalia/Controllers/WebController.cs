@@ -35,8 +35,10 @@ namespace Regalia.Controllers
 
         //This function gets all of the data from the webpage when the submit button is clicked and creates the appropriate SQL command to write the information
         //To the database or update the existing information
-        public ActionResult GetData(bool fridayCheckBox, bool saturdayCheckBox, String Name, String PhoneNumber, String Department, int Feet, int Inches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitutionState, String InstitutionCity)
+        public ActionResult GetData(bool fridayCheckBox, bool saturdayCheckBox, String Name, String PhoneNumber, String Department, int HeightFeet, int HeightInches, int Weight, String CapSize, String Degree, String Discipline, String GrantingInstitution, String InstitutionState, String InstitutionCity)
         {
+
+            Debug.WriteLine("IS THIS WORKING");
 
             String facultystring;
             String ordersstring;
@@ -45,24 +47,24 @@ namespace Regalia.Controllers
             {
 
                 con.ConnectionString = connectionstring;
-                facultystring = "UPDATE Faculty SET Name = @name, PhoneNumber = @phonenumber, Department = @department, CapSize = @capsize, University = @school, Degree = @degree, Inches = @inches, Feet = @feet, Weight = @weight WHERE Email = @email";
+                facultystring = "UPDATE Faculty SET Name = @name, PhoneNumber = @phonenumber, Department = @department, CapSize = @capsize, College = @college, Degree = @degree, Discipline = @discipline, HeightFeet = @heightfeet, HeightInches = @heightinches, Weight = @weight WHERE Email = @email";
 
                 //If the order already exists then update it rather than add a new one
                 if (OrderAlreadyExists(User.Identity.Name) == true)
                 {
 
-                    ordersstring = "UPDATE Orders SET Name = @name, DateandTime = @dateandtime, CeremonyType = @ceremonytype, CapSize = @capsize, Weight = @weight, HeightFeet = @heightfeet, HeightInches = @heightinches, Degree = @degree, College = @school, CollegeCity = @city, CollegeState = @state WHERE Email = @email";
+                    ordersstring = "UPDATE Orders SET Name = @name, DateandTime = @dateandtime, CeremonyType = @ceremonytype, CapSize = @capsize, HeightFeet = @heightfeet, HeightInches = @heightinches, Weight = @weight, Degree = @degree, Discipline = @discipline, College = @college, CollegeCity = @collegecity, CollegeState = @collegestate WHERE Email = @email";
 
-                    WriteDB(facultystring, ordersstring, User.Identity.Name, Ceremony(fridayCheckBox, saturdayCheckBox), Name, PhoneNumber, Department, Feet, Inches, Weight, CapSize, Degree, GrantingInstitution, InstitutionState, InstitutionCity);
+                    WriteDB(facultystring, ordersstring, User.Identity.Name, Ceremony(fridayCheckBox, saturdayCheckBox), Name, PhoneNumber, Department, HeightFeet, HeightInches, Weight, CapSize, Degree, Discipline, GrantingInstitution, InstitutionState, InstitutionCity);
 
                 }
 
                 else if (OrderAlreadyExists(User.Identity.Name) == false)
                 {
 
-                    ordersstring = "INSERT INTO Orders" + "(OrderID, Email, Name, DateandTime, CeremonyType, CapSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @name, @dateandtime, @ceremonytype, @capsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )";
+                    ordersstring = "INSERT INTO Orders" + "(OrderID, Email, Name, DateandTime, CeremonyType, CapSize, HeightFeet, HeightInches, Weight, Degree, Discipline, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @name, @dateandtime, @ceremonytype, @capsize, @heightfeet, @heightinches, @weight, @degree, @discipline, @college, @collegecity, @collegestate )";
 
-                    WriteDB(facultystring, ordersstring, User.Identity.Name, Ceremony(fridayCheckBox, saturdayCheckBox), Name, PhoneNumber, Department, Feet, Inches, Weight, CapSize, Degree, GrantingInstitution, InstitutionState, InstitutionCity);
+                    WriteDB(facultystring, ordersstring, User.Identity.Name, Ceremony(fridayCheckBox, saturdayCheckBox), Name, PhoneNumber, Department, HeightFeet, HeightInches, Weight, CapSize, Degree, Discipline, GrantingInstitution, InstitutionState, InstitutionCity);
 
                 }
 
@@ -72,17 +74,18 @@ namespace Regalia.Controllers
             else if (EmailAlreadyExists(User.Identity.Name) == false)
             {
 
+                Debug.WriteLine(HeightFeet);
                 OrderAlreadyExists(User.Identity.Name);
 
-                facultystring = "INSERT INTO Faculty" + "(Email, Name, PhoneNumber, Department, CapSize, University, Degree, Inches, Feet, Weight, isAdmin) VALUES (@email, @name, @phonenumber, @department, @capsize, @school, @degree, @inches, @feet, @weight, @isadmin)";
-                ordersstring = "INSERT INTO Orders" + "(OrderID, Email, Name, DateandTime, CeremonyType, CapSize, Weight, HeightFeet, HeightInches, Degree, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @name, @dateandtime, @ceremonytype, @capsize, @weight, @heightfeet, @heightinches, @degree, @school, @city, @state )";
+                facultystring = "INSERT INTO Faculty" + "(Email, Name, PhoneNumber, Department, CapSize, College, Degree, Discipline, HeightFeet, HeightInches, Weight, IsAdmin, IsFaculty, AuthDate) VALUES (@email, @name, @phonenumber, @department, @capsize, @college, @degree, @discipline, @heightfeet, @heightinches, @weight, @isadmin, @isfaculty, @authdate)";
+                ordersstring = "INSERT INTO Orders" + "(OrderID, Email, Name, DateandTime, CeremonyType, CapSize, HeightFeet, HeightInches, Weight, Degree, Discipline, College, CollegeCity, CollegeState) VALUES (@ordernumber, @email, @name, @dateandtime, @ceremonytype, @capsize, @heightfeet, @heightinches, @weight, @degree, @discipline, @college, @collegecity, @collegestate)";
 
-                WriteDB(facultystring, ordersstring, User.Identity.Name, Ceremony(fridayCheckBox, saturdayCheckBox), Name, PhoneNumber, Department, Feet, Inches, Weight, CapSize, Degree, GrantingInstitution, InstitutionState, InstitutionCity);
+                WriteDB(facultystring, ordersstring, User.Identity.Name, Ceremony(fridayCheckBox, saturdayCheckBox), Name, PhoneNumber, Department, HeightFeet, HeightInches, Weight, CapSize, Degree, Discipline, GrantingInstitution, InstitutionState, InstitutionCity);
 
             }
 
 
-            SendEmail(User.Identity.Name, Name, PhoneNumber, Department, Feet, Inches, Weight, CapSize, Degree, GrantingInstitution, InstitutionState, InstitutionCity);
+            SendEmail(User.Identity.Name, Name, PhoneNumber, Department, HeightFeet, HeightInches, Weight, CapSize, Degree, GrantingInstitution, InstitutionState, InstitutionCity);
 
 
             return View("CompleteRedirect");
@@ -125,7 +128,7 @@ namespace Regalia.Controllers
 
         //This is the function that executes the SQL commands from above by taking in all of the values as well as the SQL command generated in the
         //Get data fucntion
-        public void WriteDB(String facultystring, String ordersstring, String Email, String Ceremony, String Name, String PhoneNumber, String Department, int Feet, int Inches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitiutionState, String InstitutionCity)
+        public void WriteDB(String facultystring, String ordersstring, String Email, String Ceremony, String Name, String PhoneNumber, String Department, int HeightFeet, int HeightInches, int Weight, String CapSize, String Degree, String Discipline, String GrantingInstitution, String InstitiutionState, String InstitutionCity)
         {
 
             con.ConnectionString = connectionstring;
@@ -140,13 +143,15 @@ namespace Regalia.Controllers
             faculty.Parameters.AddWithValue("@phonenumber", PhoneNumber);
             faculty.Parameters.AddWithValue("@department", Department);
             faculty.Parameters.AddWithValue("@capsize", CapSize);
-            faculty.Parameters.AddWithValue("@school", GrantingInstitution);
+            faculty.Parameters.AddWithValue("@college", GrantingInstitution);
             faculty.Parameters.AddWithValue("@degree", Degree);
-            faculty.Parameters.AddWithValue("@inches", Inches);
-            faculty.Parameters.AddWithValue("@feet", Feet);
+            faculty.Parameters.AddWithValue("@discipline", Discipline);
+            faculty.Parameters.AddWithValue("@heightfeet", HeightFeet);
+            faculty.Parameters.AddWithValue("@heightinches", HeightInches);
             faculty.Parameters.AddWithValue("@weight", Weight);
-            faculty.Parameters.AddWithValue("@state", InstitiutionState);
             faculty.Parameters.AddWithValue("@isadmin", false);
+            faculty.Parameters.AddWithValue("@isfaculty", true);
+            faculty.Parameters.AddWithValue("@authdate", DateTime.Now);
 
             faculty.ExecuteNonQuery();
 
@@ -157,16 +162,18 @@ namespace Regalia.Controllers
             orders.Parameters.AddWithValue("@ordernumber", Ordernumber());
             orders.Parameters.AddWithValue("@email", Email);
             orders.Parameters.AddWithValue("@name", Name);
-            orders.Parameters.AddWithValue("@capsize", CapSize);
-            orders.Parameters.AddWithValue("@weight", Weight);
-            orders.Parameters.AddWithValue("@heightfeet", Feet);
-            orders.Parameters.AddWithValue("@heightinches", Inches);
-            orders.Parameters.AddWithValue("@city", InstitutionCity);
-            orders.Parameters.AddWithValue("@school", GrantingInstitution);
-            orders.Parameters.AddWithValue("@degree", Degree);
-            orders.Parameters.AddWithValue("@state", InstitiutionState);
-            orders.Parameters.AddWithValue("@ceremonytype", Ceremony);
             orders.Parameters.AddWithValue("@dateandtime", DateTime.Now);
+            orders.Parameters.AddWithValue("@ceremonytype", Ceremony);
+            orders.Parameters.AddWithValue("@capsize", CapSize);
+            orders.Parameters.AddWithValue("@heightfeet", HeightFeet);
+            orders.Parameters.AddWithValue("@heightinches", HeightInches);
+            orders.Parameters.AddWithValue("@weight", Weight);
+            orders.Parameters.AddWithValue("@degree", Degree);
+            orders.Parameters.AddWithValue("@discipline", Discipline);
+            orders.Parameters.AddWithValue("@college", GrantingInstitution);
+            orders.Parameters.AddWithValue("@collegecity", InstitutionCity);
+            orders.Parameters.AddWithValue("@collegestate", InstitiutionState);
+
 
             orders.ExecuteNonQuery();
 
@@ -262,6 +269,52 @@ namespace Regalia.Controllers
 
         }
 
+        public ActionResult RevokeAdmin(String id) {
+
+            if (isAdmin())
+            {
+
+                String email = id + "@marist.edu";
+
+
+                if (email != User.Identity.Name)
+                {
+
+                    con.ConnectionString = connectionstring;
+
+                    con.Open();
+
+                    SqlCommand removeadmin = new SqlCommand("UPDATE Faculty SET IsAdmin = 'False' WHERE Email = @email", con);
+
+
+                    removeadmin.Parameters.AddWithValue("@email", email);
+
+                    removeadmin.ExecuteScalar();
+
+                    con.Close();
+
+                    return (View("AdminRedirect"));
+
+                }
+
+                else
+                {
+                    return (View("AdminRedirect"));
+
+
+                }
+
+            }
+
+            else
+            {
+
+                return (View("NotAdminRedirect"));
+
+            }
+
+        }
+        
         //Function for adding new admins, checks if the current user is an admin and changes the database of the faculty member whos ID was entered
         public ActionResult NewAdmin(String id)
         {
@@ -319,10 +372,13 @@ namespace Regalia.Controllers
             if (isAdmin() == true)
             {
 
-                AdminDatabaseConnectionString constring = new AdminDatabaseConnectionString();
+                ViewBag.ID = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
+
+                RegaliaEntities constring = new RegaliaEntities();
 
                 ViewBag.faculty = constring.Faculties.ToList();
                 ViewBag.orders = constring.Orders.ToList();
+       
 
                 return View();
 
@@ -384,12 +440,13 @@ namespace Regalia.Controllers
                 ViewBag.Name = GetUserData("Name");
                 ViewBag.PhoneNumber = GetUserData("PhoneNumber");
                 ViewBag.Department = GetUserData("Department");
-                ViewBag.Feet = GetUserData("Feet");
-                ViewBag.Inches = GetUserData("Inches");
+                ViewBag.HeightFeet = GetUserData("HeightFeet");
+                ViewBag.HeightInches = GetUserData("HeightInches");
                 ViewBag.Weight = GetUserData("Weight");
                 ViewBag.CapSize = GetUserData("CapSize");
                 ViewBag.Degree = GetUserData("Degree");
-                ViewBag.University = GetUserData("University");
+                ViewBag.Discipline = GetUserData("Discipline");
+                ViewBag.University = GetUserData("College");
                 
                 
             }
@@ -398,8 +455,8 @@ namespace Regalia.Controllers
                 ViewBag.Name = null;
                 ViewBag.PhoneNumber = null;
                 ViewBag.Department = null;
-                ViewBag.Feet = null;
-                ViewBag.Inches = null;
+                ViewBag.HeightFeet = null;
+                ViewBag.HeightFeet = null;
                 ViewBag.Weight = null;
                 ViewBag.CapSize = null;
                 ViewBag.Degree = null;
@@ -696,13 +753,13 @@ namespace Regalia.Controllers
 
 
         //This fucniton takes in all of the users data and sends an email to them formatted in HTML
-        public static void SendEmail(String email, String name, String PhoneNumber, String Department, int Feet, int Inches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitutionState, String InstitutionCity)
+        public static void SendEmail(String email, String name, String PhoneNumber, String Department, int HeightFeet, int HeightInches, int Weight, String CapSize, String Degree, String GrantingInstitution, String InstitutionState, String InstitutionCity)
         {
             //Change this to reflect the email you would like to use
             MailMessage mailMessage = new MailMessage("maristregalia@gmail.com", email);
             mailMessage.Subject = "Your order on MaristRegalia.site"; 
             mailMessage.IsBodyHtml = true;
-            mailMessage.Body = "<p>Dear " + name + ",</p> <p> Thank you for submitting your regalia order!  We have the following information listed for you:<br/> Phone Number: " + PhoneNumber + " <br/> Department: " + Department + " <br/> Height: " + Feet + "\' " + Inches + "\"<br/>Weight: " + Weight + "<br />Cap Size: " + CapSize + "<br />Degree: " + Degree + "<br />Graduation Institution: " + GrantingInstitution + "<br />Graduation City: " + InstitutionCity + ", " + InstitutionState + "</p><p>If any of the previous information listed is incorrect, please revisit <a href='http://regalia.it.marist.edu/Web/Index'>https://regalia.it.marist.edu</a> to correct any errors.</p><p>Regards,</p><p>Marist Regalia Orders Team</p><p>&nbsp;</p>";
+            mailMessage.Body = "<p>Dear " + name + ",</p> <p> Thank you for submitting your regalia order!  We have the following information listed for you:<br/> Phone Number: " + PhoneNumber + " <br/> Department: " + Department + " <br/> Height: " + HeightFeet + "\' " + HeightInches + "\"<br/>Weight: " + Weight + "<br />Cap Size: " + CapSize + "<br />Degree: " + Degree + "<br />Graduation Institution: " + GrantingInstitution + "<br />Graduation City: " + InstitutionCity + ", " + InstitutionState + "</p><p>If any of the previous information listed is incorrect, please revisit <a href='http://regalia.it.marist.edu/Web/Index'>https://regalia.it.marist.edu</a> to correct any errors.</p><p>Regards,</p><p>Marist Regalia Orders Team</p><p>&nbsp;</p>";
 
             //This is the mail server the email is sent from
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);

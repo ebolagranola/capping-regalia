@@ -20,10 +20,11 @@ namespace Regalia.Models
         public Nullable<System.DateTime> DateandTime { get; set; }
         public string CeremonyType { get; set; }
         public string CapSize { get; set; }
-        public Nullable<int> Weight { get; set; }
         public Nullable<int> HeightFeet { get; set; }
         public Nullable<int> HeightInches { get; set; }
+        public Nullable<int> Weight { get; set; }
         public string Degree { get; set; }
+        public string Discipline { get; set; }
         public string College { get; set; }
         public string CollegeCity { get; set; }
         public string CollegeState { get; set; }

@@ -143,7 +143,7 @@
                                                         <span class="text-danger"> *</span>
                                                     </label>
                                                     <div style="display:block;">
-                                                        <select required name="Feet" id="Feet" class="form-control">
+                                                        <select required name="HeightFeet" id="HeightFeet" class="form-control">
                                                             <option selected disabled value="">Feet</option>
                                                             <option value="3">3'</option>
                                                             <option value="4">4'</option>
@@ -152,7 +152,7 @@
                                                             <option value="7">7'</option>
                                                         </select>
                                                         <br>
-                                                        <select required name="Inches" id="Inches" class="form-control">
+                                                        <select required name="HeightInches" id="HeightInches" class="form-control">
                                                             <option selected disabled value="">Inches</option>
                                                             <option value="0">0"</option>
                                                             <option value="1">1"</option>
@@ -211,6 +211,38 @@
                                                         <option value="Bachelors Degree">Bachelor's Degree</option>
                                                         <option value="Masters Degree">Master's Degree</option>
                                                         <option value="Doctoral Degree">Doctoral Degree</option>
+                                                    </select>
+                                                    <br>
+                                                    <label for="Discipline" class="font-weight-bold">
+                                                        <span>Discipline</span>
+                                                        <span class="text-danger"> *</span>
+                                                    </label>
+                                                    <select required name="Discipline" id="Discipline" class="form-control">
+                                                        <option selected disabled value="">Discipline</option>
+                                                        <option value="Accountancy">Accountancy</option>
+                                                        <option value="Arts">Arts</option>
+                                                        <option value="Business Administration">Business Administration</option>
+                                                        <option value="Communications">Communications</option>
+                                                        <option value="Counseling and Guidance">Counseling & Guidance</option>
+                                                        <option value="Divinity and Theology">Divinity & Theology</option>
+                                                        <option value="Education">Education</option>
+                                                        <option value="Fine Arts">Fine Arts</option>
+                                                        <option value="Health and Rehabilitation">Health & Rehabilitation</option>
+                                                        <option value="Health Administration">Health Administration</option>
+                                                        <option value="Hygiene">Hygiene</option>
+                                                        <option value="Journalism">Journalism</option>
+                                                        <option value="Juris Doctor">Juris Doctor</option>
+                                                        <option value="Library Science">Library Science</option>
+                                                        <option value="Medicine">Medicine</option>
+                                                        <option value="Music">Music</option>
+                                                        <option value="Osteopathy">Osteopathy</option>
+                                                        <option value="PhD">PhD</option>
+                                                        <option value="Physical Education">Physical Education</option>
+                                                        <option value="Public Administration">Public Administration</option>
+                                                        <option value="Public Health">Public Health</option>
+                                                        <option value="Science">Science</option>
+
+
                                                     </select>
                                                     <br>
                                                     <label for="GrantingInstitution" class="font-weight-bold">
@@ -292,56 +324,24 @@
                                                 <script>
                                                         function setallvalues() {
 
-                                                            DegreePopulate('Degree', '@ViewBag.Degree');
-                                                            DepartmentPopulate('Department', '@ViewBag.Department');
-                                                            HeightFeetPopulate('Feet', '@ViewBag.Feet');
-                                                            HeightInchesPopulate('Inches', '@ViewBag.Inches');
-                                                            CapSizePopulate('CapSize', '@ViewBag.CapSize');
-                                                            StatePopulate('InstitutionState', '@ViewBag.State');
+                                                            DropdownPopulate('Degree', '@ViewBag.Degree');
+                                                            DropdownPopulate('Department', '@ViewBag.Department');
+                                                            DropdownPopulate('HeightFeet', '@ViewBag.HeightFeet');
+                                                            DropdownPopulate('HeightInches', '@ViewBag.HeightInches');
+                                                            DropdownPopulate('CapSize', '@ViewBag.CapSize');
+                                                            DropdownPopulate('InstitutionState', '@ViewBag.State');
+                                                            DropdownPopulate('Discipline', '@ViewBag.Discipline')
 
                                                         }
 
-                                                        function DepartmentPopulate(id, value) {
+                                                        function DropdownPopulate(id, value) {
 
                                                             let element = document.getElementById(id);
                                                             element.value = value;
 
                                                         }
 
-                                                        function HeightFeetPopulate(id, value) {
-
-                                                            let element = document.getElementById(id);
-                                                            element.value = value;
-
-                                                        }
-
-                                                        function HeightInchesPopulate(id, value) {
-
-                                                            let element = document.getElementById(id);
-                                                            element.value = value;
-
-                                                        }
-
-                                                        function CapSizePopulate(id, value) {
-
-                                                            let element = document.getElementById(id);
-                                                            element.value = value;
-
-                                                        }
-
-                                                        function DegreePopulate(id, value) {
-
-                                                            let element = document.getElementById(id);
-                                                            element.value = value;
-
-                                                        }
-
-                                                        function StatePopulate(id, value) {
-
-                                                            let element = document.getElementById(id);
-                                                            element.value = value;
-
-                                                        }
+                                                        
 
                                                 </script>
                                             </div>

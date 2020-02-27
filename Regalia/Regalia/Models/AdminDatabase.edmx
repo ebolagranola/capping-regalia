@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabaseTables.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="RegaliaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Faculty">
           <Key>
             <PropertyRef Name="Email" />
@@ -14,33 +14,37 @@
           <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
           <Property Name="Department" Type="varchar" MaxLength="50" />
           <Property Name="CapSize" Type="varchar" MaxLength="50" />
-          <Property Name="University" Type="varchar" MaxLength="50" />
+          <Property Name="College" Type="varchar" MaxLength="50" />
           <Property Name="Degree" Type="varchar" MaxLength="50" />
-          <Property Name="Inches" Type="int" />
-          <Property Name="Feet" Type="int" />
+          <Property Name="Discipline" Type="varchar" MaxLength="50" />
+          <Property Name="HeightFeet" Type="int" />
+          <Property Name="HeightInches" Type="int" />
           <Property Name="Weight" Type="int" />
-          <Property Name="isAdmin" Type="bit" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="IsFaculty" Type="bit" />
+          <Property Name="AuthDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="int" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="40" />
+          <Property Name="Email" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="DateandTime" Type="datetime" />
           <Property Name="CeremonyType" Type="varchar" MaxLength="40" />
           <Property Name="CapSize" Type="varchar" MaxLength="5" />
-          <Property Name="Weight" Type="int" />
           <Property Name="HeightFeet" Type="int" />
           <Property Name="HeightInches" Type="int" />
+          <Property Name="Weight" Type="int" />
           <Property Name="Degree" Type="varchar" MaxLength="40" />
+          <Property Name="Discipline" Type="varchar" MaxLength="50" />
           <Property Name="College" Type="varchar" MaxLength="50" />
           <Property Name="CollegeCity" Type="varchar" MaxLength="50" />
           <Property Name="CollegeState" Type="varchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK_Orders_Orders">
-          <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+        <Association Name="FK__Orders__Email__48CFD27E">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Faculty">
@@ -51,10 +55,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DatabaseTablesStoreContainer">
+        <EntityContainer Name="RegaliaModelStoreContainer">
           <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Orders_Orders" Association="Self.FK_Orders_Orders">
+          <AssociationSet Name="FK__Orders__Email__48CFD27E" Association="Self.FK__Orders__Email__48CFD27E">
             <End Role="Faculty" EntitySet="Faculty" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
@@ -63,7 +67,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DatabaseTables" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="RegaliaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Faculty">
           <Key>
             <PropertyRef Name="Email" />
@@ -73,35 +77,39 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CapSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="University" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="College" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Degree" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Inches" Type="Int32" />
-          <Property Name="Feet" Type="Int32" />
+          <Property Name="Discipline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HeightFeet" Type="Int32" />
+          <Property Name="HeightInches" Type="Int32" />
           <Property Name="Weight" Type="Int32" />
-          <Property Name="isAdmin" Type="Boolean" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Orders" FromRole="Faculty" ToRole="Orders" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="IsFaculty" Type="Boolean" />
+          <Property Name="AuthDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Email__48CFD27E" FromRole="Faculty" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DateandTime" Type="DateTime" Precision="3" />
           <Property Name="CeremonyType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="CapSize" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="Weight" Type="Int32" />
           <Property Name="HeightFeet" Type="Int32" />
           <Property Name="HeightInches" Type="Int32" />
+          <Property Name="Weight" Type="Int32" />
           <Property Name="Degree" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Discipline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="College" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CollegeCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CollegeState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Faculty" Relationship="Self.FK_Orders_Orders" FromRole="Orders" ToRole="Faculty" />
+          <NavigationProperty Name="Faculty" Relationship="Self.FK__Orders__Email__48CFD27E" FromRole="Orders" ToRole="Faculty" />
         </EntityType>
-        <Association Name="FK_Orders_Orders">
-          <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+        <Association Name="FK__Orders__Email__48CFD27E">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
           <End Role="Orders" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Faculty">
@@ -112,10 +120,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AdminDatabaseConnectionString" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RegaliaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Faculties" EntityType="Self.Faculty" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
-          <AssociationSet Name="FK_Orders_Orders" Association="Self.FK_Orders_Orders">
+          <AssociationSet Name="FK__Orders__Email__48CFD27E" Association="Self.FK__Orders__Email__48CFD27E">
             <End Role="Faculty" EntitySet="Faculties" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
@@ -125,26 +133,29 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DatabaseTablesStoreContainer" CdmEntityContainer="AdminDatabaseConnectionString">
+        <EntityContainerMapping StorageEntityContainer="RegaliaModelStoreContainer" CdmEntityContainer="RegaliaEntities">
           <EntitySetMapping Name="Faculties">
-            <EntityTypeMapping TypeName="DatabaseTables.Faculty">
+            <EntityTypeMapping TypeName="RegaliaModel.Faculty">
               <MappingFragment StoreEntitySet="Faculty">
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
                 <ScalarProperty Name="CapSize" ColumnName="CapSize" />
-                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="College" ColumnName="College" />
                 <ScalarProperty Name="Degree" ColumnName="Degree" />
-                <ScalarProperty Name="Inches" ColumnName="Inches" />
-                <ScalarProperty Name="Feet" ColumnName="Feet" />
+                <ScalarProperty Name="Discipline" ColumnName="Discipline" />
+                <ScalarProperty Name="HeightFeet" ColumnName="HeightFeet" />
+                <ScalarProperty Name="HeightInches" ColumnName="HeightInches" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="IsFaculty" ColumnName="IsFaculty" />
+                <ScalarProperty Name="AuthDate" ColumnName="AuthDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="DatabaseTables.Order">
+            <EntityTypeMapping TypeName="RegaliaModel.Order">
               <MappingFragment StoreEntitySet="Orders">
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -152,10 +163,11 @@
                 <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
                 <ScalarProperty Name="CeremonyType" ColumnName="CeremonyType" />
                 <ScalarProperty Name="CapSize" ColumnName="CapSize" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="HeightFeet" ColumnName="HeightFeet" />
                 <ScalarProperty Name="HeightInches" ColumnName="HeightInches" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="Discipline" ColumnName="Discipline" />
                 <ScalarProperty Name="College" ColumnName="College" />
                 <ScalarProperty Name="CollegeCity" ColumnName="CollegeCity" />
                 <ScalarProperty Name="CollegeState" ColumnName="CollegeState" />

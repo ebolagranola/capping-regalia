@@ -26,7 +26,8 @@
                             <div class="d-flex justify-content-around">
                                 <button onClick="showFaculty()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Display Faculty Table</button>
                                 <button onClick="showOrders()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Display Orders Table</button>
-                                <button onClick="showAddAdmin()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Add New Admin</button>
+                                <button onClick="showAddAdmin()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Add/Remove New Admin</button>
+                                <button onClick="showAuthFaculty()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Generate Access Key</button>
                                 <button onclick="ConfirmWrite()" type="button" class="btn text-white text-right" style="background-color: #006e7a;">Write Orders to Historic Orders</button>
                             </div>
                             <div id="facultyTable" class="container" style="padding-top: 25px; min-width: 100%; display: none;">
@@ -47,30 +48,30 @@
                                                         <th>Phone Number</th>
                                                         <th>Department</th>
                                                         <th>Cap Size</th>
-                                                        <th>University</th>
+                                                        <th>Institution</th>
                                                         <th>Degree</th>
+                                                        <th>Discipline</th>
                                                         <th>Height Feet</th>
                                                         <th>Height Inches</th>
                                                         <th>Weight</th>
-                                                        <th>Admin</th>
                                                         <th>Delete</th>
                                                     </tr>
                                                     @foreach (var item in ViewBag.faculty)
                                                     {
-                                                        <tr>
-                                                            <td>@item.Email</td>
-                                                            <td>@item.Name</td>
-                                                            <td>@item.PhoneNumber</td>
-                                                            <td>@item.Department</td>
-                                                            <td>@item.CapSize</td>
-                                                            <td>@item.University</td>
-                                                            <td>@item.Degree</td>
-                                                            <td>@item.Feet</td>
-                                                            <td>@item.Inches</td>
-                                                            <td>@item.Weight</td>
-                                                            <td>@item.isAdmin</td>
-                                                            <td><Button ID="btnDelete" type="button" onclick="ConfirmDeleteFaculty('@item.Email')" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
-                                                        </tr>
+                                                    <tr>
+                                                        <td>@item.Email</td>
+                                                        <td>@item.Name</td>
+                                                        <td>@item.PhoneNumber</td>
+                                                        <td>@item.Department</td>
+                                                        <td>@item.CapSize</td>
+                                                        <td>@item.College</td>
+                                                        <td>@item.Degree</td>
+                                                        <td>@item.Discipline</td>
+                                                        <td>@item.HeightFeet</td>
+                                                        <td>@item.HeightInches</td>
+                                                        <td>@item.Weight</td>
+                                                        <td><Button ID="btnDelete" type="button" onclick="ConfirmDeleteFaculty('@item.Email')" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
+                                                    </tr>
                                                     }
                                                 </table>
                                             </div>
@@ -98,33 +99,35 @@
                                                         <th>Order Date and Time</th>
                                                         <th>Attending Ceremony</th>
                                                         <th>Cap Size</th>
-                                                        <th>Weight</th>
                                                         <th>Height Feet</th>
                                                         <th>Height Inches</th>
+                                                        <th>Weight</th>
                                                         <th>Degree</th>
-                                                        <th>College</th>
-                                                        <th>College State</th>
-                                                        <th>College City</th>
+                                                        <th>Discipline</th>
+                                                        <th>Institution</th>
+                                                        <th>Institution State</th>
+                                                        <th>Institution City</th>
                                                         <th>Delete</th>
                                                     </tr>
                                                     @foreach (var item in ViewBag.orders)
                                                     {
-                                                        <tr>
-                                                            <td>@item.OrderID</td>
-                                                            <td>@item.Email</td>
-                                                            <td>@item.Name</td>
-                                                            <td>@item.DateandTime</td>
-                                                            <td>@item.CeremonyType</td>
-                                                            <td>@item.CapSize</td>
-                                                            <td>@item.Weight</td>
-                                                            <td>@item.HeightFeet</td>
-                                                            <td>@item.HeightInches</td>
-                                                            <td>@item.Degree</td>
-                                                            <td>@item.College</td>
-                                                            <td>@item.CollegeState</td>
-                                                            <td>@item.CollegeCity</td>
-                                                            <td><Button ID="btnDelete" type="button" onclick="ConfirmDeleteOrders('@item.OrderID')" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
-                                                        </tr>
+                                                    <tr>
+                                                        <td>@item.OrderID</td>
+                                                        <td>@item.Email</td>
+                                                        <td>@item.Name</td>
+                                                        <td>@item.DateandTime</td>
+                                                        <td>@item.CeremonyType</td>
+                                                        <td>@item.CapSize</td>
+                                                        <td>@item.HeightFeet</td>
+                                                        <td>@item.HeightInches</td>
+                                                        <td>@item.Weight</td>
+                                                        <td>@item.Degree</td>
+                                                        <td>@item.Discipline</td>
+                                                        <td>@item.College</td>
+                                                        <td>@item.CollegeState</td>
+                                                        <td>@item.CollegeCity</td>
+                                                        <td><Button ID="btnDelete" type="button" onclick="ConfirmDeleteOrders('@item.OrderID')" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
+                                                    </tr>
                                                     }
                                                 </table>
                                             </div>
@@ -138,20 +141,82 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <h2>
-                                                    Add New Admin
+                                                    Add/Remove New Admin
                                                 </h2>
                                             </div>
                                             <div class="card-body">
-                                                <form action="NewAdmin" method="POST">
-                                                    <label for="Id" class="font-weight-bold">
-                                                        <span>Enter the faculty ID of the admin you would like to add</span>
-                                                    </label>
-                                                    <input required class="form-control" type="text" name="id" placeholder="Faculty ID" />
-                                                    <br>
-                                                    <div class="text-right">
-                                                        <input type="submit" value="Submit" class="btn text-white text-right" style="background-color: #006e7a;" />
-                                                    </div>
-                                                </form>
+                                                
+                                                <div class="card-body" style="overflow-x:auto;">
+                                                
+                                                    <table border="1" cellpadding="0" cellspacing="0" Class="small table table-bordered table-striped table-sm table-hover">
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Add/Remove Admin</th>
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td>
+
+                                                                    <input required class="form-control" type="text" id="adminid" placeholder="Faculty ID" minlength="8" maxlength="8" pattern="\d*" />
+                                                                    <br>
+                                                                    
+                                                             </td>
+
+                                                            <td>
+                                                                
+                                                                            <Button type="button" onclick="AddAdmin()" class="btn text-white text-center" style="background-color: #006e7a; width: 85px; text-align: center;">Add</Button>
+                                                                        
+                                                                    
+                                                            
+
+                                                            </td>
+
+
+
+                                                        </tr>
+                                                        
+                                                        @foreach (var item in ViewBag.faculty)
+                                                        {
+                                                            if (@item.IsAdmin == true)
+                                                            {
+
+                                                                if (@item.Name == null)
+                                                                {
+                                                                    <tr>
+
+                                                                        <td>@item.Email</td>
+
+                                                                        <td>
+                                                                         
+                                                                                <Button ID="btnRevoke" type="button" onclick="ConfirmRevokeAdmin('@item.Email')" class="btn text-white text-center" style="background-color: #990000; width: 85px;">Remove</Button>
+                                                                            
+                                                                        </td>                                                                    </tr>
+                                                                }
+
+                                                                else
+                                                                {
+
+                                                                    <tr>
+
+
+                                                                        <td>@item.Name</td>
+
+                                                                        <td>
+                                                                        
+                                                                                <Button ID="btnRevoke" type="button" onclick="ConfirmRevokeAdmin('@item.Email')" class="btn text-white text-center" style="background-color: #990000; width: 85px;">Remove</Button>
+                                                                           
+                                                                        </td>
+                                                                    </tr>
+
+                                                                }
+
+                                                            }
+
+                                                        }
+                                                    </table>
+                                                </div>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -175,6 +240,25 @@
 
                 }
 
+
+            }
+
+            function AddAdmin() {
+
+                var id = document.getElementById("adminid").value
+
+
+                if (id == null || id.length < 8 || id.length > 8) {
+
+                    alert("Please enter a valid id");
+
+                }
+
+                else {
+
+                    window.location.replace("/Web/NewAdmin/" + id);
+
+                }
 
             }
 
@@ -210,7 +294,29 @@
 
 
             }
+            
+            function ConfirmRevokeAdmin(email) {
+                var r = confirm("You are about to remove this users admin privledges. Are you sure you would like to do this?");
+                if (r == true) {
 
+                    var id = email.substr(0, 8);
+
+                    if (@ViewBag.ID == id) {
+
+                        alert("You can not remove your own admin privileges!")
+
+                    }
+
+                    else {
+                        window.location.replace("/Web/RevokeAdmin/" + id);
+                    }
+                }
+                else {
+
+                }
+
+
+            }
 
         </script>
     </body>

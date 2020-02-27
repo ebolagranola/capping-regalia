@@ -122,24 +122,24 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\DatabaseTables.Context.tt">
+    <Content Include="Models\AdminDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DatabaseTables.edmx</DependentUpon>
-      <LastGenOutput>DatabaseTables.Context.cs</LastGenOutput>
+      <DependentUpon>AdminDatabase.edmx</DependentUpon>
+      <LastGenOutput>AdminDatabase.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DatabaseTables.tt">
+    <Content Include="Models\AdminDatabase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DatabaseTables.edmx</DependentUpon>
-      <LastGenOutput>DatabaseTables.cs</LastGenOutput>
+      <DependentUpon>AdminDatabase.edmx</DependentUpon>
+      <LastGenOutput>AdminDatabase.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\DatabaseTables.edmx">
+    <EntityDeploy Include="Models\AdminDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DatabaseTables.Designer.cs</LastGenOutput>
+      <LastGenOutput>AdminDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DatabaseTables.edmx.diagram">
-      <DependentUpon>DatabaseTables.edmx</DependentUpon>
+    <Content Include="Models\AdminDatabase.edmx.diagram">
+      <DependentUpon>AdminDatabase.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -163,26 +163,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DatabaseTables.Context.cs">
+    <Compile Include="Models\AdminDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseTables.Context.tt</DependentUpon>
+      <DependentUpon>AdminDatabase.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DatabaseTables.cs">
+    <Compile Include="Models\AdminDatabase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseTables.tt</DependentUpon>
+      <DependentUpon>AdminDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DatabaseTables.Designer.cs">
+    <Compile Include="Models\AdminDatabase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseTables.edmx</DependentUpon>
+      <DependentUpon>AdminDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Faculty.cs">
-      <DependentUpon>DatabaseTables.tt</DependentUpon>
+      <DependentUpon>AdminDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>DatabaseTables.tt</DependentUpon>
+      <DependentUpon>AdminDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SecretModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -13,10 +13,10 @@ namespace Regalia.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AdminDatabaseConnectionString : DbContext
+    public partial class RegaliaEntities : DbContext
     {
-        public AdminDatabaseConnectionString()
-            : base("name=AdminDatabaseConnectionString")
+        public RegaliaEntities()
+            : base("name=RegaliaEntities")
         {
         }
     

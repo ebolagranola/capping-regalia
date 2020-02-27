@@ -341,9 +341,10 @@ namespace Regalia.Controllers
 
                     con.Open();
 
-                    SqlCommand makenewadmin = new SqlCommand("INSERT INTO Faculty (Email, isAdmin) VALUES (@email, 1)", con);
+                    SqlCommand makenewadmin = new SqlCommand("INSERT INTO Faculty (Email, IsAdmin, IsFaculty, AuthDate) VALUES (@email, 1, 1, @authdate)", con);
 
                     makenewadmin.Parameters.AddWithValue("@email", id + "@marist.edu");
+                    makenewadmin.Parameters.AddWithValue("@authdate", DateTime.Now);
 
                     makenewadmin.ExecuteScalar();
 
@@ -378,7 +379,10 @@ namespace Regalia.Controllers
 
                 ViewBag.faculty = constring.Faculties.ToList();
                 ViewBag.orders = constring.Orders.ToList();
-       
+
+               
+               
+
 
                 return View();
 

@@ -1,0 +1,57 @@
+Create database called "Regalia"
+
+CREATE TABLE "Faculty" (
+	"Email" VARCHAR(40) NOT NULL,
+	"Name" VARCHAR(50),
+	"PhoneNumber" VARCHAR(50),
+	"Department" VARCHAR(50),
+	"CapSize" VARCHAR(50),
+	"College" VARCHAR(50),
+	"Degree" VARCHAR(50),
+	"Discipline" VARCHAR(50),
+	"HeightFeet" INT,
+	"HeightInches" INT,
+	"Weight" INT,
+	"IsAdmin" BIT,
+	"IsFaculty" BIT,
+	"AuthDate" DATETIME,
+	PRIMARY KEY ("Email")
+);
+
+CREATE TABLE "Orders" (
+	"OrderID" INT NOT NULL,
+	"Email" VARCHAR(40) NOT NULL,
+	"Name" VARCHAR(50),
+	"DateandTime" DATETIME,
+	"CeremonyType" VARCHAR(40),
+	"CapSize" VARCHAR(5),
+	"HeightFeet" INT,
+	"HeightInches" INT,
+	"Weight" INT,
+	"Degree" VARCHAR(40),
+	"Discipline" VARCHAR(50),
+	"College" VARCHAR(50),
+	"CollegeCity" VARCHAR(50),
+	"CollegeState" VARCHAR(50),
+	PRIMARY KEY ("OrderID"),
+	FOREIGN KEY ("Email") REFERENCES Faculty("Email")
+);
+
+CREATE TABLE "HistoricOrders" (
+	"OrderID" INT NOT NULL,
+	"Email" VARCHAR(40) NOT NULL,
+	"Name" VARCHAR(50),
+	"DateandTime" DATETIME,
+	"CeremonyType" VARCHAR(40),
+	"CapSize" VARCHAR(5),
+	"HeightFeet" INT,
+	"HeightInches" INT,
+	"Weight" INT,
+	"Degree" VARCHAR(40),
+	"Discipline" VARCHAR(50),
+	"College" VARCHAR(50),
+	"CollegeCity" VARCHAR(50),
+	"CollegeState" VARCHAR(50),
+	PRIMARY KEY ("OrderID"),
+	FOREIGN KEY ("Email") REFERENCES Faculty("Email")
+);

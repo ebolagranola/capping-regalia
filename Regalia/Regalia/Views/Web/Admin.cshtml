@@ -58,20 +58,20 @@
                                                     </tr>
                                                     @foreach (var item in ViewBag.faculty)
                                                     {
-                                                    <tr>
-                                                        <td>@item.Email</td>
-                                                        <td>@item.Name</td>
-                                                        <td>@item.PhoneNumber</td>
-                                                        <td>@item.Department</td>
-                                                        <td>@item.CapSize</td>
-                                                        <td>@item.College</td>
-                                                        <td>@item.Degree</td>
-                                                        <td>@item.Discipline</td>
-                                                        <td>@item.HeightFeet</td>
-                                                        <td>@item.HeightInches</td>
-                                                        <td>@item.Weight</td>
-                                                        <td><Button ID="btnDelete" type="button" onclick="ConfirmDeleteFaculty('@item.Email')" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td>@item.Email</td>
+                                                            <td>@item.Name</td>
+                                                            <td>@item.PhoneNumber</td>
+                                                            <td>@item.Department</td>
+                                                            <td>@item.CapSize</td>
+                                                            <td>@item.College</td>
+                                                            <td>@item.Degree</td>
+                                                            <td>@item.Discipline</td>
+                                                            <td>@item.HeightFeet</td>
+                                                            <td>@item.HeightInches</td>
+                                                            <td>@item.Weight</td>
+                                                            <td><Button ID="btnDelete" type="button" onclick="ConfirmDeleteFaculty('@item.Email')" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
+                                                        </tr>
                                                     }
                                                 </table>
                                             </div>
@@ -111,23 +111,23 @@
                                                     </tr>
                                                     @foreach (var item in ViewBag.orders)
                                                     {
-                                                    <tr>
-                                                        <td>@item.OrderID</td>
-                                                        <td>@item.Email</td>
-                                                        <td>@item.Name</td>
-                                                        <td>@item.DateandTime</td>
-                                                        <td>@item.CeremonyType</td>
-                                                        <td>@item.CapSize</td>
-                                                        <td>@item.HeightFeet</td>
-                                                        <td>@item.HeightInches</td>
-                                                        <td>@item.Weight</td>
-                                                        <td>@item.Degree</td>
-                                                        <td>@item.Discipline</td>
-                                                        <td>@item.College</td>
-                                                        <td>@item.CollegeState</td>
-                                                        <td>@item.CollegeCity</td>
-                                                        <td><Button ID="btnDelete" type="button" onclick="ConfirmDeleteOrders('@item.OrderID')" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td>@item.OrderID</td>
+                                                            <td>@item.Email</td>
+                                                            <td>@item.Name</td>
+                                                            <td>@item.DateandTime</td>
+                                                            <td>@item.CeremonyType</td>
+                                                            <td>@item.CapSize</td>
+                                                            <td>@item.HeightFeet</td>
+                                                            <td>@item.HeightInches</td>
+                                                            <td>@item.Weight</td>
+                                                            <td>@item.Degree</td>
+                                                            <td>@item.Discipline</td>
+                                                            <td>@item.College</td>
+                                                            <td>@item.CollegeState</td>
+                                                            <td>@item.CollegeCity</td>
+                                                            <td><Button ID="btnDelete" type="button" onclick="ConfirmDeleteOrders('@item.OrderID')" class="btn text-white text-right" style="background-color: #990000;">Delete</Button></td>
+                                                        </tr>
                                                     }
                                                 </table>
                                             </div>
@@ -145,9 +145,9 @@
                                                 </h2>
                                             </div>
                                             <div class="card-body">
-                                                
+
                                                 <div class="card-body" style="overflow-x:auto;">
-                                                
+
                                                     <table border="1" cellpadding="0" cellspacing="0" Class="small table table-bordered table-striped table-sm table-hover">
                                                         <tr>
                                                             <th>Name</th>
@@ -157,24 +157,24 @@
 
                                                             <td>
 
-                                                                    <input required class="form-control" type="text" id="adminid" placeholder="Faculty ID" minlength="8" maxlength="8" pattern="\d*" />
-                                                                    <br>
-                                                                    
-                                                             </td>
+                                                                <input required class="form-control" type="text" id="adminid" placeholder="Faculty ID" minlength="8" maxlength="8" pattern="\d*" />
+                                                                <br>
+
+                                                            </td>
 
                                                             <td>
-                                                                
-                                                                            <Button type="button" onclick="AddAdmin()" class="btn text-white text-center" style="background-color: #006e7a; width: 85px; text-align: center;">Add</Button>
-                                                                        
-                                                                    
-                                                            
+
+                                                                <Button type="button" onclick="AddAdmin()" class="btn text-white text-center" style="background-color: #006e7a; width: 85px; text-align: center;">Add</Button>
+
+
+
 
                                                             </td>
 
 
 
                                                         </tr>
-                                                        
+
                                                         @foreach (var item in ViewBag.faculty)
                                                         {
                                                             if (@item.IsAdmin == true)
@@ -187,10 +187,11 @@
                                                                         <td>@item.Email</td>
 
                                                                         <td>
-                                                                         
-                                                                                <Button ID="btnRevoke" type="button" onclick="ConfirmRevokeAdmin('@item.Email')" class="btn text-white text-center" style="background-color: #990000; width: 85px;">Remove</Button>
-                                                                            
-                                                                        </td>                                                                    </tr>
+
+                                                                            <Button ID="btnRevoke" type="button" onclick="ConfirmRevokeAdmin('@item.Email')" class="btn text-white text-center" style="background-color: #990000; width: 85px;">Remove</Button>
+
+                                                                        </td>
+                                                                    </tr>
                                                                 }
 
                                                                 else
@@ -202,9 +203,9 @@
                                                                         <td>@item.Name</td>
 
                                                                         <td>
-                                                                        
-                                                                                <Button ID="btnRevoke" type="button" onclick="ConfirmRevokeAdmin('@item.Email')" class="btn text-white text-center" style="background-color: #990000; width: 85px;">Remove</Button>
-                                                                           
+
+                                                                            <Button ID="btnRevoke" type="button" onclick="ConfirmRevokeAdmin('@item.Email')" class="btn text-white text-center" style="background-color: #990000; width: 85px;">Remove</Button>
+
                                                                         </td>
                                                                     </tr>
 
@@ -213,6 +214,42 @@
                                                             }
 
                                                         }
+                                                    </table>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="showAuthFaculty" class="container" style="padding-top: 25px; min-width: 100%; display: none;">
+                                <div class="row">
+                                    <div class="mx-auto col-lg-12 col-xs-*">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h2>
+                                                    Test
+                                                </h2>
+                                            </div>
+                                            <div class="card-body">
+
+                                                @ViewBag.faculty
+
+
+                                                <div class="card-body" style="overflow-x:auto;">
+
+                                                    <table border="1" cellpadding="0" cellspacing="0" Class="small table table-bordered table-striped table-sm table-hover">
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Day/Time Auth</th>
+                                                            <th>Delete User</th>
+                                                        </tr>
+
+                                                        
+
+                                                       
                                                     </table>
                                                 </div>
 
@@ -339,7 +376,10 @@
             showAddAdmin();
 
         }
+        else if (sessionStorage.getItem("viewtemp") == 4) {
+            showAuthFaculty();
 
+        }
 
     }
 
@@ -347,6 +387,8 @@
         document.getElementById("facultyTable").style.display = "initial";
         document.getElementById("ordersTable").style.display = "none";
         document.getElementById("addAdmin").style.display = "none";
+        document.getElementById("showAuthFaculty").style.display = "none";
+
         viewtemp = 1;
 
         sessionStorage.setItem("viewtemp", viewtemp);
@@ -357,6 +399,7 @@
         document.getElementById("facultyTable").style.display = "none";
         document.getElementById("ordersTable").style.display = "initial";
         document.getElementById("addAdmin").style.display = "none";
+        document.getElementById("showAuthFaculty").style.display = "none";
 
         viewtemp = 2;
 
@@ -368,6 +411,7 @@
         document.getElementById("facultyTable").style.display = "none";
         document.getElementById("ordersTable").style.display = "none";
         document.getElementById("addAdmin").style.display = "initial";
+        document.getElementById("showAuthFaculty").style.display = "none";
 
         viewtemp = 3;
 
@@ -375,5 +419,17 @@
 
     }
 
+    function showAuthFaculty() {
+
+        document.getElementById("facultyTable").style.display = "none";
+        document.getElementById("ordersTable").style.display = "none";
+        document.getElementById("addAdmin").style.display = "none";
+        document.getElementById("showAuthFaculty").style.display = "initial";
+
+        viewtemp = 4;
+
+        sessionStorage.setItem("viewtemp", viewtemp);
+
+    }
 
 </script>

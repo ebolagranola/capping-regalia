@@ -30,9 +30,9 @@ namespace Regalia.Controllers
         SqlCommand findemail = new SqlCommand();
 
         //This string reads the text file containing the connection string, this was done to make the software more portable
-        string connectionstring = System.IO.File.ReadAllText(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory.ToString(),@"ConnectionString.txt"));
+        string connectionstring = System.IO.File.ReadAllText(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory.ToString(), @"ConnectionString.txt"));
 
-      
+
 
         //This function gets all of the data from the webpage when the submit button is clicked and creates the appropriate SQL command to write the information
         //To the database or update the existing information
@@ -239,7 +239,7 @@ namespace Regalia.Controllers
 
 
                     deletefaculty.Parameters.AddWithValue("@email", email);
-                    
+
                     deleteorder.Parameters.AddWithValue("@email", email);
 
 
@@ -315,7 +315,7 @@ namespace Regalia.Controllers
             }
 
         }
-        
+
         //Function for adding new admins, checks if the current user is an admin and changes the database of the faculty member whos ID was entered
         public ActionResult NewAdmin(String id)
         {
@@ -366,6 +366,42 @@ namespace Regalia.Controllers
 
         }
 
+        public String GetKey() {
+
+            con.ConnectionString = connectionstring;
+            con.Open();
+            SqlCommand ReadKey = new SqlCommand("SELECT TOP 1 AccessKey FROM Keys", con);
+            
+            String tempkey = (ReadKey.ExecuteScalar().ToString());
+            con.Close();
+
+            return (tempkey);
+        }
+        public ActionResult EnterKey(String UserKey) {
+
+            String DBKey = GetKey();
+            
+            Debug.WriteLine(GetKey());
+            Debug.WriteLine(UserKey);
+
+            if (DBKey.Equals(UserKey))
+            {
+
+                Debug.WriteLine("You Entered the correct key");
+
+            }
+            else {
+
+                Debug.WriteLine("You did not enter the correct key");
+
+            }
+
+            return View();
+
+           
+        
+        }
+        
         //Function that loads the admin page and checks if the user is an admin and should
         //have access to the page
         public ActionResult Admin()

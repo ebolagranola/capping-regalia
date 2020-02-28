@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!--This webpage is shown after the form is completed-->
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EnterKey</title>
+</head>
+<body>
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <center>
+            <h2>Please enter the code you received via email</h2>
+            <br>
+            <br>
+            <form>
+
+
+                <input required class="form-control" type="text" name="UserKey" placeholder="6-Digit Key" maxlength="6" minlenght="6" style="width: 300px" />
+
+                <input type="submit" value="Submit" onclick="test()" class="btn text-white text-right" style="background-color: #006e7a;" />
+
+
+
+            </form>
+
+
+
+        </center>
+    </div>
+</body>
+</html>
+
+<script>
+    function test{
+    
+    alert("test");
+
+
+    }
+
+</script>

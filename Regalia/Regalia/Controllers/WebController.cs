@@ -381,8 +381,11 @@ namespace Regalia.Controllers
                 ViewBag.faculty = constring.Faculties.ToList();
                 ViewBag.orders = constring.Orders.ToList();
 
-               
-               
+                con.ConnectionString = connectionstring;
+                con.Open();
+                SqlCommand ReadKey = new SqlCommand("SELECT TOP 1 AccessKey FROM Keys", con);
+                ViewBag.igotthekeys = ReadKey.ExecuteScalar();
+
 
 
                 return View();
@@ -601,6 +604,7 @@ namespace Regalia.Controllers
             
             }
 
+            con.Close();
             
             
             return (View("AdminRedirect"));

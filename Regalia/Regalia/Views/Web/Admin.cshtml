@@ -230,12 +230,13 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <h2>
-                                                    Test
+                                                    <Button ID="btnRevoke" type="button" onclick="ConfirmGenerateKey()" class="btn text-white text-center" style="background-color: #990000; width: 85px;">Remove</Button>
+
                                                 </h2>
                                             </div>
                                             <div class="card-body">
 
-                                                @ViewBag.faculty
+                                             
 
 
                                                 <div class="card-body" style="overflow-x:auto;">
@@ -331,7 +332,19 @@
 
 
             }
-            
+
+            function ConfirmGenerateKey() {
+                var r = confirm("You are about to reset the secret key.  Once this action is done, you must redistribute the new key to all the faculty.");
+                if (r == true) {
+
+                    window.location.replace("/Web/GenerateSecretKey");
+
+                }
+                else {
+
+                }
+            }
+
             function ConfirmRevokeAdmin(email) {
                 var r = confirm("You are about to remove this users admin privledges. Are you sure you would like to do this?");
                 if (r == true) {

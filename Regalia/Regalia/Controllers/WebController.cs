@@ -11,6 +11,7 @@ using System.Data;
 using System.Configuration;
 using System.Net.Mail;
 using Regalia.Models;
+using System.Text;
 
 namespace Regalia.Controllers
 {
@@ -562,6 +563,51 @@ namespace Regalia.Controllers
 
         } 
 
+        public ActionResult GenerateSecretKey() {
+            Random random = new Random();
+            string characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            StringBuilder result = new StringBuilder(6);
+            for (int i = 0; i < 6; i++)
+            {
+                result.Append(characters[random.Next(characters.Length)]);
+            }
+            String keygen = result.ToString();
+
+            con.ConnectionString = connectionstring;
+            con.Open();
+            SqlCommand ReadKey = new SqlCommand("SELECT TOP 1 AccessKey FROM Keys", con);
+            var igotthekeys = ReadKey.ExecuteScalar();
+
+            Debug.WriteLine(igotthekeys);
+
+            if (igotthekeys == null)
+            {
+
+                SqlCommand AddKey = new SqlCommand("INSERT INTO Keys (AccessKey) VALUES (@key)", con);
+
+                AddKey.Parameters.AddWithValue("@key", keygen);
+
+                AddKey.ExecuteNonQuery();
+
+            }
+
+            else {
+
+                SqlCommand UpdateKey = new SqlCommand("UPDATE TOP (1) Keys SET Accesskey = @key", con);
+
+                UpdateKey.Parameters.AddWithValue("@key", keygen);
+
+                UpdateKey.ExecuteNonQuery();
+            
+            }
+
+            
+            
+            return (View("AdminRedirect"));
+
+
+        }
+        
         //This function is used to generate ordernumbers, it reads the DB for the largest number then adds one it does this
         //by checking both the active orders table and the historic orders table
         public int Ordernumber()
@@ -778,7 +824,7 @@ namespace Regalia.Controllers
 
         }
 
-
+       
         public void ExportOrders()
         {
 

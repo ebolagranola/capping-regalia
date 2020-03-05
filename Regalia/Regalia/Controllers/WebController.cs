@@ -377,6 +377,9 @@ namespace Regalia.Controllers
 
             return (tempkey);
         }
+        
+        //This function is used to load the enter key landing page.  This page is supposed to be used
+        //By faculty to confirm that they are authorized to use the DB
         public ActionResult EnterKey(String UserKey) {
 
             String DBKey = GetKey();
@@ -387,7 +390,18 @@ namespace Regalia.Controllers
             if (DBKey.Equals(UserKey))
             {
 
-                Debug.WriteLine("You Entered the correct key");
+                if (EmailAlreadyExists(User.Identity.Name)) {
+
+                    con.ConnectionString = connectionstring;
+                    con.Open();
+                    SqlCommand AuthFaculty = new SqlCommand("UPDATE Faculty SET IsFaculty = True WHERE Email = ");
+                    Debug.WriteLine("You Entered the correct key");
+
+
+
+                }
+                
+                
 
             }
             else {

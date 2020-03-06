@@ -386,19 +386,33 @@ namespace Regalia.Controllers
             
             Debug.WriteLine(GetKey());
             Debug.WriteLine(UserKey);
-
+            
             if (DBKey.Equals(UserKey))
             {
 
-                if (EmailAlreadyExists(User.Identity.Name)) {
+                if (EmailAlreadyExists(User.Identity.Name))
+                {
 
                     con.ConnectionString = connectionstring;
                     con.Open();
-                    SqlCommand AuthFaculty = new SqlCommand("UPDATE Faculty SET IsFaculty = True WHERE Email = ");
+                    SqlCommand AuthFaculty = new SqlCommand("UPDATE Faculty SET IsFaculty = 'True' WHERE Email = @email",con);
                     Debug.WriteLine("You Entered the correct key");
+                    AuthFaculty.Parameters.AddWithValue("@email", User.Identity.Name);
+                    AuthFaculty.ExecuteNonQuery();
+                    con.Close();
 
+                }
+                else {
 
+                    con.ConnectionString = connectionstring;
+                    con.Open();
+                    SqlCommand AuthFaculty = new SqlCommand("INSERT INTO Faculty (Email, IsFaculty) VALUES (@email, true)", con);
+                    AuthFaculty.Parameters.AddWithValue("@email", User.Identity.Name);
+                    AuthFaculty.ExecuteNonQuery();
+                    con.Close();
 
+                
+                
                 }
                 
                 
